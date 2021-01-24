@@ -27,6 +27,11 @@ const Container = styled.div`
     color: var(--clr-black);
   }
 
+  & > ul {
+    list-style: none;
+    align-self: stretch;
+  }
+
   & > button {
     background-color: var(--clr-pink);
     color: var(--clr-white);
@@ -51,9 +56,11 @@ const List = ({ peopleData }) => {
   return (
     <Container>
       <h2>{people.length} birthdays</h2>
-      {people.map((person) => (
-        <Card key={person.id} {...person} />
-      ))}
+      <ul>
+        {people.map((person) => (
+          <Card key={person.id} {...person} />
+        ))}
+      </ul>
       <button onClick={() => setPeople([])}>Delete All</button>
     </Container>
   );
