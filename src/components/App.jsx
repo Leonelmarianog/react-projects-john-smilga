@@ -2,6 +2,7 @@ import React from 'react';
 import List from './List';
 import styled from 'styled-components';
 import GlobalStyles from './GlobalStyles';
+import peopleData from '../data/people';
 
 const Container = styled.main`
   display: flex;
@@ -19,7 +20,7 @@ const App = () => (
   <React.Fragment>
     <GlobalStyles />
     <Container>
-      <List />
+      <List peopleData={peopleData} />
     </Container>
   </React.Fragment>
 );

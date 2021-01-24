@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Card from './Card';
-import peopleData from '../data/people';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -46,7 +45,7 @@ const Container = styled.div`
   }
 `;
 
-const List = () => {
+const List = ({ peopleData }) => {
   const [people, setPeople] = useState(peopleData);
 
   return (
