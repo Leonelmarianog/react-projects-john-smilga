@@ -6,6 +6,7 @@ const Container = styled.article`
   border-radius: 5px;
   background-color: var(--clr-white-2);
   box-shadow: 0.15em 0.15em 0.5em 0.25em #00000025;
+  margin: 2em;
 
   @media screen and (min-width: 576px) {
     width: 350px;
