@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Button from './Button';
 
 const Container = styled.article`
   width: 250px;
@@ -52,27 +53,14 @@ const Container = styled.article`
         cursor: pointer;
       }
     }
+
+    & > button {
+      align-self: center;
+    }
   }
 `;
 
-const Button = styled.button`
-  background: none;
-  background-color: var(--clr-white-2);
-  border: 1px solid var(--clr-red);
-  border-radius: 5px;
-  padding: 0.5em 1.5em;
-  color: var(--clr-red);
-  transition: background-color 0.2s, color 0.2s;
-  cursor: pointer;
-  align-self: center;
-
-  &:hover {
-    background: var(--clr-red);
-    color: var(--clr-white-2);
-  }
-`;
-
-const Tour = ({ name, info, image, price }) => {
+const Tour = ({ id, name, info, image, price, removeTourCallback }) => {
   const [truncated, setTruncated] = useState(true);
 
   return (
@@ -89,7 +77,7 @@ const Tour = ({ name, info, image, price }) => {
             {truncated ? 'Read more' : 'Read less'}
           </button>
         </p>
-        <Button>Not Interested</Button>
+        <Button callback={() => removeTourCallback(id)}>Not Interested</Button>
       </div>
     </Container>
   );
