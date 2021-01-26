@@ -14,7 +14,7 @@ const tourDataMock = {
 };
 
 describe('Tour', () => {
-  it('Renders correctly', () => {
+  it('Renders tour data correctly', () => {
     render(<Tour {...tourDataMock} removeTourCallback={() => {}} />);
 
     expect(screen.getByRole('img', { name: tourDataMock.name })).toBeInTheDocument();
