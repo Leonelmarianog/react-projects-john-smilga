@@ -115,7 +115,15 @@ const SurpriseMeButton = styled.button`
   }
 `;
 
-const Card = ({ name, job, image, bio }) => (
+const Card = ({
+  name,
+  job,
+  image,
+  bio,
+  nextPersonCallback,
+  previousPersonCallback,
+  randomPersonCallback,
+}) => (
   <Container>
     <Portrait>
       <img src={image} alt={name} />
@@ -127,14 +135,14 @@ const Card = ({ name, job, image, bio }) => (
     </Portrait>
     <p>{bio}</p>
     <Pagination>
-      <button>
+      <button onClick={previousPersonCallback}>
         <FaChevronLeft />
       </button>
-      <button>
+      <button onClick={nextPersonCallback}>
         <FaChevronRight />
       </button>
     </Pagination>
-    <SurpriseMeButton>Surprise Me</SurpriseMeButton>
+    <SurpriseMeButton onClick={randomPersonCallback}>Surprise Me</SurpriseMeButton>
   </Container>
 );
 
