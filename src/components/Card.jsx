@@ -126,19 +126,19 @@ const Card = ({
 }) => (
   <Container>
     <Portrait>
-      <img src={image} alt={name} />
+      <img src={image} alt={name} data-testid='image' />
       <div>
         <FaQuoteRight />
       </div>
-      <h3>{name}</h3>
-      <h2>{job}</h2>
+      <h3 data-testid='name'>{name}</h3>
+      <h2 data-testid='job'>{job}</h2>
     </Portrait>
-    <p>{bio}</p>
+    <p data-testid='bio'>{bio}</p>
     <Pagination>
-      <button onClick={previousPersonCallback}>
+      <button onClick={previousPersonCallback} data-testid='previous-btn'>
         <FaChevronLeft />
       </button>
-      <button onClick={nextPersonCallback}>
+      <button onClick={nextPersonCallback} data-testid='next-btn'>
         <FaChevronRight />
       </button>
     </Pagination>
