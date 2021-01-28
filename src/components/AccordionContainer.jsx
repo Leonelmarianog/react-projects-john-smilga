@@ -23,13 +23,17 @@ const Container = styled.article`
     grid-template-rows: 1fr;
     column-gap: 2em;
 
-    & > section > *:first-child {
+    & > ul > *:first-child {
       margin-top: 0;
     }
   }
 
-  & > section > * {
-    margin-top: 2em;
+  & > ul {
+    list-style: none;
+
+    & > * {
+      margin-top: 2em;
+    }
   }
 `;
 
@@ -39,11 +43,13 @@ const AccordionContainer = () => {
   return (
     <Container>
       <h1>Questions and Answers About Login</h1>
-      <section>
+      <ul>
         {questions.map((question) => (
-          <Accordion key={question.id} {...question} />
+          <li key={question.id}>
+            <Accordion {...question} />
+          </li>
         ))}
-      </section>
+      </ul>
     </Container>
   );
 };
