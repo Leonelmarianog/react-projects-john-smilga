@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Menu = styled.menu`
+const MenuBar = styled.menu`
   list-style: none;
   display: flex;
   justify-content: center;
@@ -33,13 +33,15 @@ const Button = styled.button`
 `;
 
 const Categories = ({ categories, filterFoodsCallback }) => (
-  <Menu>
-    {categories.map((category, index) => (
-      <li key={index + 1}>
-        <Button onClick={() => filterFoodsCallback(category)}>{category}</Button>
-      </li>
-    ))}
-  </Menu>
+  <nav>
+    <MenuBar aria-label='menubar'>
+      {categories.map((category, index) => (
+        <li key={index + 1} arial-label='menuitem'>
+          <Button onClick={() => filterFoodsCallback(category)}>{category}</Button>
+        </li>
+      ))}
+    </MenuBar>
+  </nav>
 );
 
 export default Categories;

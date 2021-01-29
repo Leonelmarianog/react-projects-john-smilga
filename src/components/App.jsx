@@ -13,7 +13,7 @@ const Container = styled.main`
   min-height: 100vh;
   padding: 2em;
 
-  & > menu {
+  & > nav {
     margin: 2em 0;
   }
 
@@ -74,7 +74,7 @@ const App = () => {
       <Container>
         <Title>Our Menu</Title>
         <Categories categories={categories} filterFoodsCallback={filterFoods} />
-        <ul>
+        <ul aria-label='foods'>
           {selectedFoods.map((food) => (
             <li key={food.id}>
               <Food {...food} />
