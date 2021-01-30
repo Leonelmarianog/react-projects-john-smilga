@@ -41,45 +41,28 @@ const Duties = styled.section`
 `;
 
 const Duty = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
+  column-gap: 1em;
 
   & > *:first-child {
-    height: 1.5em;
-    width: 1.5em;
-    margin-right: 1em;
     color: var(--clr-light-blue-2);
   }
 `;
 
-const Content = () => (
+const Content = ({ title, company, dates, duties }) => (
   <Container>
-    <Job>Lorem ipsum dolor sit.</Job>
-    <Company>lorem 1</Company>
-    <Dates>Lorem ipsum dolor sit amet.</Dates>
+    <Job>{title}</Job>
+    <Company>{company}</Company>
+    <Dates>{dates}</Dates>
     <Duties>
-      <Duty>
-        <FaAngleDoubleRight />
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis sequi, soluta corrupti
-          assumenda tempora sit.
-        </p>
-      </Duty>
-      <Duty>
-        <FaAngleDoubleRight />
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis sequi, soluta corrupti
-          assumenda tempora sit.
-        </p>
-      </Duty>
-      <Duty>
-        <FaAngleDoubleRight />
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis sequi, soluta corrupti
-          assumenda tempora sit.
-        </p>
-      </Duty>
+      {duties.map((duty, index) => (
+        <Duty key={index + 1}>
+          <FaAngleDoubleRight />
+          <p>{duty}</p>
+        </Duty>
+      ))}
     </Duties>
   </Container>
 );
