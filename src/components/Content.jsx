@@ -30,7 +30,9 @@ const Dates = styled.p`
   text-transform: capitalize;
 `;
 
-const Duties = styled.section`
+const Duties = styled.ul`
+  list-style: none;
+
   & > * {
     margin-bottom: 1.25em;
   }
@@ -40,7 +42,7 @@ const Duties = styled.section`
   }
 `;
 
-const Duty = styled.div`
+const Duty = styled.li`
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
