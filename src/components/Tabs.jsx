@@ -70,7 +70,7 @@ const Tabs = () => {
       {loading && <h1>Loading...</h1>}
       {error && <h1>{error.message}</h1>}
       {jobs.length > 0 && (
-        <Container>
+        <Container aria-label='tabs'>
           <ButtonGroup companies={getCompanies(jobs)} getIndexCallback={getIndex} />
           <Content {...jobs[index]} />
         </Container>
