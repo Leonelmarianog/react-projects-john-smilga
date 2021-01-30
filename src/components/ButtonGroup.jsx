@@ -17,6 +17,7 @@ const Container = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start;
 
     & > button {
       margin-right: 0;
@@ -80,20 +81,23 @@ const Button = styled.button`
   }
 `;
 
-const ButtonGroup = () => {
-  const [active, setActive] = useState('');
+const ButtonGroup = ({ companies, getIndexCallback }) => {
+  const [active, setActive] = useState(companies[0]);
 
   return (
     <Container role='group' aria-label='companies'>
-      <Button active={active === 'lorem1' || false} onClick={() => setActive('lorem1')}>
-        lorem1
-      </Button>
-      <Button active={active === 'lorem2' || false} onClick={() => setActive('lorem2')}>
-        lorem2
-      </Button>
-      <Button active={active === 'lorem3' || false} onClick={() => setActive('lorem3')}>
-        lorem3
-      </Button>
+      {companies.map((company, index) => (
+        <Button
+          key={index + 1}
+          active={active === company || false}
+          onClick={() => {
+            setActive(company);
+            getIndexCallback(company);
+          }}
+        >
+          {company}
+        </Button>
+      ))}
     </Container>
   );
 };
