@@ -47,11 +47,11 @@ const Tabs = () => {
       setError(false);
       const response = await fetch(url);
       if (!response.ok) {
-        throw new Error('Oops, something happened, try again later.');
+        throw new Error('Oops, something happened, try again later');
       }
       const jobs = await response.json();
       if (jobs.length === 0) {
-        throw new Error('No results.');
+        throw new Error('No results');
       }
       setJobs(jobs);
       setLoading(false);
