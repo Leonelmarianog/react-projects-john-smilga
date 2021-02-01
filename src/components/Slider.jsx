@@ -1,18 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
-import peopleData from '../data/people';
-
-const { image, name, quote, title } = peopleData[0];
 
 const Container = styled.article`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 80vw;
+  width: 90vw;
   max-width: 900px;
+  height: 300px; // Must set a height, otherwise the element collapses
+  overflow: hidden;
 `;
 
 const Photo = styled.img`
@@ -27,8 +25,8 @@ const Photo = styled.img`
 
 const Button = styled.button`
   position: absolute;
-  ${(props) => props.position === 'left' && 'left: 0;'}
-  ${(props) => props.position === 'right' && 'right: 0;'}
+  ${(props) => props.position === 'left' && 'left: 0.5em;'}
+  ${(props) => props.position === 'right' && 'right: 0.5em;'}
   top: 50%;
   background-color: var(--clr-blue-2);
   border: none;
@@ -71,18 +69,52 @@ const Quote = styled.blockquote`
   color: var(--clr-blue-3);
 `;
 
-const Slider = () => (
+const PersonInfo = styled.article`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute; // This causes outer article to collapse, since it doesn't have an height
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  ${(props) => props.status === 'next' && 'transform: translateX(100%); opacity: 0;'};
+  ${(props) => props.status === 'current' && 'transform: translateX(0); opacity: 1;'};
+  ${(props) => props.status === 'last' && 'transform: translateX(-100%); opacity: 0;'};
+  transition: transform 0.3s linear, opacity 0.3s linear;
+`;
+
+const Slider = ({ people, index, setIndexCallback }) => (
   <Container>
-    <Photo src={image} alt={name} />
-    <Name>{name}</Name>
-    <Job>{title}</Job>
-    <Quote>
-      <p>&ldquo;{quote}&rdquo;</p>
-    </Quote>
-    <Button position='left'>
+    {people.map((person, personIndex) => {
+      const { id, image, name, quote, title } = person;
+
+      let status = 'next';
+
+      if (personIndex === index) {
+        status = 'active';
+      }
+
+      if (personIndex === index - 1 || (index === 0 && personIndex === people.length - 1)) {
+        status = 'last';
+      }
+
+      return (
+        <PersonInfo key={id} status={status}>
+          <Photo src={image} alt={name} />
+          <Name>{name}</Name>
+          <Job>{title}</Job>
+          <Quote>
+            <p>&ldquo;{quote}&rdquo;</p>
+          </Quote>
+        </PersonInfo>
+      );
+    })}
+    <Button position='left' onClick={() => setIndexCallback(index - 1)}>
       <FiChevronLeft />
     </Button>
-    <Button position='right'>
+    <Button position='right' onClick={() => setIndexCallback(index + 1)}>
       <FiChevronRight />
     </Button>
   </Container>
