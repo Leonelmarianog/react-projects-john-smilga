@@ -111,10 +111,10 @@ const Slider = ({ people, index, setIndexCallback }) => (
         </PersonInfo>
       );
     })}
-    <Button position='left' onClick={() => setIndexCallback(index - 1)}>
+    <Button position='left' onClick={() => setIndexCallback(index - 1)} aria-label='previous'>
       <FiChevronLeft />
     </Button>
-    <Button position='right' onClick={() => setIndexCallback(index + 1)}>
+    <Button position='right' onClick={() => setIndexCallback(index + 1)} aria-label='next'>
       <FiChevronRight />
     </Button>
   </Container>
