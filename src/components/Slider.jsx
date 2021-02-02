@@ -80,7 +80,7 @@ const PersonInfo = styled.article`
   width: 100%;
   height: 100%;
   ${(props) => props.status === 'next' && 'transform: translateX(100%); opacity: 0;'};
-  ${(props) => props.status === 'current' && 'transform: translateX(0); opacity: 1;'};
+  ${(props) => props.status === 'active' && 'transform: translateX(0); opacity: 1;'};
   ${(props) => props.status === 'last' && 'transform: translateX(-100%); opacity: 0;'};
   transition: transform 0.3s linear, opacity 0.3s linear;
 `;
