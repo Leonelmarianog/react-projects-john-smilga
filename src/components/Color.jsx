@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ColorBox = styled.article`
-  background-color: ${(props) => `#${props.colorHex}`};
+  background-color: ${(props) => props.colorHex};
   width: 6em;
   height: 6em;
 
@@ -19,8 +19,8 @@ const Text = styled.p`
 
 const Color = ({ colorHex, colorWeight }) => (
   <ColorBox colorHex={colorHex}>
-    <Text>{colorWeight}%</Text>
-    <Text>#{colorHex}</Text>
+    <Text>{colorWeight}</Text>
+    <Text>{colorHex}</Text>
   </ColorBox>
 );
 

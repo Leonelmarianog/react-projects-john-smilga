@@ -12,7 +12,7 @@ const ColorsContainer = ({ colors }) => (
   <Container>
     {colors.map((color, index) => {
       const { hex: colorHex, weight: colorWeight } = color;
-      return <Color key={index + 1} colorWeight={colorWeight} colorHex={colorHex} />;
+      return <Color key={index + 1} colorWeight={`${colorWeight}%`} colorHex={`#${colorHex}`} />;
     })}
   </Container>
 );
