@@ -11,8 +11,8 @@ const Container = styled.section`
 const ColorsContainer = ({ colors }) => (
   <Container>
     {colors.map((color, index) => {
-      const { hex: colorHex, weight: colorWeight } = color;
-      return <Color key={index + 1} colorWeight={`${colorWeight}%`} colorHex={`#${colorHex}`} />;
+      const { hex: hexValue, weight: weightValue } = color;
+      return <Color key={index + 1} colorWeight={`${weightValue}%`} colorHex={`#${hexValue}`} />;
     })}
   </Container>
 );
