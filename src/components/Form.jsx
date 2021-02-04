@@ -68,7 +68,7 @@ const Form = ({ setColorsCallback }) => {
         error={error}
       />
       <Helper error={error}>
-        {error ? 'Input must be hexadecimal!' : 'Please insert an hexadecimal number'}
+        {error ? 'Input not valid!' : 'Please insert a valid CSS color'}
       </Helper>
       <Button type='submit'>Generate</Button>
     </Container>
