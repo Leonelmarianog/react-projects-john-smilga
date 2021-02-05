@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.form`
@@ -43,11 +43,42 @@ const Button = styled.button`
   }
 `;
 
-const Form = () => {
+const Form = ({
+  input,
+  setInputCallback,
+  addGroceryCallback,
+  editGroceryCallback,
+  isEdit,
+  editID,
+}) => {
+  const handleChange = (event) => {
+    setInputCallback(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (input && !isEdit) {
+      addGroceryCallback(input);
+    }
+
+    if (input && isEdit) {
+      editGroceryCallback(editID, input);
+    }
+  };
+
   return (
-    <Container>
-      <Input type='text' name='item' id='item' placeholder='e.g. eggs' required />
-      <Button type='submit'>Add</Button>
+    <Container onSubmit={handleSubmit}>
+      <Input
+        type='text'
+        name='groceryName'
+        id='groceryName'
+        placeholder='e.g. eggs'
+        value={input}
+        onChange={handleChange}
+        required
+      />
+      <Button type='submit'>{isEdit ? 'Edit' : 'Add'}</Button>
     </Container>
   );
 };
