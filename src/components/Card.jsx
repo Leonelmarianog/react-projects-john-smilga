@@ -88,6 +88,12 @@ const Card = () => {
           setInput('');
           setAlert({ isVisible: true, message: 'Item Removed', type: 'success' });
           break;
+        case 'CLEAR':
+          setIsEdit(false);
+          setEditID(null);
+          setInput('');
+          setAlert({ isVisible: true, message: 'List Cleared', type: 'success' });
+          break;
         default:
           return;
       }
@@ -127,6 +133,7 @@ const Card = () => {
 
   const clearAll = () => {
     setGroceries([]);
+    setEvent('CLEAR');
   };
 
   return (
