@@ -59,6 +59,7 @@ const Card = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({ isVisible: false, message: '', type: '' });
+  const [event, setEvent] = useState(null);
 
   useEffect(() => {
     try {
@@ -68,20 +69,42 @@ const Card = () => {
     }
   }, [groceries]);
 
+  useEffect(() => {
+    if (event) {
+      switch (event) {
+        case 'ITEM_ADDED':
+          setInput('');
+          setAlert({ isVisible: true, message: 'Item Added', type: 'success' });
+          break;
+        case 'ITEM_MODIFIED':
+          setIsEdit(false);
+          setEditID(null);
+          setInput('');
+          setAlert({ isVisible: true, message: 'Item Modified', type: 'success' });
+          break;
+        case 'ITEM_REMOVED':
+          setIsEdit(false);
+          setEditID(null);
+          setInput('');
+          setAlert({ isVisible: true, message: 'Item Removed', type: 'success' });
+          break;
+        default:
+          return;
+      }
+      setEvent(null);
+    }
+  }, [event]);
+
   const addGrocery = (groceryName) => {
     const newGrocery = { id: new Date().getTime().toString(), name: groceryName };
     setGroceries([...groceries, newGrocery]);
-    setInput('');
-    setAlert({ isVisible: true, message: 'Item Added', type: 'success' });
+    setEvent('ITEM_ADDED');
   };
 
   const deleteGrocery = (groceryId) => {
     const newGroceries = groceries.filter((grocery) => grocery.id !== groceryId);
     setGroceries(newGroceries);
-    setIsEdit(false);
-    setEditID(null);
-    setInput('');
-    setAlert({ isVisible: true, message: 'Item Removed', type: 'success' });
+    setEvent('ITEM_REMOVED');
   };
 
   const setEdit = (groceryId) => {
@@ -99,10 +122,7 @@ const Card = () => {
       return grocery;
     });
     setGroceries(newGroceries);
-    setIsEdit(false);
-    setEditID(null);
-    setInput('');
-    setAlert({ isVisible: true, message: 'Item Modified', type: 'success' });
+    setEvent('ITEM_MODIFIED');
   };
 
   const clearAll = () => {
