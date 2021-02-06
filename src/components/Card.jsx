@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Form from './Form';
 import GroceryList from './GroceryList';
@@ -42,12 +42,31 @@ const Button = styled.button`
     background-color: var(--clr-blue-1);
   }
 `;
+
+const getGroceries = () => {
+  const groceries = JSON.parse(localStorage.getItem('groceries'));
+
+  if (!groceries || groceries.length === 0) {
+    return [];
+  }
+
+  return groceries;
+};
+
 const Card = () => {
-  const [groceries, setGroceries] = useState([]);
+  const [groceries, setGroceries] = useState(getGroceries());
   const [input, setInput] = useState('');
   const [isEdit, setIsEdit] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({ isVisible: false, message: '', type: '' });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('groceries', JSON.stringify(groceries));
+    } catch (error) {
+      setAlert({ isVisible: true, message: 'No space left, delete some items', type: 'danger' });
+    }
+  }, [groceries]);
 
   const addGrocery = (groceryName) => {
     const newGrocery = { id: new Date().getTime().toString(), name: groceryName };
@@ -57,7 +76,6 @@ const Card = () => {
   };
 
   const deleteGrocery = (groceryId) => {
-    setIsEdit(false);
     const newGroceries = groceries.filter((grocery) => grocery.id !== groceryId);
     setGroceries(newGroceries);
     setIsEdit(false);
