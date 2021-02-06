@@ -101,19 +101,6 @@ const Card = () => {
     setEvent('ITEM_ADDED');
   };
 
-  const deleteGrocery = (groceryId) => {
-    const newGroceries = groceries.filter((grocery) => grocery.id !== groceryId);
-    setGroceries(newGroceries);
-    setEvent('ITEM_REMOVED');
-  };
-
-  const setEdit = (groceryId) => {
-    const groceryToUpdate = groceries.find((grocery) => grocery.id === groceryId);
-    setInput(groceryToUpdate.name);
-    setIsEdit(true);
-    setEditID(groceryId);
-  };
-
   const editGrocery = (groceryId, groceryName) => {
     const newGroceries = groceries.map((grocery) => {
       if (grocery.id === groceryId) {
@@ -123,6 +110,19 @@ const Card = () => {
     });
     setGroceries(newGroceries);
     setEvent('ITEM_MODIFIED');
+  };
+
+  const deleteGrocery = (groceryId) => {
+    const newGroceries = groceries.filter((grocery) => grocery.id !== groceryId);
+    setGroceries(newGroceries);
+    setEvent('ITEM_REMOVED');
+  };
+
+  const prepareEdit = (groceryId) => {
+    const groceryToUpdate = groceries.find((grocery) => grocery.id === groceryId);
+    setInput(groceryToUpdate.name);
+    setIsEdit(true);
+    setEditID(groceryId);
   };
 
   const clearAll = () => {
@@ -145,7 +145,7 @@ const Card = () => {
         <GroceryList
           groceries={groceries}
           deleteGroceryCallback={deleteGrocery}
-          setEditCallback={setEdit}
+          prepareEditCallback={prepareEdit}
         />
       )}
       {groceries.length > 0 && <Button onClick={clearAll}>Clear All</Button>}

@@ -16,14 +16,14 @@ const Container = styled.ul`
   }
 `;
 
-const GroceryList = ({ groceries, deleteGroceryCallback, setEditCallback }) => (
+const GroceryList = ({ groceries, deleteGroceryCallback, prepareEditCallback }) => (
   <Container>
     {groceries.map((grocery) => (
       <Grocery
         key={grocery.id}
         {...grocery}
         deleteGroceryCallback={deleteGroceryCallback}
-        setEditCallback={setEditCallback}
+        prepareEditCallback={prepareEditCallback}
       />
     ))}
   </Container>

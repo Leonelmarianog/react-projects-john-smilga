@@ -37,12 +37,12 @@ const Button = styled.button`
   }
 `;
 
-const Grocery = ({ id, name, deleteGroceryCallback, setEditCallback }) => {
+const Grocery = ({ id, name, deleteGroceryCallback, prepareEditCallback }) => {
   return (
     <Container>
       <Item>{name}</Item>
       <ButtonGroup>
-        <Button action='edit' aria-label='edit item' onClick={() => setEditCallback(id)}>
+        <Button action='edit' aria-label='edit item' onClick={() => prepareEditCallback(id)}>
           <FaEdit />
         </Button>
         <Button action='delete' aria-label='delete item' onClick={() => deleteGroceryCallback(id)}>
