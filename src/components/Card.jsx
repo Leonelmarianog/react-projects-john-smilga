@@ -11,15 +11,37 @@ const Container = styled.article`
   padding: 2em 1em;
   background-color: var(--clr-white-1);
   width: 80vw;
-  max-width: 350px;
+  min-width: max-content;
+  max-width: 300px;
   border-radius: 10px;
   box-shadow: 0 0 0.5em 0.15em #00000025;
 
   @media screen and (min-width: 576px) {
+    max-width: 400px;
+  }
+
+  @media screen and (min-width: 768px) {
     max-width: 500px;
   }
 `;
 
+const Button = styled.button`
+  border: none;
+  background-color: var(--clr-blue-2);
+  color: var(--clr-white-1);
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  margin-top: 2em;
+  color: var(--clr-black-1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: calc(var(--font-size-base) * 1.25);
+  font-weight: bold;
+
+  &:hover {
+    background-color: var(--clr-blue-1);
+  }
+`;
 const Card = () => {
   const [groceries, setGroceries] = useState([]);
   const [input, setInput] = useState('');
@@ -65,6 +87,10 @@ const Card = () => {
     setAlert({ isVisible: true, message: 'Item Modified', type: 'success' });
   };
 
+  const clearAll = () => {
+    setGroceries([]);
+  };
+
   return (
     <Container>
       {alert.isVisible && <Flash {...alert} groceries={groceries} setAlertCallback={setAlert} />}
@@ -84,6 +110,7 @@ const Card = () => {
           setEditCallback={setEdit}
         />
       )}
+      {groceries.length > 0 && <Button onClick={clearAll}>Clear All</Button>}
     </Container>
   );
 };
