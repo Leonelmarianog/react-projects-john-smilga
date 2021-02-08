@@ -60,12 +60,20 @@ const Card = () => {
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({ isVisible: false, message: '', type: '' });
   const [event, setEvent] = useState(null);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (error) {
+      setEvent('STORAGE_FULL');
+    }
+  }, [error]);
 
   useEffect(() => {
     try {
       localStorage.setItem('groceries', JSON.stringify(groceries));
     } catch (error) {
-      setAlert({ isVisible: true, message: 'No space left, delete some items', type: 'danger' });
+      setError(true);
+      setGroceries(getGroceries());
     }
   }, [groceries]);
 
@@ -93,6 +101,17 @@ const Card = () => {
           setEditID(null);
           setInput('');
           setAlert({ isVisible: true, message: 'List Cleared', type: 'success' });
+          break;
+        case 'STORAGE_FULL':
+          setIsEdit(false);
+          setEditID(null);
+          setInput('');
+          setAlert({
+            isVisible: true,
+            message: 'No space left, delete some items',
+            type: 'danger',
+          });
+          setError(false);
           break;
         default:
           return;
