@@ -12,45 +12,45 @@ const SidebarAnimTime = {
 const Container = styled.nav`
   background-color: var(--clr-white-1);
   position: absolute;
-  top: 50%;
+  top: 2.5%;
   left: 50%;
   width: 95%;
   padding: 2.5em 0 0 0;
   border-radius: 10px;
-  transform-origin: 50% -50%;
+  transform-origin: 50% -2.5%;
   display: flex;
   flex-direction: column;
   font-size: var(--font-size-sidebar);
 
   &.sidebar--enter {
-    transform: scale(0.9) translate(-50%, -50%);
+    transform: scale(0.9) translate(-50%, 0);
     opacity: 0;
   }
 
   &.sidebar--enter-active {
-    transform: scale(1) translate(-50%, -50%);
+    transform: scale(1) translate(-50%, 0);
     opacity: 1;
     transition: transform ${SidebarAnimTime.css} linear, opacity ${SidebarAnimTime.css};
   }
 
   &.sidebar--enter-done {
-    transform: scale(1) translate(-50%, -50%);
+    transform: scale(1) translate(-50%, 0);
     opacity: 1;
   }
 
   &.sidebar--exit {
-    transform: scale(1) translate(-50%, -50%);
+    transform: scale(1) translate(-50%, 0);
     opacity: 1;
   }
 
   &.sidebar--exit-active {
-    transform: scale(0.9) translate(-50%, -50%);
+    transform: scale(0.9) translate(-50%, 0);
     opacity: 0;
     transition: transform ${SidebarAnimTime.css} linear, opacity ${SidebarAnimTime.css};
   }
 
   &.sidebar--exit-done {
-    transform: scale(0.9) translate(-50%, -50%);
+    transform: scale(0.9) translate(-50%, 0);
     opacity: 0;
   }
 `;
