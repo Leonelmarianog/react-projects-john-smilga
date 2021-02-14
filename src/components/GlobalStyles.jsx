@@ -8,7 +8,10 @@ const GlobalStyles = createGlobalStyle`
     --clr-blue-2: #005092;
     --clr-blue-3: #647e94;
     --clr-blue-4: #8da3b6;
-
+    --clr-blue-5: #f1f7fd;
+    --clr-purple-1: #5d51ff;
+    --clr-purple-2: #786eff;
+    
     @media screen and (min-width: 576px) {
       --font-size-base: 0.85rem;
     }

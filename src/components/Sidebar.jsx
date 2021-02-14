@@ -8,13 +8,18 @@ const Container = styled.nav`
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 95%;
   height: 95%;
-  padding: 2.5em 0;
+  padding: 2.5em 0 0 0;
   border-radius: 10px;
   opacity: ${(props) => (props.isSidebarOpen ? '1' : '0')};
   pointer-events: ${(props) => (props.isSidebarOpen ? 'auto' : 'none')};
+  transform: ${(props) =>
+    props.isSidebarOpen ? 'scale(1) translate(-50%, -50%)' : 'scale(0.9) translate(-50%, -50%)'};
+  transition: transform 0.2s linear, opacity 0.2s linear;
+  transform-origin: 50% -50%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const SidebarHeader = styled.header`
@@ -44,6 +49,7 @@ const TwoColumnList = styled.ul`
   row-gap: 2em;
   column-gap: 1em;
   padding: 0 2em;
+  margin-bottom: 2em;
 `;
 
 const Link = styled.a`
@@ -54,9 +60,38 @@ const Link = styled.a`
 `;
 
 const HR = styled.hr`
-  margin: 2em 0;
+  margin-bottom: 2em;
   border-top: 1px dashed var(--clr-blue-4);
   opacity: 0.25;
+`;
+
+const SidebarFooter = styled.footer`
+  background-color: var(--clr-blue-5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  flex: 1 1 auto;
+  max-height: 15%;
+  padding: 2em 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+`;
+
+const LoginBtn = styled.a`
+  text-decoration: none;
+  background-color: var(--clr-purple-1);
+  color: var(--clr-white-1);
+  font-size: calc(var(--font-size-base) * 1.5);
+  font-weight: bold;
+  padding: 0.4em 1em 0.5em 1em;
+  border-radius: 20px;
+  transition: background-color 0.2s linear;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--clr-purple-2);
+  }
 `;
 
 const Sidebar = () => {
@@ -141,6 +176,9 @@ const Sidebar = () => {
           <Link href='/'>Blog</Link>
         </li>
       </TwoColumnList>
+      <SidebarFooter>
+        <LoginBtn href='/'>Iniciar sesion</LoginBtn>
+      </SidebarFooter>
     </Container>
   );
 };
