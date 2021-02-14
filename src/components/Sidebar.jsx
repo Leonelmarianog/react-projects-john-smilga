@@ -11,16 +11,16 @@ const SidebarAnimTime = {
 
 const Container = styled.nav`
   background-color: var(--clr-white-1);
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   width: 95%;
-  height: 95%;
   padding: 2.5em 0 0 0;
   border-radius: 10px;
   transform-origin: 50% -50%;
   display: flex;
   flex-direction: column;
+  font-size: var(--font-size-sidebar);
 
   &.sidebar--enter {
     transform: scale(0.9) translate(-50%, -50%);
@@ -65,6 +65,7 @@ const SidebarHeader = styled.header`
 
 const Title = styled.h1`
   color: var(--clr-blue-4);
+  font-size: calc(var(--font-size-sidebar) * 1.5);
 `;
 
 const CloseBtn = styled.button`
@@ -72,7 +73,7 @@ const CloseBtn = styled.button`
   border: none;
   cursor: pointer;
   color: var(--clr-blue-4);
-  font-size: calc(var(--font-size-base) * 2);
+  font-size: calc(var(--font-size-sidebar) * 2);
 `;
 
 const TwoColumnList = styled.ul`
@@ -89,7 +90,7 @@ const Link = styled.a`
   text-decoration: none;
   color: var(--clr-blue-1);
   font-weight: bold;
-  font-size: calc(var(--font-size-base) * 1.2);
+  font-size: calc(var(--font-size-sidebar) * 1.15);
 `;
 
 const HR = styled.hr`
@@ -104,8 +105,6 @@ const SidebarFooter = styled.footer`
   justify-content: center;
   align-items: center;
   margin-top: auto;
-  flex: 1 1 auto;
-  max-height: 15%;
   padding: 2em 0;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -115,7 +114,7 @@ const LoginBtn = styled.a`
   text-decoration: none;
   background-color: var(--clr-purple-1);
   color: var(--clr-white-1);
-  font-size: calc(var(--font-size-base) * 1.5);
+  font-size: calc(var(--font-size-sidebar) * 1.5);
   font-weight: bold;
   padding: 0.4em 1em 0.5em 1em;
   border-radius: 20px;
