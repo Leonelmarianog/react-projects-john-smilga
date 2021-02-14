@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 import { FaTimes } from 'react-icons/fa';
 import useGlobalContext from '../hooks/useGlobalContext';
+
+const SidebarAnimTime = {
+  css: '0.2s',
+  milliseconds: 200,
+};
 
 const Container = styled.nav`
   background-color: var(--clr-white-1);
@@ -12,14 +18,41 @@ const Container = styled.nav`
   height: 95%;
   padding: 2.5em 0 0 0;
   border-radius: 10px;
-  opacity: ${(props) => (props.isSidebarOpen ? '1' : '0')};
-  pointer-events: ${(props) => (props.isSidebarOpen ? 'auto' : 'none')};
-  transform: ${(props) =>
-    props.isSidebarOpen ? 'scale(1) translate(-50%, -50%)' : 'scale(0.9) translate(-50%, -50%)'};
-  transition: transform 0.2s linear, opacity 0.2s linear;
   transform-origin: 50% -50%;
   display: flex;
   flex-direction: column;
+
+  &.sidebar--enter {
+    transform: scale(0.9) translate(-50%, -50%);
+    opacity: 0;
+  }
+
+  &.sidebar--enter-active {
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+    transition: transform ${SidebarAnimTime.css} linear, opacity ${SidebarAnimTime.css};
+  }
+
+  &.sidebar--enter-done {
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  &.sidebar--exit {
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  &.sidebar--exit-active {
+    transform: scale(0.9) translate(-50%, -50%);
+    opacity: 0;
+    transition: transform ${SidebarAnimTime.css} linear, opacity ${SidebarAnimTime.css};
+  }
+
+  &.sidebar--exit-done {
+    transform: scale(0.9) translate(-50%, -50%);
+    opacity: 0;
+  }
 `;
 
 const SidebarHeader = styled.header`
@@ -95,91 +128,99 @@ const LoginBtn = styled.a`
 `;
 
 const Sidebar = () => {
-  const { isSidebarOpen, setIsSidebarOpen } = useGlobalContext();
+  const { setIsSidebarMounted, isSidebarMounted } = useGlobalContext();
 
   return (
-    <Container isSidebarOpen={isSidebarOpen}>
-      <SidebarHeader>
-        <Title>Productos</Title>
-        <CloseBtn onClick={() => setIsSidebarOpen(false)}>
-          <FaTimes />
-        </CloseBtn>
-      </SidebarHeader>
-      <TwoColumnList>
-        <li>
-          <Link href='/'>Payments</Link>
-        </li>
-        <li>
-          <Link href='/'>Billing</Link>
-        </li>
-        <li>
-          <Link href='/'>Payouts</Link>
-        </li>
-        <li>
-          <Link href='/'>Corporate Card</Link>
-        </li>
-        <li>
-          <Link href='/'>Treasury</Link>
-        </li>
-        <li>
-          <Link href='/'>Sigma</Link>
-        </li>
-        <li>
-          <Link href='/'>Climate</Link>
-        </li>
-        <li>
-          <Link href='/'>Terminal</Link>
-        </li>
-        <li>
-          <Link href='/'>Connect</Link>
-        </li>
-        <li>
-          <Link href='/'>Issuing</Link>
-        </li>
-        <li>
-          <Link href='/'>Capital</Link>
-        </li>
-        <li>
-          <Link href='/'>Radar</Link>
-        </li>
-        <li>
-          <Link href='/'>Atlas</Link>
-        </li>
-      </TwoColumnList>
-      <HR />
-      <TwoColumnList>
-        <li>
-          <Link href='/'>Tarifas</Link>
-        </li>
-        <li>
-          <Link href='/'>Acerca de Stripe</Link>
-        </li>
-        <li>
-          <Link href='/'>Empresa</Link>
-        </li>
-        <li>
-          <Link href='/'>Empleos</Link>
-        </li>
-        <li>
-          <Link href='/'>Socios</Link>
-        </li>
-        <li>
-          <Link href='/'>Sala de prensa</Link>
-        </li>
-        <li>
-          <Link href='/'>Documentacion</Link>
-        </li>
-        <li>
-          <Link href='/'>Soporte</Link>
-        </li>
-        <li>
-          <Link href='/'>Blog</Link>
-        </li>
-      </TwoColumnList>
-      <SidebarFooter>
-        <LoginBtn href='/'>Iniciar sesion</LoginBtn>
-      </SidebarFooter>
-    </Container>
+    <CSSTransition
+      in={isSidebarMounted}
+      timeout={{ enter: SidebarAnimTime.milliseconds, exit: SidebarAnimTime.milliseconds }}
+      classNames={'sidebar-'}
+      mountOnEnter={true}
+      unmountOnExit={true}
+    >
+      <Container>
+        <SidebarHeader>
+          <Title>Productos</Title>
+          <CloseBtn onClick={() => setIsSidebarMounted(false)}>
+            <FaTimes />
+          </CloseBtn>
+        </SidebarHeader>
+        <TwoColumnList>
+          <li>
+            <Link href='/'>Payments</Link>
+          </li>
+          <li>
+            <Link href='/'>Billing</Link>
+          </li>
+          <li>
+            <Link href='/'>Payouts</Link>
+          </li>
+          <li>
+            <Link href='/'>Corporate Card</Link>
+          </li>
+          <li>
+            <Link href='/'>Treasury</Link>
+          </li>
+          <li>
+            <Link href='/'>Sigma</Link>
+          </li>
+          <li>
+            <Link href='/'>Climate</Link>
+          </li>
+          <li>
+            <Link href='/'>Terminal</Link>
+          </li>
+          <li>
+            <Link href='/'>Connect</Link>
+          </li>
+          <li>
+            <Link href='/'>Issuing</Link>
+          </li>
+          <li>
+            <Link href='/'>Capital</Link>
+          </li>
+          <li>
+            <Link href='/'>Radar</Link>
+          </li>
+          <li>
+            <Link href='/'>Atlas</Link>
+          </li>
+        </TwoColumnList>
+        <HR />
+        <TwoColumnList>
+          <li>
+            <Link href='/'>Tarifas</Link>
+          </li>
+          <li>
+            <Link href='/'>Acerca de Stripe</Link>
+          </li>
+          <li>
+            <Link href='/'>Empresa</Link>
+          </li>
+          <li>
+            <Link href='/'>Empleos</Link>
+          </li>
+          <li>
+            <Link href='/'>Socios</Link>
+          </li>
+          <li>
+            <Link href='/'>Sala de prensa</Link>
+          </li>
+          <li>
+            <Link href='/'>Documentacion</Link>
+          </li>
+          <li>
+            <Link href='/'>Soporte</Link>
+          </li>
+          <li>
+            <Link href='/'>Blog</Link>
+          </li>
+        </TwoColumnList>
+        <SidebarFooter>
+          <LoginBtn href='/'>Iniciar sesion</LoginBtn>
+        </SidebarFooter>
+      </Container>
+    </CSSTransition>
   );
 };
 

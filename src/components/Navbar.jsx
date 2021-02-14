@@ -45,13 +45,13 @@ const Brand = styled.a`
 `;
 
 const Navbar = () => {
-  const { setIsSidebarOpen } = useGlobalContext();
+  const { setIsSidebarMounted } = useGlobalContext();
 
   return (
     <Container>
       <NavbarHeader>
         <Brand href='/'>stripe</Brand>
-        <HamburguerBtn aria-label='hamburguer button' onClick={() => setIsSidebarOpen(true)}>
+        <HamburguerBtn aria-label='hamburguer button' onClick={() => setIsSidebarMounted(true)}>
           <FaBars />
         </HamburguerBtn>
       </NavbarHeader>
