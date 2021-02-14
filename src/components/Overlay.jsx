@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import useGlobalContext from '../hooks/useGlobalContext';
@@ -42,6 +42,7 @@ const Background = styled.div`
 
 const Overlay = () => {
   const { isSidebarMounted, setIsSidebarMounted } = useGlobalContext();
+  const nodeRef = useRef(null);
 
   return (
     <CSSTransition
@@ -50,8 +51,9 @@ const Overlay = () => {
       classNames={'overlay-'}
       mountOnEnter={true}
       unmountOnExit={true}
+      nodeRef={nodeRef}
     >
-      <Background onClick={() => setIsSidebarMounted(false)} />
+      <Background ref={nodeRef} onClick={() => setIsSidebarMounted(false)} />
     </CSSTransition>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { FaTimes } from 'react-icons/fa';
@@ -129,6 +129,7 @@ const LoginBtn = styled.a`
 
 const Sidebar = () => {
   const { setIsSidebarMounted, isSidebarMounted } = useGlobalContext();
+  const nodeRef = useRef(null);
 
   return (
     <CSSTransition
@@ -137,8 +138,9 @@ const Sidebar = () => {
       classNames={'sidebar-'}
       mountOnEnter={true}
       unmountOnExit={true}
+      nodeRef={nodeRef}
     >
-      <Container>
+      <Container ref={nodeRef}>
         <SidebarHeader>
           <Title>Productos</Title>
           <CloseBtn onClick={() => setIsSidebarMounted(false)}>
