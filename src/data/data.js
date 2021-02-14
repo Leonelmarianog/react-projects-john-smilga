@@ -1,7 +1,119 @@
 import React from 'react';
 import { FaCreditCard, FaBook, FaBriefcase } from 'react-icons/fa';
 
-const buttons = [
+export const sidebarLinks = {
+  products: [
+    {
+      label: 'Payments',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Terminal',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Connect',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Billing',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Corporate Card',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Capital',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Issuing',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Treasury',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Radar',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Sigma',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Atlas',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Climate',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+  ],
+  other: [
+    {
+      label: 'Tarifas',
+      icon: <FaCreditCard />,
+      url: '/',
+    },
+    {
+      label: 'Documentacion',
+      icon: <FaBook />,
+      url: '/',
+    },
+    {
+      label: 'Soporte',
+      icon: <FaBook />,
+      url: '/',
+    },
+    {
+      label: 'Acerca de Stripe',
+      icon: <FaBriefcase />,
+      url: '/',
+    },
+    {
+      label: 'Empresa',
+      icon: <FaBriefcase />,
+      url: '/',
+    },
+    {
+      label: 'Empleos',
+      icon: <FaBriefcase />,
+      url: '/',
+    },
+    {
+      label: 'Sala de Prensa',
+      icon: <FaBriefcase />,
+      url: '/',
+    },
+    {
+      label: 'Socios',
+      icon: <FaBriefcase />,
+      url: '/',
+    },
+    {
+      label: 'Blog',
+      icon: <FaBriefcase />,
+      url: '/',
+    },
+  ],
+};
+
+export const buttons = [
   {
     name: 'Productos',
     subjects: [
@@ -227,5 +339,3 @@ const buttons = [
     name: 'Tarifas',
   },
 ];
-
-export default buttons;

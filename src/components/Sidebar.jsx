@@ -92,6 +92,12 @@ const Link = styled.a`
   color: var(--clr-blue-1);
   font-weight: bold;
   font-size: calc(var(--font-size-sidebar) * 1.15);
+  display: flex;
+  align-items: center;
+
+  & > svg {
+    margin-right: 0.5em;
+  }
 `;
 
 const HR = styled.hr`
@@ -127,7 +133,7 @@ const LoginBtn = styled.a`
   }
 `;
 
-const Sidebar = () => {
+const Sidebar = ({ sidebarLinks }) => {
   const { setIsSidebarMounted, isSidebarMounted } = useGlobalContext();
   const nodeRef = useRef(null);
 
@@ -147,77 +153,35 @@ const Sidebar = () => {
             <FaTimes />
           </CloseBtn>
         </SidebarHeader>
+
         <TwoColumnList>
-          <li>
-            <Link href='/'>Payments</Link>
-          </li>
-          <li>
-            <Link href='/'>Billing</Link>
-          </li>
-          <li>
-            <Link href='/'>Payouts</Link>
-          </li>
-          <li>
-            <Link href='/'>Corporate Card</Link>
-          </li>
-          <li>
-            <Link href='/'>Treasury</Link>
-          </li>
-          <li>
-            <Link href='/'>Sigma</Link>
-          </li>
-          <li>
-            <Link href='/'>Climate</Link>
-          </li>
-          <li>
-            <Link href='/'>Terminal</Link>
-          </li>
-          <li>
-            <Link href='/'>Connect</Link>
-          </li>
-          <li>
-            <Link href='/'>Issuing</Link>
-          </li>
-          <li>
-            <Link href='/'>Capital</Link>
-          </li>
-          <li>
-            <Link href='/'>Radar</Link>
-          </li>
-          <li>
-            <Link href='/'>Atlas</Link>
-          </li>
+          {sidebarLinks.products.map((link, index) => {
+            const { label, icon, url } = link;
+            return (
+              <li key={index + 1}>
+                <Link href={url}>
+                  {icon} {label}
+                </Link>
+              </li>
+            );
+          })}
         </TwoColumnList>
+
         <HR />
+
         <TwoColumnList>
-          <li>
-            <Link href='/'>Tarifas</Link>
-          </li>
-          <li>
-            <Link href='/'>Acerca de Stripe</Link>
-          </li>
-          <li>
-            <Link href='/'>Empresa</Link>
-          </li>
-          <li>
-            <Link href='/'>Empleos</Link>
-          </li>
-          <li>
-            <Link href='/'>Socios</Link>
-          </li>
-          <li>
-            <Link href='/'>Sala de prensa</Link>
-          </li>
-          <li>
-            <Link href='/'>Documentacion</Link>
-          </li>
-          <li>
-            <Link href='/'>Soporte</Link>
-          </li>
-          <li>
-            <Link href='/'>Blog</Link>
-          </li>
+          {sidebarLinks.other.map((link, index) => {
+            const { label, icon, url } = link;
+            return (
+              <li key={index + 1}>
+                <Link href={url}>
+                  {icon} {label}
+                </Link>
+              </li>
+            );
+          })}
         </TwoColumnList>
+
         <SidebarFooter>
           <LoginBtn href='/'>Iniciar sesion</LoginBtn>
         </SidebarFooter>
