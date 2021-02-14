@@ -8,6 +8,7 @@ const Container = styled.nav`
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 1;
 `;
 
 const NavbarHeader = styled.header`

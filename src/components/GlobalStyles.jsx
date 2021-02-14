@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
     --font-size-base: 0.65rem;
     --font-size-sidebar: 0.65rem;
     --clr-white-1: #ffffff;
+    --clr-black-1: #000000;
     --clr-blue-1: #001f38;
     --clr-blue-2: #005092;
     --clr-blue-3: #647e94;

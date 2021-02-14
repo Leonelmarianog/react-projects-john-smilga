@@ -14,6 +14,7 @@ const Container = styled.nav`
   position: absolute;
   top: 2.5%;
   left: 50%;
+  z-index: 3;
   width: 95%;
   padding: 2.5em 0 0 0;
   border-radius: 10px;
