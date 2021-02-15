@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
   :root {
     --font-size-base: 0.65rem;
+    --font-size-navbar: 1rem;
     --font-size-sidebar: 0.65rem;
     --clr-white-1: #ffffff;
     --clr-black-1: #000000;
@@ -18,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
       --font-size-base: 0.85rem;
     }
 
-    @media screen and (min-width: 768px) {
+      @media screen and (min-width: 768px) {
       --font-size-base: 1rem;
     }
   }

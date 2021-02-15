@@ -16,12 +16,20 @@ const NavbarHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 3em 3em 0 3em;
+
+  @media screen and (min-width: 576px) {
+    padding: 2em 3em 0 3em;
+  }
+
+  @media screen and (min-width: 992px) {
+    padding: 1em 3em 0 3em;
+  }
 `;
 
 const HamburguerBtn = styled.button`
   background-color: #ffffff25;
   border: none;
-  font-size: calc(var(--font-size-base) * 1.5);
+  font-size: calc(var(--font-size-navbar) * 1);
   padding: 0.5em 1em;
   border-radius: 10px;
   color: var(--clr-white-1);
@@ -31,13 +39,17 @@ const HamburguerBtn = styled.button`
   &:hover {
     background-color: #ffffff50;
   }
+
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
 `;
 
 const Brand = styled.a`
   text-decoration: none;
   color: var(--clr-white-1);
   font-weight: bold;
-  font-size: calc(var(--font-size-base) * 2.5);
+  font-size: calc(var(--font-size-navbar) * 1.75);
   transition: opacity 0.2s linear;
 
   &:hover {
