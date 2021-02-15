@@ -113,95 +113,114 @@ export const sidebarLinks = {
   ],
 };
 
-export const buttons = [
+export const productsCategories = [
+  {
+    category: 'Pagos',
+    products: [
+      {
+        name: 'Payments',
+        description: 'Pagos por internet',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+      {
+        name: 'Terminal',
+        description: 'Pagos en persona',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+      {
+        name: 'Connect',
+        description: 'Pagos para plataformas',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+      {
+        name: 'Billing',
+        description: 'Suscripciones y facturacion',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+    ],
+  },
+  {
+    category: 'Servicios Financieros',
+    products: [
+      {
+        name: 'Corporate Card',
+        description: 'Gestion de gastos',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+      {
+        name: 'Capital',
+        description: 'Financiacion de empresas',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+      {
+        name: 'Issuing',
+        description: 'Creacion de tarjetas',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+      {
+        name: 'Treasury',
+        description: 'Banca como servicio',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+    ],
+  },
+  {
+    category: 'Operaciones Comerciales',
+    products: [
+      {
+        name: 'Radar',
+        description: 'Gestion de fraudes y riesgos',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+      {
+        name: 'Sigma',
+        description: 'Informes personalizados',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+      {
+        name: 'Atlas',
+        description: 'Constitucion de startup',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+      {
+        name: 'Climate',
+        description: 'Eliminacion del dioxido de carbono',
+        icon: <FaCreditCard />,
+        url: '/',
+      },
+    ],
+  },
+];
+
+/* export const buttons = [
   {
     name: 'Productos',
     subjects: [
       {
-        name: 'Pagos',
-        links: [
-          {
-            label: 'Payments',
-            description: 'Pagos por internet',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
-          {
-            label: 'Terminal',
-            description: 'Pagos en persona',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
-          {
-            label: 'cConnect',
-            description: 'Pagos para plataformas',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
-          {
-            label: 'Billing',
-            description: 'Suscripciones y facturacion',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
+
         ],
       },
       {
         name: 'Servicios Financieros',
         links: [
-          {
-            label: 'Corporate Card',
-            description: 'Gestion de gastos',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
-          {
-            label: 'Capital',
-            description: 'Financiacion de empresas',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
-          {
-            label: 'Issuing',
-            description: 'Creacion de tarjetas',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
-          {
-            label: 'Treasury',
-            description: 'Banca como servicio',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
+
         ],
       },
       {
         name: 'Operaciones Comerciales',
         links: [
-          {
-            label: 'Radar',
-            description: 'Gestion de fraudes y riesgos',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
-          {
-            label: 'Sigma',
-            description: 'Informes personalizados',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
-          {
-            label: 'Atlas',
-            description: 'Constitucion de startup',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
-          {
-            label: 'Climate',
-            description: 'Eliminacion del dioxido de carbono',
-            icon: <FaCreditCard />,
-            url: '/',
-          },
+
         ],
       },
     ],
@@ -339,3 +358,4 @@ export const buttons = [
     name: 'Tarifas',
   },
 ];
+ */

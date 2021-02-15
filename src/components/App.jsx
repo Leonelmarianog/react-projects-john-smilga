@@ -5,8 +5,9 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import Hero from './Hero';
 import Overlay from './Overlay';
+import Submenu from './Submenu';
 import { AppProvider } from './GlobalContext';
-import { sidebarLinks } from '../data/data';
+import { sidebarLinks, productsCategories } from '../data/data';
 
 const Container = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ const App = () => (
       <Container>
         <Overlay />
         <Navbar />
+        <Submenu productsCategories={productsCategories} />
         <Sidebar sidebarLinks={sidebarLinks} />
         <Hero />
       </Container>
