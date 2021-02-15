@@ -4,7 +4,7 @@ const GlobalStyles = createGlobalStyle`
   :root {
     --font-size-base: 0.65rem;
     --font-size-navbar: 1rem;
-    --font-size-sidebar: 0.65rem;
+    --font-size-sidebar: 1rem;
     --clr-white-1: #ffffff;
     --clr-black-1: #000000;
     --clr-blue-1: #001f38;
