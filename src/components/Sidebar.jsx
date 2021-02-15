@@ -85,7 +85,7 @@ const CloseBtn = styled.button`
   }
 `;
 
-const TwoColumnList = styled.ul`
+const ColumnsList = styled.ul`
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -173,7 +173,7 @@ const Sidebar = ({ sidebarLinks }) => {
           </CloseBtn>
         </SidebarHeader>
 
-        <TwoColumnList>
+        <ColumnsList>
           {sidebarLinks.products.map((link, index) => {
             const { label, icon, url } = link;
             return (
@@ -184,11 +184,11 @@ const Sidebar = ({ sidebarLinks }) => {
               </li>
             );
           })}
-        </TwoColumnList>
+        </ColumnsList>
 
         <HR />
 
-        <TwoColumnList>
+        <ColumnsList>
           {sidebarLinks.other.map((link, index) => {
             const { label, icon, url } = link;
             return (
@@ -199,7 +199,7 @@ const Sidebar = ({ sidebarLinks }) => {
               </li>
             );
           })}
-        </TwoColumnList>
+        </ColumnsList>
 
         <SidebarFooter>
           <LoginBtn href='/'>Iniciar sesion</LoginBtn>
