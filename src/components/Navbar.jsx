@@ -14,18 +14,17 @@ const Container = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em 10% 0 10%;
+    padding: 0.75em 5%;
   }
 `;
 
 const NavbarHeader = styled.header`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 3em 3em 0 3em;
+  padding: 3em 5% 1em 5%;
 
   @media screen and (min-width: 576px) {
-    padding: 2em 3em 0 3em;
+    padding: 1.5em 5% 1em 5%;
   }
 
   @media screen and (min-width: 992px) {
@@ -42,6 +41,9 @@ const HamburguerBtn = styled.button`
   color: var(--clr-white-1);
   transition: background-color 0.2s linear;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: #ffffff50;
@@ -70,6 +72,9 @@ const NavbarMenu = styled.ul`
 
   & > li {
     margin-right: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   & > li:last-child {
@@ -79,7 +84,6 @@ const NavbarMenu = styled.ul`
   @media screen and (min-width: 992px) {
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
 `;
 
@@ -88,6 +92,7 @@ const MenuItem = styled.a`
   color: var(--clr-white-1);
   font-weight: bold;
   transition: opacity 0.2s linear;
+  padding: 0.75em;
 
   &:hover {
     opacity: 0.5;
@@ -118,10 +123,16 @@ const LoginBtn = styled.a`
 `;
 
 const Navbar = () => {
-  const { setIsSidebarMounted } = useGlobalContext();
+  const { setIsSidebarMounted, setIsSubmenuMounted } = useGlobalContext();
+
+  const handleNavbarMouseOver = (event) => {
+    if (event.target.id === 'navbar') {
+      setIsSubmenuMounted(false);
+    }
+  };
 
   return (
-    <Container>
+    <Container id='navbar' onMouseOver={handleNavbarMouseOver}>
       <NavbarHeader>
         <Brand href='/'>stripe</Brand>
         <HamburguerBtn aria-label='hamburguer button' onClick={() => setIsSidebarMounted(true)}>
@@ -129,18 +140,26 @@ const Navbar = () => {
         </HamburguerBtn>
       </NavbarHeader>
 
-      <NavbarMenu>
-        <li>
-          <MenuItem href='/'>Productos</MenuItem>
+      <NavbarMenu id='ul'>
+        <li id='listitem'>
+          <MenuItem id='menuitem' href='/' onMouseOver={() => setIsSubmenuMounted(true)}>
+            Productos
+          </MenuItem>
         </li>
-        <li>
-          <MenuItem href='/'>Desarrolladores</MenuItem>
+        <li id='listitem'>
+          <MenuItem id='menuitem' href='/' onMouseOver={() => setIsSubmenuMounted(true)}>
+            Desarrolladores
+          </MenuItem>
         </li>
-        <li>
-          <MenuItem href='/'>Empresa</MenuItem>
+        <li id='listitem'>
+          <MenuItem id='menuitem' href='/' onMouseOver={() => setIsSubmenuMounted(true)}>
+            Empresa
+          </MenuItem>
         </li>
-        <li>
-          <MenuItem href='/'>Tarifas</MenuItem>
+        <li id='listitem'>
+          <MenuItem id='menuitem' href='/' onMouseOver={() => setIsSubmenuMounted(true)}>
+            Tarifas
+          </MenuItem>
         </li>
       </NavbarMenu>
 

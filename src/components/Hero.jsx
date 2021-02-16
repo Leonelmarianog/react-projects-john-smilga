@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import hero from '../assets/hero.svg';
 import phone from '../assets/phone.svg';
+import useGlobalContext from '../hooks/useGlobalContext';
 
 const Container = styled.section`
   background-image: url(${hero});
@@ -119,26 +120,30 @@ const PhoneImg = styled.img`
   }
 `;
 
-const Hero = () => (
-  <Container background={hero}>
-    <Grid>
-      <Column>
-        <Heading>Infraestructura de pagos para Internet</Heading>
-        <Paragraph>
-          Millones de empresas de todos los tamaños, desde startups hasta aquellas incluidas en la
-          lista de Fortune 500, usan el software y las API de Stripe para aceptar pagos, enviar
-          transferencias y gestionar sus actividades comerciales en Internet.
-        </Paragraph>
-        <LinksContainer>
-          <LinkBtn href='/'>Empezar ahora</LinkBtn>
-          <Link href='/'>Contactar con el equipo de ventas</Link>
-        </LinksContainer>
-      </Column>
-      <Column>
-        <PhoneImg src={phone} alt='phone' />
-      </Column>
-    </Grid>
-  </Container>
-);
+const Hero = () => {
+  const { setIsSubmenuMounted } = useGlobalContext();
+
+  return (
+    <Container background={hero} onMouseOver={() => setIsSubmenuMounted(false)}>
+      <Grid>
+        <Column>
+          <Heading>Infraestructura de pagos para Internet</Heading>
+          <Paragraph>
+            Millones de empresas de todos los tamaños, desde startups hasta aquellas incluidas en la
+            lista de Fortune 500, usan el software y las API de Stripe para aceptar pagos, enviar
+            transferencias y gestionar sus actividades comerciales en Internet.
+          </Paragraph>
+          <LinksContainer>
+            <LinkBtn href='/'>Empezar ahora</LinkBtn>
+            <Link href='/'>Contactar con el equipo de ventas</Link>
+          </LinksContainer>
+        </Column>
+        <Column>
+          <PhoneImg src={phone} alt='phone' />
+        </Column>
+      </Grid>
+    </Container>
+  );
+};
 
 export default Hero;
