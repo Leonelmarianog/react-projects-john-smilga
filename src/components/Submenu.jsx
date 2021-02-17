@@ -4,13 +4,13 @@ import { CSSTransition } from 'react-transition-group';
 import useGlobalContext from '../hooks/useGlobalContext';
 
 const PerspectiveProvider = styled.div`
-  perspective: 250px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 4;
   width: 100%;
   height: 100%;
+  perspective: 250px;
   pointer-events: none;
 `;
 
@@ -25,13 +25,13 @@ const Container = styled.div`
 
   &:after {
     content: '';
+    background-color: var(--clr-white-1);
+    width: 12px;
+    height: 12px;
     position: absolute;
     top: 6px;
     left: ${({ submenuTargetCenterCoord, submenuLeftCoord }) =>
       `${submenuTargetCenterCoord - submenuLeftCoord}px`};
-    width: 12px;
-    height: 12px;
-    background-color: var(--clr-white-1);
     transition: left 0.2s linear;
     transform: rotateZ(45deg);
   }
@@ -71,9 +71,9 @@ const Container = styled.div`
 
 const Content = styled.nav`
   background-color: var(--clr-white-1);
-  box-shadow: 0 2em 2em 0.5em #00000025;
   padding: 2em 2.5em;
   border-radius: 10px;
+  box-shadow: 0 2em 2em 0.5em var(--clr-shadow);
 `;
 
 const ProductsCategoryContainer = styled.div`
@@ -83,11 +83,11 @@ const ProductsCategoryContainer = styled.div`
 `;
 
 const ProductCategory = styled.h1`
-  margin-bottom: 2em;
   font-size: calc(var(--font-size-base) * 0.85);
   font-weight: bold;
   text-transform: uppercase;
   color: var(--clr-blue-4);
+  margin-bottom: 2em;
 `;
 
 const ProductsList = styled.ul`
