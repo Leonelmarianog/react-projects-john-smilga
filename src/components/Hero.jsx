@@ -7,12 +7,11 @@ import useGlobalContext from '../hooks/useGlobalContext';
 const Container = styled.section`
   background-image: url(${hero});
   background-repeat: no-repeat;
-  background-size: cover;
-  padding: 17em 3em 3em 3em;
+  background-size: contain;
+  padding: 10em 2em 3em 2em;
 
   @media screen and (min-width: 768px) {
-    padding: 11em 3em 3em 3em;
-    background-size: contain;
+    padding: 11em 0 3em 0;
   }
 `;
 
@@ -32,20 +31,25 @@ const Column = styled.div`
 
 const Heading = styled.h1`
   font-size: calc(var(--font-size-base) * 3.5);
+  font-weight: 900;
   color: var(--clr-blue-1);
-  font-weight: bold;
-  line-height: 1em;
-  margin: 0.5em 0;
+  line-height: 1.15em;
+  margin: 0.5em 0 0.25em 0;
 
   @media screen and (min-width: 992px) {
-    font-size: calc(var(--font-size-base) * 5);
+    font-size: calc(var(--font-size-base) * 5.25);
   }
 `;
 
 const Paragraph = styled.p`
-  font-size: calc(var(--font-size-base) * 1.25);
+  font-size: calc(var(--font-size-base) * 1.2);
   color: var(--clr-blue-1);
+  line-height: 1.5em;
   margin-bottom: 1.5em;
+
+  @media screen and (min-width: 992px) {
+    margin-right: 8em;
+  }
 `;
 
 const LinksContainer = styled.div`
@@ -62,7 +66,7 @@ const LinkBtn = styled.a`
   text-decoration: none;
   background-color: var(--clr-blue-1);
   color: var(--clr-white-1);
-  font-size: calc(var(--font-size-base) * 1.5);
+  font-size: var(--font-size-base);
   font-weight: bold;
   letter-spacing: 1px;
   padding: 0.3em 1em 0.5em 1em;
@@ -75,14 +79,6 @@ const LinkBtn = styled.a`
     background-color: var(--clr-blue-3);
   }
 
-  @media screen and (min-width: 576px) {
-    font-size: calc(var(--font-size-base) * 1.2);
-  }
-
-  @media screen and (min-width: 768px) {
-    font-size: var(--font-size-base);
-  }
-
   @media screen and (min-width: 992px) {
     margin-bottom: 0;
   }
@@ -90,7 +86,7 @@ const LinkBtn = styled.a`
 
 const Link = styled.a`
   text-decoration: none;
-  font-size: calc(var(--font-size-base) * 1.5);
+  font-size: var(--font-size-base);
   font-weight: bold;
   color: var(--clr-blue-1);
   transition: color 0.2s linear;
@@ -98,14 +94,6 @@ const Link = styled.a`
 
   &:hover {
     color: var(--clr-blue-3);
-  }
-
-  @media screen and (min-width: 576px) {
-    font-size: calc(var(--font-size-base) * 1.2);
-  }
-
-  @media screen and (min-width: 768px) {
-    font-size: var(--font-size-base);
   }
 `;
 
