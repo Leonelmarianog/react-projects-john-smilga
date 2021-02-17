@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import { FaTimes } from 'react-icons/fa';
 import useGlobalContext from '../hooks/useGlobalContext';
 
-const SidebarAnimTime = {
+const animTransition = {
   css: '0.2s',
   milliseconds: 200,
 };
@@ -30,7 +30,7 @@ const Container = styled.nav`
   &.sidebar--enter-active {
     transform: scale(1) translate(-50%, 0);
     opacity: 1;
-    transition: transform ${SidebarAnimTime.css} linear, opacity ${SidebarAnimTime.css};
+    transition: transform ${animTransition.css} linear, opacity ${animTransition.css};
   }
 
   &.sidebar--enter-done {
@@ -46,7 +46,7 @@ const Container = styled.nav`
   &.sidebar--exit-active {
     transform: scale(0.9) translate(-50%, 0);
     opacity: 0;
-    transition: transform ${SidebarAnimTime.css} linear, opacity ${SidebarAnimTime.css};
+    transition: transform ${animTransition.css} linear, opacity ${animTransition.css};
   }
 
   &.sidebar--exit-done {
@@ -156,7 +156,7 @@ const Sidebar = ({ sidebarLinks }) => {
   return (
     <CSSTransition
       in={isSidebarMounted}
-      timeout={{ enter: SidebarAnimTime.milliseconds, exit: SidebarAnimTime.milliseconds }}
+      timeout={{ enter: animTransition.milliseconds, exit: animTransition.milliseconds }}
       classNames={'sidebar-'}
       mountOnEnter={true}
       unmountOnExit={true}
