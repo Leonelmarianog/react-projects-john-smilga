@@ -21,7 +21,7 @@ const Container = styled.nav`
 const NavbarHeader = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 3em 5% 1em 5%;
+  padding: 2em 5% 1em 5%;
 
   @media screen and (min-width: 576px) {
     padding: 1.5em 5% 1em 5%;
@@ -36,7 +36,7 @@ const HamburguerBtn = styled.button`
   background-color: var(--clr-transparent-1);
   border: none;
   color: var(--clr-white-1);
-  font-size: var(--font-size-navbar);
+  font-size: var(--font-size-base);
   padding: 0.5em 1em;
   border-radius: 10px;
   cursor: pointer;
@@ -58,7 +58,7 @@ const Brand = styled.a`
   text-decoration: none;
   color: var(--clr-white-1);
   font-weight: bold;
-  font-size: calc(var(--font-size-navbar) * 1.75);
+  font-size: calc(var(--font-size-base) * 1.75);
   transition: opacity 0.2s linear;
 
   &:hover {
@@ -85,7 +85,7 @@ const MenuButton = styled.button`
   background-color: transparent;
   border: none;
   color: var(--clr-white-1);
-  font-size: var(--font-size-navbar);
+  font-size: var(--font-size-base);
   font-weight: bold;
   padding: 0.75em 2em;
   transition: opacity 0.2s linear;
@@ -99,7 +99,7 @@ const MenuLink = styled.a`
   text-decoration: none;
   color: var(--clr-white-1);
   font-weight: bold;
-  font-size: var(--font-size-navbar);
+  font-size: var(--font-size-base);
   padding: 0.75em 2em;
   transition: opacity 0.2s linear;
 
