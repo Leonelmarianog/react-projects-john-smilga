@@ -21,9 +21,6 @@ const Container = styled.nav`
   transform-origin: 50% -2.5%;
   display: flex;
   flex-direction: column;
-  font-size: var(--font-size-sidebar);
-
-  // React Transition Group Styles
 
   &.sidebar--enter {
     transform: scale(0.9) translate(-50%, 0);
@@ -68,7 +65,7 @@ const SidebarHeader = styled.header`
 
 const Title = styled.h1`
   color: var(--clr-blue-4);
-  font-size: var(--font-size-sidebar);
+  font-size: var(--font-size-base);
 `;
 
 const CloseBtn = styled.button`
@@ -76,7 +73,7 @@ const CloseBtn = styled.button`
   border: none;
   cursor: pointer;
   color: var(--clr-blue-4);
-  font-size: calc(var(--font-size-sidebar) * 1.25);
+  font-size: calc(var(--font-size-base) * 1.25);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,7 +104,7 @@ const Link = styled.a`
   text-decoration: none;
   color: var(--clr-blue-1);
   font-weight: bold;
-  font-size: calc(var(--font-size-sidebar) * 0.85);
+  font-size: calc(var(--font-size-base) * 0.85);
   display: flex;
   align-items: center;
 
@@ -137,7 +134,7 @@ const LoginBtn = styled.a`
   text-decoration: none;
   background-color: var(--clr-purple-1);
   color: var(--clr-white-1);
-  font-size: var(--font-size-sidebar);
+  font-size: var(--font-size-base);
   font-weight: bold;
   padding: 0.4em 1em 0.5em 1em;
   border-radius: 20px;
