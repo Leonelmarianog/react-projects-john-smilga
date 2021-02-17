@@ -30,9 +30,12 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
+  body, a, button {
+    font-family: 'Lato', 'sans-serif';
+  }
+
   body {
     font-size: var(--font-size-base);
-    font-family: 'Lato', 'sans-serif';
     background: var(--clr-white-1);
   }
 `;

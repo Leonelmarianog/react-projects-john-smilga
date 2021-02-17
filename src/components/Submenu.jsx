@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import useGlobalContext from '../hooks/useGlobalContext';
@@ -14,7 +14,7 @@ const PerspectiveProvider = styled.div`
   pointer-events: none;
 `;
 
-const SubmenuContainer = styled.div`
+const Container = styled.div`
   position: absolute;
   top: 3.5em;
   left: 50%;
@@ -22,6 +22,19 @@ const SubmenuContainer = styled.div`
   transform-origin: 0 0;
   transform: translate(-50%, 0);
   pointer-events: auto;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: ${({ submenuTargetCenterCoord, submenuLeftCoord }) =>
+      `${submenuTargetCenterCoord - submenuLeftCoord}px`};
+    width: 12px;
+    height: 12px;
+    background-color: var(--clr-white-1);
+    transition: left 0.2s linear;
+    transform: rotateZ(45deg);
+  }
 
   &.submenu--enter {
     opacity: 0;
@@ -56,17 +69,7 @@ const SubmenuContainer = styled.div`
   }
 `;
 
-const SubmenuArrow = styled.div`
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  transform: rotateZ(45deg);
-  background-color: var(--clr-white-1);
-`;
-
-const SubmenuBody = styled.nav`
+const Content = styled.nav`
   background-color: var(--clr-white-1);
   box-shadow: 0 2em 2em 0.5em #00000025;
   padding: 2em 2.5em;
@@ -164,9 +167,20 @@ const ProductsCategory = ({ category, products }) => (
   </section>
 );
 
+const getLeftCoord = (element) => {
+  return element.getBoundingClientRect().left;
+};
+
 const Submenu = ({ productsCategories }) => {
-  const { isSubmenuMounted } = useGlobalContext();
-  const nodeRef = useRef(null);
+  const { isSubmenuMounted, submenuTargetCenterCoord, windowWidth } = useGlobalContext();
+  const [submenuLeftCoord, setSubmenuLeftCoord] = useState(0);
+  const submenuRef = useRef(null);
+
+  useEffect(() => {
+    if (submenuRef.current) {
+      setSubmenuLeftCoord(getLeftCoord(submenuRef.current));
+    }
+  }, [windowWidth]);
 
   return (
     <PerspectiveProvider>
@@ -176,18 +190,22 @@ const Submenu = ({ productsCategories }) => {
         classNames={'submenu-'}
         mountOnEnter={true}
         unmountOnExit={true}
-        nodeRef={nodeRef}
+        nodeRef={submenuRef}
+        onEnter={() => setSubmenuLeftCoord(getLeftCoord(submenuRef.current))}
       >
-        <SubmenuContainer ref={nodeRef}>
-          <SubmenuArrow />
-          <SubmenuBody>
+        <Container
+          ref={submenuRef}
+          submenuTargetCenterCoord={submenuTargetCenterCoord}
+          submenuLeftCoord={submenuLeftCoord}
+        >
+          <Content>
             <ProductsCategoryContainer>
               {productsCategories.map((productsCategory, index) => (
                 <ProductsCategory key={index + 1} {...productsCategory} />
               ))}
             </ProductsCategoryContainer>
-          </SubmenuBody>
-        </SubmenuContainer>
+          </Content>
+        </Container>
       </CSSTransition>
     </PerspectiveProvider>
   );

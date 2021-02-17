@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import useGlobalContext from '../hooks/useGlobalContext';
@@ -71,7 +71,6 @@ const NavbarMenu = styled.ul`
   display: none;
 
   & > li {
-    margin-right: 3em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,16 +82,30 @@ const NavbarMenu = styled.ul`
 
   @media screen and (min-width: 992px) {
     display: flex;
-    justify-content: space-between;
   }
 `;
 
-const MenuItem = styled.a`
+const MenuButton = styled.button`
+  background-color: transparent;
+  border: none;
+  color: var(--clr-white-1);
+  font-weight: bold;
+  transition: opacity 0.2s linear;
+  padding: 0.75em 2em;
+  font-size: var(--font-size-navbar);
+
+  &:hover {
+    opacity: 0.5;
+  }
+`;
+
+const MenuLink = styled.a`
   text-decoration: none;
   color: var(--clr-white-1);
   font-weight: bold;
   transition: opacity 0.2s linear;
-  padding: 0.75em;
+  padding: 0.75em 2em;
+  font-size: var(--font-size-navbar);
 
   &:hover {
     opacity: 0.5;
@@ -122,17 +135,43 @@ const LoginBtn = styled.a`
   }
 `;
 
-const Navbar = () => {
-  const { setIsSidebarMounted, setIsSubmenuMounted } = useGlobalContext();
+const getCenterCoord = (element, offset) => {
+  const elementCoords = element.getBoundingClientRect();
+  const elementCenterCoord = (elementCoords.left + elementCoords.right + offset) / 2;
+  return elementCenterCoord;
+};
 
-  const handleNavbarMouseOver = (event) => {
-    if (event.target.id === 'navbar') {
+const Navbar = () => {
+  const {
+    setIsSidebarMounted,
+    setIsSubmenuMounted,
+    setSubmenuTargetCenterCoord,
+    windowWidth,
+  } = useGlobalContext();
+  const [currentMenuItem, setCurrentMenuItem] = useState(null);
+
+  const openSubmenu = (event) => {
+    if (event.target.id === 'menu-button') {
+      setSubmenuTargetCenterCoord(getCenterCoord(event.target, -6));
+      setIsSubmenuMounted(true);
+      setCurrentMenuItem(event.target);
+    }
+  };
+
+  const closeSubmenu = (event) => {
+    if (event.target.id !== 'menu-button') {
       setIsSubmenuMounted(false);
     }
   };
 
+  useEffect(() => {
+    if (currentMenuItem) {
+      setSubmenuTargetCenterCoord(getCenterCoord(currentMenuItem, -6));
+    }
+  }, [currentMenuItem, setSubmenuTargetCenterCoord, windowWidth]);
+
   return (
-    <Container id='navbar' onMouseOver={handleNavbarMouseOver}>
+    <Container onMouseOver={closeSubmenu}>
       <NavbarHeader>
         <Brand href='/'>stripe</Brand>
         <HamburguerBtn aria-label='hamburguer button' onClick={() => setIsSidebarMounted(true)}>
@@ -140,31 +179,29 @@ const Navbar = () => {
         </HamburguerBtn>
       </NavbarHeader>
 
-      <NavbarMenu id='ul'>
-        <li id='listitem'>
-          <MenuItem id='menuitem' href='/' onMouseOver={() => setIsSubmenuMounted(true)}>
+      <NavbarMenu>
+        <li>
+          <MenuButton id='menu-button' onMouseOver={openSubmenu}>
             Productos
-          </MenuItem>
+          </MenuButton>
         </li>
-        <li id='listitem'>
-          <MenuItem id='menuitem' href='/' onMouseOver={() => setIsSubmenuMounted(true)}>
+        <li>
+          <MenuButton id='menu-button' onMouseOver={openSubmenu}>
             Desarrolladores
-          </MenuItem>
+          </MenuButton>
         </li>
-        <li id='listitem'>
-          <MenuItem id='menuitem' href='/' onMouseOver={() => setIsSubmenuMounted(true)}>
+        <li>
+          <MenuButton id='menu-button' onMouseOver={openSubmenu}>
             Empresa
-          </MenuItem>
+          </MenuButton>
         </li>
-        <li id='listitem'>
-          <MenuItem id='menuitem' href='/' onMouseOver={() => setIsSubmenuMounted(true)}>
-            Tarifas
-          </MenuItem>
+        <li>
+          <MenuLink href='/'>Tarifas</MenuLink>
         </li>
       </NavbarMenu>
 
       <NavbarEnd>
-        <LoginBtn>Iniciar sesión</LoginBtn>
+        <LoginBtn href='/'>Iniciar sesión</LoginBtn>
       </NavbarEnd>
     </Container>
   );
