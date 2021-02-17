@@ -2,9 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   :root {
-    --font-size-base: 0.65rem;
-    --font-size-navbar: 1rem;
-    --font-size-sidebar: 1rem;
+    --font-size-base: 1rem;
     --clr-white-1: #ffffff;
     --clr-black-1: #000000;
     --clr-blue-1: #001f38;
@@ -14,14 +12,9 @@ const GlobalStyles = createGlobalStyle`
     --clr-blue-5: #f1f7fd;
     --clr-purple-1: #5d51ff;
     --clr-purple-2: #786eff;
-    
-    @media screen and (min-width: 576px) {
-      --font-size-base: 0.85rem;
-    }
-
-      @media screen and (min-width: 768px) {
-      --font-size-base: 1rem;
-    }
+    --clr-shadow: #00000025;
+    --clr-transparent-1: #ffffff25;
+    --clr-transparent-2: #ffffff50;
   }
 
   *, *::before, *::after {
