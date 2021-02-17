@@ -32,7 +32,7 @@ const Container = styled.div`
     top: 6px;
     left: ${({ submenuTargetCenterCoord, submenuLeftCoord }) =>
       `${submenuTargetCenterCoord - submenuLeftCoord}px`};
-    transition: left 0.2s linear;
+    transition: left 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     transform: rotateZ(45deg);
   }
 
