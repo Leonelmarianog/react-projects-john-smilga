@@ -33,20 +33,20 @@ const NavbarHeader = styled.header`
 `;
 
 const HamburguerBtn = styled.button`
-  background-color: #ffffff25;
+  background-color: var(--clr-transparent-1);
   border: none;
+  color: var(--clr-white-1);
   font-size: var(--font-size-navbar);
   padding: 0.5em 1em;
   border-radius: 10px;
-  color: var(--clr-white-1);
-  transition: background-color 0.2s linear;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.2s linear;
 
   &:hover {
-    background-color: #ffffff50;
+    background-color: var(--clr-transparent-2);
   }
 
   @media screen and (min-width: 992px) {
@@ -67,21 +67,17 @@ const Brand = styled.a`
 `;
 
 const NavbarMenu = styled.ul`
-  list-style: none;
   display: none;
-
-  & > li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  & > li:last-child {
-    margin-right: 0;
-  }
 
   @media screen and (min-width: 992px) {
     display: flex;
+    list-style: none;
+
+    & > li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 `;
 
@@ -89,10 +85,10 @@ const MenuButton = styled.button`
   background-color: transparent;
   border: none;
   color: var(--clr-white-1);
-  font-weight: bold;
-  transition: opacity 0.2s linear;
-  padding: 0.75em 2em;
   font-size: var(--font-size-navbar);
+  font-weight: bold;
+  padding: 0.75em 2em;
+  transition: opacity 0.2s linear;
 
   &:hover {
     opacity: 0.5;
@@ -103,9 +99,9 @@ const MenuLink = styled.a`
   text-decoration: none;
   color: var(--clr-white-1);
   font-weight: bold;
-  transition: opacity 0.2s linear;
-  padding: 0.75em 2em;
   font-size: var(--font-size-navbar);
+  padding: 0.75em 2em;
+  transition: opacity 0.2s linear;
 
   &:hover {
     opacity: 0.5;
