@@ -78,9 +78,14 @@ const Link = styled.a`
   color: var(--clr-blue-1);
   transition: color 0.2s linear;
   padding-left: 1em;
+  margin-top: 1em;
 
   &:hover {
     color: var(--clr-blue-3);
+  }
+
+  @media screen and (min-width: 992px) {
+    margin-top: 0;
   }
 `;
 
