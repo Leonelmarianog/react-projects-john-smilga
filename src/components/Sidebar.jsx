@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { FaTimes } from 'react-icons/fa';
 import useGlobalContext from '../hooks/useGlobalContext';
+import LinkButton from './common/LinkButton';
 
 const animTransition = {
   css: '0.2s',
@@ -130,19 +131,8 @@ const SidebarFooter = styled.footer`
   border-bottom-right-radius: 10px;
 `;
 
-const LoginBtn = styled.a`
-  text-decoration: none;
+const LoginButton = styled(LinkButton)`
   background-color: var(--clr-purple-1);
-  color: var(--clr-white-1);
-  font-size: var(--font-size-base);
-  font-weight: bold;
-  padding: 0.4em 1em 0.5em 1em;
-  border-radius: 20px;
-  transition: background-color 0.2s linear;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   &:hover {
     background-color: var(--clr-purple-2);
@@ -199,7 +189,7 @@ const Sidebar = ({ sidebarLinks }) => {
         </ColumnsList>
 
         <SidebarFooter>
-          <LoginBtn href='/'>Iniciar sesion</LoginBtn>
+          <LoginButton href='/'>Iniciar sesion</LoginButton>
         </SidebarFooter>
       </Container>
     </CSSTransition>

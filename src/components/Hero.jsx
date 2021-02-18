@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import hero from '../assets/hero.svg';
 import phone from '../assets/phone.svg';
 import useGlobalContext from '../hooks/useGlobalContext';
+import LinkButton from './common/LinkButton';
 
 const Container = styled.section`
   background-image: url(${hero});
@@ -62,25 +63,11 @@ const LinksContainer = styled.div`
   }
 `;
 
-const LinkBtn = styled.a`
-  text-decoration: none;
+const BlueLinkButton = styled(LinkButton)`
   background-color: var(--clr-blue-1);
-  color: var(--clr-white-1);
-  font-size: var(--font-size-base);
-  font-weight: bold;
-  letter-spacing: 1px;
-  padding: 0.3em 1em 0.5em 1em;
-  border-radius: 20px;
-  transition: background-color 0.2s linear;
-  margin-bottom: 1em;
-  align-self: flex-start;
 
   &:hover {
     background-color: var(--clr-blue-3);
-  }
-
-  @media screen and (min-width: 992px) {
-    margin-bottom: 0;
   }
 `;
 
@@ -122,7 +109,7 @@ const Hero = () => {
             transferencias y gestionar sus actividades comerciales en Internet.
           </Paragraph>
           <LinksContainer>
-            <LinkBtn href='/'>Empezar ahora</LinkBtn>
+            <BlueLinkButton href='/'>Empezar ahora</BlueLinkButton>
             <Link href='/'>Contactar con el equipo de ventas</Link>
           </LinksContainer>
         </Column>

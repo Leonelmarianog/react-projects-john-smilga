@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import useGlobalContext from '../hooks/useGlobalContext';
+import LinkButton from './common/LinkButton';
 
 const Container = styled.nav`
   position: absolute;
@@ -116,18 +117,11 @@ const NavbarEnd = styled.div`
   }
 `;
 
-const LoginBtn = styled.a`
-  text-decoration: none;
-  background-color: #ffffff25;
-  color: var(--clr-white-1);
-  font-weight: bold;
-  padding: 0.4em 1em 0.5em 1em;
-  border-radius: 20px;
-  transition: background-color 0.2s linear;
-  cursor: pointer;
+const LoginButton = styled(LinkButton)`
+  background-color: var(--clr-transparent-1);
 
   &:hover {
-    background-color: #ffffff50;
+    background-color: var(--clr-transparent-2);
   }
 `;
 
@@ -197,7 +191,7 @@ const Navbar = () => {
       </NavbarMenu>
 
       <NavbarEnd>
-        <LoginBtn href='/'>Iniciar sesión</LoginBtn>
+        <LoginButton href='/'>Iniciar sesión</LoginButton>
       </NavbarEnd>
     </Container>
   );
