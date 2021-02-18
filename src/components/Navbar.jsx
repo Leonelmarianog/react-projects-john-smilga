@@ -83,24 +83,12 @@ const NavbarMenu = styled.ul`
 `;
 
 const MenuButton = styled.button`
+  text-decoration: none;
   background-color: transparent;
   border: none;
   color: var(--clr-white-1);
   font-size: var(--font-size-base);
   font-weight: bold;
-  padding: 0.75em 2em;
-  transition: opacity 0.2s linear;
-
-  &:hover {
-    opacity: 0.5;
-  }
-`;
-
-const MenuLink = styled.a`
-  text-decoration: none;
-  color: var(--clr-white-1);
-  font-weight: bold;
-  font-size: var(--font-size-base);
   padding: 0.75em 2em;
   transition: opacity 0.2s linear;
 
@@ -186,7 +174,9 @@ const Navbar = () => {
           </MenuButton>
         </li>
         <li>
-          <MenuLink href='/'>Tarifas</MenuLink>
+          <MenuButton as='a' href='/'>
+            Tarifas
+          </MenuButton>
         </li>
       </NavbarMenu>
 
