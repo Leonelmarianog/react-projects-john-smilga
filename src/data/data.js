@@ -4,109 +4,109 @@ import { FaCreditCard, FaBook, FaBriefcase } from 'react-icons/fa';
 export const sidebarLinks = {
   products: [
     {
-      label: 'Payments',
+      name: 'Payments',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Terminal',
+      name: 'Terminal',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Connect',
+      name: 'Connect',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Billing',
+      name: 'Billing',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Corporate Card',
+      name: 'Corporate Card',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Capital',
+      name: 'Capital',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Issuing',
+      name: 'Issuing',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Treasury',
+      name: 'Treasury',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Radar',
+      name: 'Radar',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Sigma',
+      name: 'Sigma',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Atlas',
+      name: 'Atlas',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Climate',
+      name: 'Climate',
       icon: <FaCreditCard />,
       url: '/',
     },
   ],
   other: [
     {
-      label: 'Tarifas',
+      name: 'Tarifas',
       icon: <FaCreditCard />,
       url: '/',
     },
     {
-      label: 'Documentacion',
+      name: 'Documentacion',
       icon: <FaBook />,
       url: '/',
     },
     {
-      label: 'Soporte',
+      name: 'Soporte',
       icon: <FaBook />,
       url: '/',
     },
     {
-      label: 'Acerca de Stripe',
+      name: 'Acerca de Stripe',
       icon: <FaBriefcase />,
       url: '/',
     },
     {
-      label: 'Empresa',
+      name: 'Empresa',
       icon: <FaBriefcase />,
       url: '/',
     },
     {
-      label: 'Empleos',
+      name: 'Empleos',
       icon: <FaBriefcase />,
       url: '/',
     },
     {
-      label: 'Sala de Prensa',
+      name: 'Sala de Prensa',
       icon: <FaBriefcase />,
       url: '/',
     },
     {
-      label: 'Socios',
+      name: 'Socios',
       icon: <FaBriefcase />,
       url: '/',
     },
     {
-      label: 'Blog',
+      name: 'Blog',
       icon: <FaBriefcase />,
       url: '/',
     },
@@ -229,28 +229,28 @@ export const productsCategories = [
     name: 'Desarrolladores',
     links: [
       {
-        label: 'Documentacion',
+        name: 'Documentacion',
         description: 'Comenzar a integrar productos y herramientas de Stripe',
         icon: <FaBook />,
         url: '/',
       },
       {
-        label: 'Referencia de API completa',
+        name: 'Referencia de API completa',
         icon: <FaBook />,
         url: '/',
       },
       {
-        label: 'Estado de la API',
+        name: 'Estado de la API',
         icon: <FaBook />,
         url: '/',
       },
       {
-        label: 'Soporte',
+        name: 'Soporte',
         icon: <FaBook />,
         url: '/',
       },
       {
-        label: 'Registro de cambios de la API',
+        name: 'Registro de cambios de la API',
         icon: <FaBook />,
         url: '/',
       },
@@ -260,19 +260,19 @@ export const productsCategories = [
         name: 'Empezar',
         links: [
           {
-            label: 'Proceso de compra prediseñado',
+            name: 'Proceso de compra prediseñado',
             url: '/',
           },
           {
-            label: 'Librerias y SDK',
+            name: 'Librerias y SDK',
             url: '/',
           },
           {
-            label: 'Plugins',
+            name: 'Plugins',
             url: '/',
           },
           {
-            label: 'Muestras de codigo',
+            name: 'Muestras de codigo',
             url: '/',
           },
         ],
@@ -281,19 +281,19 @@ export const productsCategories = [
         name: 'Guias',
         links: [
           {
-            label: 'Aceptar pagos por internet',
+            name: 'Aceptar pagos por internet',
             url: '/',
           },
           {
-            label: 'Gestionar subscripciones',
+            name: 'Gestionar subscripciones',
             url: '/',
           },
           {
-            label: 'Enviar pagos',
+            name: 'Enviar pagos',
             url: '/',
           },
           {
-            label: 'Configurar pagos en persona',
+            name: 'Configurar pagos en persona',
             url: '/',
           },
         ],
@@ -304,50 +304,50 @@ export const productsCategories = [
     name: 'Empresa',
     links: [
       {
-        label: 'Acerca de Stripe',
+        name: 'Acerca de Stripe',
         icon: <FaBriefcase />,
         url: '/',
       },
       {
-        label: 'Empleos',
+        name: 'Empleos',
         icon: <FaBriefcase />,
         url: '/',
       },
       {
-        label: 'Clientes',
+        name: 'Clientes',
         icon: <FaBriefcase />,
         url: '/',
       },
       {
-        label: 'Sala de prensa',
+        name: 'Sala de prensa',
         icon: <FaBriefcase />,
         url: '/',
       },
       {
-        label: 'Empresa',
+        name: 'Empresa',
         icon: <FaBriefcase />,
         url: '/',
       },
       {
-        label: 'Socios',
+        name: 'Socios',
         icon: <FaBriefcase />,
         url: '/',
       },
       {
-        label: 'Del Blog',
+        name: 'Del Blog',
         icon: <FaBriefcase />,
         url: '/',
         sublinks: [
           {
-            label: 'Metodos de pago europeos disponibles en todo el mundo',
+            name: 'Metodos de pago europeos disponibles en todo el mundo',
             url: '/',
           },
           {
-            label: 'Creamos Checkout para que tu no tuvieras que hacerlo',
+            name: 'Creamos Checkout para que tu no tuvieras que hacerlo',
             url: '/',
           },
           {
-            label: 'Diseñar y desarrollar un mundo interactivo',
+            name: 'Diseñar y desarrollar un mundo interactivo',
             url: '/',
           },
         ],
