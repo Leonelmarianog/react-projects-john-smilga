@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import useGlobalContext from '../hooks/useGlobalContext';
-import LinkButton from './common/LinkButton';
+import { LinkButton } from './common';
 import { getCenterCoord } from '../utils/utils';
 
 const Container = styled.nav`

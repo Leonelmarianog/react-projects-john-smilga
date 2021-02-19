@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import LinkIcon from './common/LinkIcon';
+import { LinkIcon } from './common';
 
 const ProductCategory = styled.h1`
   font-size: calc(var(--font-size-base) * 0.85);

@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { FaTimes } from 'react-icons/fa';
 import useGlobalContext from '../hooks/useGlobalContext';
-import LinkButton from './common/LinkButton';
-import List from './common/List';
-import LinkIcon from './common/LinkIcon';
-import Card from './common/Card';
+import { LinkButton, List, LinkIcon, Card } from './common';
 
 const transition = {
   css: '0.2s',

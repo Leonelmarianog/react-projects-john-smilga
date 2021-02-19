@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import useGlobalContext from '../hooks/useGlobalContext';
 import ProductsCategories from './ProductsCategories';
 import ProductsCategory from './ProductsCategory';
-import Card from './common/Card';
+import { Card } from './common';
 import { getLeftCoord } from '../utils/utils';
 
 const transition = {

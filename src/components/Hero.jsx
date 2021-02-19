@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import hero from '../assets/hero.svg';
 import phone from '../assets/phone.svg';
 import useGlobalContext from '../hooks/useGlobalContext';
-import LinkButton from './common/LinkButton';
+import { LinkButton } from './common';
 
 const Container = styled.section`
   background-image: url(${hero});
