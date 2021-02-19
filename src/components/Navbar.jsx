@@ -98,7 +98,7 @@ const MenuButton = styled.button`
   }
 `;
 
-const NavbarEnd = styled.div`
+const NavbarEnd = styled.footer`
   display: none;
 
   @media screen and (min-width: 992px) {
