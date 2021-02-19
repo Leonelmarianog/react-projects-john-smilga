@@ -6,7 +6,7 @@ import Sidebar from './Sidebar';
 import Hero from './Hero';
 import Overlay from './Overlay';
 import Submenu from './Submenu';
-import { AppProvider } from './GlobalContext';
+import { AppProvider } from './context/GlobalContext';
 import { sidebarLinks, productsCategories } from '../data/data';
 
 const Container = styled.div`

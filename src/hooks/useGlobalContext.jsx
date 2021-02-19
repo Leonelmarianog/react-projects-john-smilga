@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AppContext } from '../components/GlobalContext';
+import { AppContext } from '../components/context/GlobalContext';
 
 const useGlobalContext = () => {
   return useContext(AppContext);
