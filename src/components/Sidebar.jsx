@@ -80,6 +80,7 @@ const CloseBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
   & > svg {
     display: block;
   }
