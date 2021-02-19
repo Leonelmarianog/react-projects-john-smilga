@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import useGlobalContext from '../hooks/useGlobalContext';
 import LinkButton from './common/LinkButton';
+import { getCenterCoord } from '../utils/utils';
 
 const Container = styled.nav`
   position: absolute;
@@ -112,12 +113,6 @@ const LoginButton = styled(LinkButton)`
     background-color: var(--clr-transparent-2);
   }
 `;
-
-const getCenterCoord = (element, offset) => {
-  const elementCoords = element.getBoundingClientRect();
-  const elementCenterCoord = (elementCoords.left + elementCoords.right + offset) / 2;
-  return elementCenterCoord;
-};
 
 const Navbar = () => {
   const {

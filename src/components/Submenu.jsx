@@ -5,6 +5,7 @@ import useGlobalContext from '../hooks/useGlobalContext';
 import ProductsCategories from './ProductsCategories';
 import ProductsCategory from './ProductsCategory';
 import Card from './common/Card';
+import { getLeftCoord } from '../utils/utils';
 
 const PerspectiveProvider = styled.div`
   position: absolute;
@@ -75,10 +76,6 @@ const Container = styled.div`
 const Content = styled(Card)`
   padding: 2em 2.5em;
 `;
-
-const getLeftCoord = (element) => {
-  return element.getBoundingClientRect().left;
-};
 
 const Submenu = ({ productsCategories }) => {
   const { isSubmenuMounted, submenuTargetCenterCoord, windowWidth } = useGlobalContext();
