@@ -8,9 +8,9 @@ import List from './common/List';
 import LinkIcon from './common/LinkIcon';
 import Card from './common/Card';
 
-const animTransition = {
+const transition = {
   css: '0.2s',
-  milliseconds: 200,
+  value: 200,
 };
 
 const Container = styled(Card)`
@@ -33,7 +33,7 @@ const Container = styled(Card)`
   &.sidebar--enter-active {
     transform: scale(1) translate(-50%, 0);
     opacity: 1;
-    transition: transform ${animTransition.css} linear, opacity ${animTransition.css};
+    transition: transform ${transition.css} linear, opacity ${transition.css} linear;
   }
 
   &.sidebar--enter-done {
@@ -49,7 +49,7 @@ const Container = styled(Card)`
   &.sidebar--exit-active {
     transform: scale(0.9) translate(-50%, 0);
     opacity: 0;
-    transition: transform ${animTransition.css} linear, opacity ${animTransition.css};
+    transition: transform ${transition.css} linear, opacity ${transition.css} linear;
   }
 
   &.sidebar--exit-done {
@@ -118,7 +118,7 @@ const Sidebar = ({ sidebarLinks }) => {
   return (
     <CSSTransition
       in={isSidebarMounted}
-      timeout={{ enter: animTransition.milliseconds, exit: animTransition.milliseconds }}
+      timeout={{ enter: transition.value, exit: transition.value }}
       classNames={'sidebar-'}
       mountOnEnter={true}
       unmountOnExit={true}

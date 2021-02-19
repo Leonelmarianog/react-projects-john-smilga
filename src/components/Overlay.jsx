@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import useGlobalContext from '../hooks/useGlobalContext';
 
+const transition = {
+  css: '0.2s',
+  value: 200,
+};
+
 const Background = styled.div`
   position: fixed;
   top: 0;
@@ -10,8 +15,11 @@ const Background = styled.div`
   z-index: 2;
   width: 100%;
   height: 100%;
-  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  background-color: #000000;
+  background-color: var(--clr-black-1);
+
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
 
   &.overlay--enter {
     opacity: 0;
@@ -19,7 +27,7 @@ const Background = styled.div`
 
   &.overlay--enter-active {
     opacity: 0.25;
-    transition: opacity 0.2s linear;
+    transition: opacity ${transition.css} linear;
   }
 
   &.overlay--enter-done {
@@ -32,15 +40,11 @@ const Background = styled.div`
 
   &.overlay--exit-active {
     opacity: 0;
-    transition: opacity 0.2s linear;
+    transition: opacity ${transition.css} linear;
   }
 
   &.overlay--exit-done {
     opacity: 0;
-  }
-
-  @media screen and (min-width: 992px) {
-    display: none;
   }
 `;
 
@@ -51,7 +55,7 @@ const Overlay = () => {
   return (
     <CSSTransition
       in={isSidebarMounted}
-      timeout={{ enter: 200 }}
+      timeout={{ enter: transition.value, exit: transition.value }}
       classNames={'overlay-'}
       mountOnEnter={true}
       unmountOnExit={true}

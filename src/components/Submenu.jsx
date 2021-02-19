@@ -7,6 +7,11 @@ import ProductsCategory from './ProductsCategory';
 import Card from './common/Card';
 import { getLeftCoord } from '../utils/utils';
 
+const transition = {
+  css: '0.2s',
+  value: 200,
+};
+
 const PerspectiveProvider = styled.div`
   position: absolute;
   top: 0;
@@ -36,7 +41,7 @@ const Container = styled.div`
     top: 6px;
     left: ${({ submenuTargetCenterCoord, submenuLeftCoord }) =>
       `${submenuTargetCenterCoord - submenuLeftCoord}px`};
-    transition: left 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: left ${transition.css} cubic-bezier(0.16, 1, 0.3, 1);
     transform: rotateZ(45deg);
   }
 
@@ -48,7 +53,7 @@ const Container = styled.div`
   &.submenu--enter-active {
     opacity: 1;
     transform: translate(-50%, 0) rotateX(0deg);
-    transition: transform 0.2s linear, opacity 0.2s linear;
+    transition: transform ${transition.css} linear, opacity ${transition.css} linear;
   }
 
   &.submenu--enter-done {
@@ -64,7 +69,7 @@ const Container = styled.div`
   &.submenu--exit-active {
     opacity: 0;
     transform: translate(-50%, 0) rotateX(-15deg);
-    transition: transform 0.2s linear, opacity 0.2s linear;
+    transition: transform ${transition.css} linear, opacity ${transition.css} linear;
   }
 
   &.submenu--exit-done {
@@ -92,7 +97,7 @@ const Submenu = ({ productsCategories }) => {
     <PerspectiveProvider>
       <CSSTransition
         in={isSubmenuMounted}
-        timeout={{ enter: 200, exit: 200 }}
+        timeout={{ enter: transition.value, exit: transition.value }}
         classNames={'submenu-'}
         mountOnEnter={true}
         unmountOnExit={true}
