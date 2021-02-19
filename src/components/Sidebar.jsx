@@ -88,24 +88,6 @@ const CloseBtn = styled.button`
   }
 `;
 
-const ColumnsList = styled.ul`
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 1em;
-  column-gap: 1em;
-  padding: 0 1.5em;
-  margin-bottom: 1.5em;
-
-  @media screen and (min-width: 576px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-`;
-
 const Link = styled.a`
   text-decoration: none;
   color: var(--clr-blue-1);
