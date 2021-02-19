@@ -112,7 +112,7 @@ const Hero = () => {
   const { setIsSubmenuMounted } = useGlobalContext();
 
   return (
-    <Container background={hero} onMouseOver={() => setIsSubmenuMounted(false)}>
+    <Container onMouseOver={() => setIsSubmenuMounted(false)}>
       <Grid>
         <Column>
           <Heading>Infraestructura de pagos para Internet</Heading>
