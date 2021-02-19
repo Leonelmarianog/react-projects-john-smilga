@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import { FaTimes } from 'react-icons/fa';
 import useGlobalContext from '../hooks/useGlobalContext';
 import LinkButton from './common/LinkButton';
+import List from './common/List';
 
 const animTransition = {
   css: '0.2s',
@@ -164,7 +165,13 @@ const Sidebar = ({ sidebarLinks }) => {
           </CloseBtn>
         </SidebarHeader>
 
-        <ColumnsList>
+        <List
+          columns='2'
+          breakpoints={[
+            { breakpoint: '576px', columns: 3 },
+            { breakpoint: '768px', columns: 4 },
+          ]}
+        >
           {sidebarLinks.products.map((link, index) => {
             const { label, icon, url } = link;
             return (
@@ -175,11 +182,17 @@ const Sidebar = ({ sidebarLinks }) => {
               </li>
             );
           })}
-        </ColumnsList>
+        </List>
 
         <HR />
 
-        <ColumnsList>
+        <List
+          columns='2'
+          breakpoints={[
+            { breakpoint: '576px', columns: 3 },
+            { breakpoint: '768px', columns: 4 },
+          ]}
+        >
           {sidebarLinks.other.map((link, index) => {
             const { label, icon, url } = link;
             return (
@@ -190,7 +203,7 @@ const Sidebar = ({ sidebarLinks }) => {
               </li>
             );
           })}
-        </ColumnsList>
+        </List>
 
         <SidebarFooter>
           <LoginButton href='/'>Iniciar sesion</LoginButton>
