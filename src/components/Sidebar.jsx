@@ -54,6 +54,10 @@ const Container = styled.nav`
     transform: scale(0.9) translate(-50%, 0);
     opacity: 0;
   }
+
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
 `;
 
 const SidebarHeader = styled.header`

@@ -38,6 +38,10 @@ const Background = styled.div`
   &.overlay--exit-done {
     opacity: 0;
   }
+
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
 `;
 
 const Overlay = () => {
