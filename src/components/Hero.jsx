@@ -31,11 +31,15 @@ const Column = styled.div`
 `;
 
 const Heading = styled.h1`
-  font-size: calc(var(--font-size-base) * 3.5);
+  font-size: calc(var(--font-size-base) * 2);
   font-weight: 900;
   color: var(--clr-blue-1);
   line-height: 1.15em;
-  margin: 0.5em 0 0.25em 0;
+  margin: 0.5em 0 0.5em 0;
+
+  @media screen and (min-width: 576px) {
+    font-size: calc(var(--font-size-base) * 3.25);
+  }
 
   @media screen and (min-width: 992px) {
     font-size: calc(var(--font-size-base) * 5.25);
@@ -43,10 +47,14 @@ const Heading = styled.h1`
 `;
 
 const Paragraph = styled.p`
-  font-size: calc(var(--font-size-base) * 1.2);
+  font-size: calc(var(--font-size-base) * 1);
   color: var(--clr-blue-1);
   line-height: 1.5em;
   margin-bottom: 1.5em;
+
+  @media screen and (min-width: 576px) {
+    font-size: calc(var(--font-size-base) * 1.2);
+  }
 
   @media screen and (min-width: 992px) {
     margin-right: 8em;
