@@ -6,24 +6,24 @@ import useGlobalContext from '../hooks/useGlobalContext';
 import LinkButton from './common/LinkButton';
 import List from './common/List';
 import LinkIcon from './common/LinkIcon';
+import Card from './common/Card';
 
 const animTransition = {
   css: '0.2s',
   milliseconds: 200,
 };
 
-const Container = styled.nav`
-  background-color: var(--clr-white-1);
+const Container = styled(Card)`
   position: absolute;
   top: 2.5%;
   left: 50%;
   z-index: 3;
   width: 95%;
-  padding: 1.5em 0 0 0;
-  border-radius: 10px;
   transform-origin: 50% -2.5%;
-  display: flex;
-  flex-direction: column;
+
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
 
   &.sidebar--enter {
     transform: scale(0.9) translate(-50%, 0);
@@ -55,10 +55,6 @@ const Container = styled.nav`
   &.sidebar--exit-done {
     transform: scale(0.9) translate(-50%, 0);
     opacity: 0;
-  }
-
-  @media screen and (min-width: 992px) {
-    display: none;
   }
 `;
 

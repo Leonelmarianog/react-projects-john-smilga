@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import useGlobalContext from '../hooks/useGlobalContext';
 import ProductsCategories from './ProductsCategories';
 import ProductsCategory from './ProductsCategory';
+import Card from './common/Card';
 
 const PerspectiveProvider = styled.div`
   position: absolute;
@@ -71,11 +72,8 @@ const Container = styled.div`
   }
 `;
 
-const Content = styled.nav`
-  background-color: var(--clr-white-1);
+const Content = styled(Card)`
   padding: 2em 2.5em;
-  border-radius: 10px;
-  box-shadow: 0 2em 2em 0.5em var(--clr-shadow);
 `;
 
 const getLeftCoord = (element) => {
