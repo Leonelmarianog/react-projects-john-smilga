@@ -5,6 +5,7 @@ import { FaTimes } from 'react-icons/fa';
 import useGlobalContext from '../hooks/useGlobalContext';
 import LinkButton from './common/LinkButton';
 import List from './common/List';
+import LinkIcon from './common/LinkIcon';
 
 const animTransition = {
   css: '0.2s',
@@ -88,19 +89,6 @@ const CloseBtn = styled.button`
   }
 `;
 
-const Link = styled.a`
-  text-decoration: none;
-  color: var(--clr-blue-1);
-  font-weight: bold;
-  font-size: calc(var(--font-size-base) * 0.85);
-  display: flex;
-  align-items: center;
-
-  & > svg {
-    margin-right: 0.5em;
-  }
-`;
-
 const HR = styled.hr`
   margin-bottom: 1.5em;
   border-top: 1px dashed var(--clr-blue-4);
@@ -154,16 +142,11 @@ const Sidebar = ({ sidebarLinks }) => {
             { breakpoint: '768px', columns: 4 },
           ]}
         >
-          {sidebarLinks.products.map((link, index) => {
-            const { label, icon, url } = link;
-            return (
-              <li key={index + 1}>
-                <Link href={url}>
-                  {icon} {label}
-                </Link>
-              </li>
-            );
-          })}
+          {sidebarLinks.products.map((link, index) => (
+            <li key={index + 1}>
+              <LinkIcon {...link} />
+            </li>
+          ))}
         </List>
 
         <HR />
@@ -175,16 +158,11 @@ const Sidebar = ({ sidebarLinks }) => {
             { breakpoint: '768px', columns: 4 },
           ]}
         >
-          {sidebarLinks.other.map((link, index) => {
-            const { label, icon, url } = link;
-            return (
-              <li key={index + 1}>
-                <Link href={url}>
-                  {icon} {label}
-                </Link>
-              </li>
-            );
-          })}
+          {sidebarLinks.other.map((link, index) => (
+            <li key={index + 1}>
+              <LinkIcon {...link} />
+            </li>
+          ))}
         </List>
 
         <SidebarFooter>
