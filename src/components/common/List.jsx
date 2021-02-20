@@ -5,10 +5,8 @@ const List = styled.ul`
   display: grid;
   grid-template-columns: ${({ columns }) =>
     columns ? `repeat(${columns}, 1fr)` : 'repeat(1, 1fr)'};
-  row-gap: 1em;
-  column-gap: 1em;
-  padding: 0 1.5em;
-  margin-bottom: 1.5em;
+  ${({ columnGap }) => columnGap && `column-gap: ${columnGap}`};
+  ${({ rowGap }) => rowGap && `row-gap: ${rowGap}`};
 
   ${({ breakpoints }) =>
     breakpoints &&
