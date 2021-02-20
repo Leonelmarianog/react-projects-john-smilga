@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
     --clr-white-1: #ffffff;
     --clr-black-1: #000000;
     --clr-blue-1: #001f38;
-    --clr-blue-2: #005092;
+    --clr-blue-2: #375d7e;
     --clr-blue-3: #647e94;
     --clr-blue-4: #8da3b6;
     --clr-blue-5: #f1f7fd;
