@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Card, LinkIcon, List } from './common';
+import { LinkIcon, List } from './common';
 
-const Container = styled(Card)`
+const Container = styled.article`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 2em;

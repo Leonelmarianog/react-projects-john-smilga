@@ -41,7 +41,7 @@ const LinksList = ({ name, links }) => (
     <Name>{name}</Name>
     <List rowGap='0.5em'>
       {links.map((link, index) => (
-        <li index={index + 1}>
+        <li key={index + 1}>
           <Link {...link} />
         </li>
       ))}
@@ -50,11 +50,11 @@ const LinksList = ({ name, links }) => (
 );
 
 const Developers = ({ information }) => (
-  <Card>
+  <article>
     <Main>
       <List>
         {information.main.links.map((link, index) => (
-          <li index={index + 1}>
+          <li key={index + 1}>
             <LinkIcon {...link} />
           </li>
         ))}
@@ -76,7 +76,7 @@ const Developers = ({ information }) => (
         ))}
       </List>
     </Footer>
-  </Card>
+  </article>
 );
 
 export default Developers;

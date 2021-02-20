@@ -2,10 +2,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import useGlobalContext from '../hooks/useGlobalContext';
-import ProductsCategories from './ProductsCategories';
-import ProductsCategory from './ProductsCategory';
 import { Card } from './common';
+import Products from './Products';
+import Developers from './Developers';
 import { getLeftCoord } from '../utils/utils';
+import { productsTab, developersTab } from '../data/data';
 
 const transition = {
   css: '0.2s',
@@ -83,12 +84,8 @@ const Container = styled.div`
   }
 `;
 
-const Content = styled(Card)`
-  padding: 2em 2.5em;
-`;
-
-const Submenu = ({ productsCategories }) => {
-  const { isSubmenuMounted, submenuTargetCenterCoord, windowWidth } = useGlobalContext();
+const Submenu = () => {
+  const { isSubmenuMounted, submenuTargetCenterCoord, currentTab } = useGlobalContext();
   const [submenuLeftCoord, setSubmenuLeftCoord] = useState(0);
   const submenuRef = useRef(null);
 
@@ -96,7 +93,7 @@ const Submenu = ({ productsCategories }) => {
     if (submenuRef.current) {
       setSubmenuLeftCoord(getLeftCoord(submenuRef.current));
     }
-  }, [windowWidth]);
+  });
 
   return (
     <PerspectiveProvider>
@@ -107,20 +104,16 @@ const Submenu = ({ productsCategories }) => {
         mountOnEnter={true}
         unmountOnExit={true}
         nodeRef={submenuRef}
-        onEnter={() => setSubmenuLeftCoord(getLeftCoord(submenuRef.current))}
       >
         <Container
           ref={submenuRef}
           submenuTargetCenterCoord={submenuTargetCenterCoord}
           submenuLeftCoord={submenuLeftCoord}
         >
-          <Content>
-            <ProductsCategories>
-              {productsCategories.map((productsCategory, index) => (
-                <ProductsCategory key={index + 1} {...productsCategory} />
-              ))}
-            </ProductsCategories>
-          </Content>
+          <Card>
+            {currentTab === 'Productos' && <Products products={productsTab} />}
+            {currentTab === 'Desarrolladores' && <Developers information={developersTab} />}
+          </Card>
         </Container>
       </CSSTransition>
     </PerspectiveProvider>

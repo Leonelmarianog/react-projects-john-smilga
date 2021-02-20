@@ -8,6 +8,7 @@ const AppProvider = ({ children }) => {
   const [isSubmenuMounted, setIsSubmenuMounted] = useState(false);
   const [submenuTargetCenterCoord, setSubmenuTargetCenterCoord] = useState(0);
   const [windowWidth, setWindowWidth] = useState(document.documentElement.clientWidth);
+  const [currentTab, setCurrentTab] = useState(null);
 
   const handleResize = () => {
     setWindowWidth(document.documentElement.clientWidth);
@@ -31,6 +32,8 @@ const AppProvider = ({ children }) => {
         setSubmenuTargetCenterCoord,
         windowWidth,
         setWindowWidth,
+        currentTab,
+        setCurrentTab,
       }}
     >
       {children}

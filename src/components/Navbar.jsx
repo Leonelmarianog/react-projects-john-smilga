@@ -120,6 +120,7 @@ const Navbar = () => {
     setIsSubmenuMounted,
     setSubmenuTargetCenterCoord,
     windowWidth,
+    setCurrentTab,
   } = useGlobalContext();
   const [currentMenuItem, setCurrentMenuItem] = useState(null);
 
@@ -128,6 +129,7 @@ const Navbar = () => {
       setSubmenuTargetCenterCoord(getCenterCoord(event.target, -6));
       setIsSubmenuMounted(true);
       setCurrentMenuItem(event.target);
+      setCurrentTab(event.target.textContent);
     }
   };
 
