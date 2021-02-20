@@ -10,7 +10,8 @@ const LinkButton = styled.a`
   font-weight: bold;
   letter-spacing: 1px;
   transition: background-color 0.2s linear;
-  width: max-content;
+  white-space: nowrap;
+  width: min-content;
 
   &:hover {
     background-color: var(--clr-transparent-2);
