@@ -8,6 +8,7 @@ const Container = styled.a`
   grid-template-rows: ${({ hasDescription }) =>
     hasDescription ? 'repeat(2, max-content)' : 'repeat(1, max-content)'};
   gap: 0.15em 0.75em;
+  width: min-content;
 
   &:hover {
     & > span {
