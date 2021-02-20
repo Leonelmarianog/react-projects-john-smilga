@@ -17,6 +17,11 @@ const Container = styled(Card)`
   z-index: 3;
   width: 95%;
   transform-origin: 50% -2.5%;
+  font-size: calc(var(--font-size-base) * 0.75);
+
+  @media screen and (min-width: 420px) {
+    font-size: var(--font-size-base);
+  }
 
   @media screen and (min-width: 992px) {
     display: none;
@@ -55,17 +60,20 @@ const Container = styled(Card)`
   }
 `;
 
-const SidebarHeader = styled.header`
+const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5em;
-  padding: 0 1.5em;
+  padding: 1.5em 1.5em 0 1.5em;
 `;
 
 const Title = styled.h1`
   color: var(--clr-blue-4);
-  font-size: var(--font-size-base);
+  font-size: calc(var(--font-size-base) * 0.75);
+
+  @media screen and (min-width: 420px) {
+    font-size: var(--font-size-base);
+  }
 `;
 
 const CloseBtn = styled.button`
@@ -73,31 +81,39 @@ const CloseBtn = styled.button`
   border: none;
   cursor: pointer;
   color: var(--clr-blue-4);
-  font-size: calc(var(--font-size-base) * 1.25);
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: calc(var(--font-size-base) * 0.85);
+
+  @media screen and (min-width: 420px) {
+    font-size: calc(var(--font-size-base) * 1.25);
+  }
 
   & > svg {
     display: block;
   }
 `;
 
-const HR = styled.hr`
-  margin-bottom: 1.5em;
-  border-top: 1px dashed var(--clr-blue-4);
-  opacity: 0.25;
+const Main = styled.main`
+  padding: 1em 0 2em 0;
 `;
 
-const SidebarFooter = styled.footer`
+const Section = styled.section`
+  padding: 0 1.5em;
+`;
+
+const HR = styled.hr`
+  border-top: 1px dashed var(--clr-blue-4);
+  opacity: 0.25;
+  margin: 1.5em 0;
+`;
+
+const Footer = styled.footer`
   background-color: var(--clr-blue-5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: auto;
-  padding: 1.5em 0;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  text-align: center;
+  border-radius: 0 0px 10px 10px;
+  padding: 2em;
 `;
 
 const LoginButton = styled(LinkButton)`
@@ -108,7 +124,7 @@ const LoginButton = styled(LinkButton)`
   }
 `;
 
-const Sidebar = ({ sidebarLinks }) => {
+const Sidebar = ({ data }) => {
   const { setIsSidebarMounted, isSidebarMounted } = useGlobalContext();
   const nodeRef = useRef(null);
 
@@ -122,46 +138,56 @@ const Sidebar = ({ sidebarLinks }) => {
       nodeRef={nodeRef}
     >
       <Container ref={nodeRef}>
-        <SidebarHeader>
+        <Header>
           <Title>Productos</Title>
           <CloseBtn onClick={() => setIsSidebarMounted(false)}>
             <FaTimes />
           </CloseBtn>
-        </SidebarHeader>
+        </Header>
 
-        <List
-          columns='2'
-          breakpoints={[
-            { breakpoint: '576px', columns: 3 },
-            { breakpoint: '768px', columns: 4 },
-          ]}
-        >
-          {sidebarLinks.products.map((link, index) => (
-            <li key={index + 1}>
-              <LinkIcon {...link} />
-            </li>
-          ))}
-        </List>
+        <Main>
+          <Section>
+            <List
+              columns='2'
+              columnGap='1em'
+              rowGap='1em'
+              breakpoints={[
+                { breakpoint: '576px', columns: 3 },
+                { breakpoint: '768px', columns: 4 },
+              ]}
+            >
+              {data.main.links.map((link, index) => (
+                <li key={index + 1}>
+                  <LinkIcon {...link} />
+                </li>
+              ))}
+            </List>
+          </Section>
 
-        <HR />
+          <HR />
 
-        <List
-          columns='2'
-          breakpoints={[
-            { breakpoint: '576px', columns: 3 },
-            { breakpoint: '768px', columns: 4 },
-          ]}
-        >
-          {sidebarLinks.other.map((link, index) => (
-            <li key={index + 1}>
-              <LinkIcon {...link} />
-            </li>
-          ))}
-        </List>
+          <Section>
+            <List
+              columns='2'
+              columnGap='1em'
+              rowGap='1em'
+              breakpoints={[
+                { breakpoint: '576px', columns: 3 },
+                { breakpoint: '768px', columns: 4 },
+              ]}
+            >
+              {data.footer.links.map((link, index) => (
+                <li key={index + 1}>
+                  <LinkIcon {...link} />
+                </li>
+              ))}
+            </List>
+          </Section>
+        </Main>
 
-        <SidebarFooter>
+        <Footer>
           <LoginButton href='/'>Iniciar sesion</LoginButton>
-        </SidebarFooter>
+        </Footer>
       </Container>
     </CSSTransition>
   );
