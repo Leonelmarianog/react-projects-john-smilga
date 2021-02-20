@@ -21,6 +21,11 @@ const PerspectiveProvider = styled.div`
   height: 100%;
   perspective: 250px;
   pointer-events: none;
+  display: none;
+
+  @media screen and (min-width: 992px) {
+    display: block;
+  }
 `;
 
 const Container = styled.div`
