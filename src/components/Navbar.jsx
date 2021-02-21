@@ -11,26 +11,27 @@ const Container = styled.nav`
   left: 0;
   width: 100%;
   z-index: 1;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 5%;
 
   @media screen and (min-width: 992px) {
-    display: flex;
+    height: 64px;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75em 5%;
   }
 `;
 
 const NavbarHeader = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 2em 5% 1em 5%;
-
-  @media screen and (min-width: 576px) {
-    padding: 1.5em 5% 1em 5%;
-  }
+  margin: auto 0 1em 0;
 
   @media screen and (min-width: 992px) {
-    padding: 0;
+    display: block;
+    margin: 0;
   }
 `;
 
