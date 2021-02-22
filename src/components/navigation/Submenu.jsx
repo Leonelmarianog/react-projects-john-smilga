@@ -5,7 +5,8 @@ import useGlobalContext from '../../hooks/useGlobalContext';
 import { Card } from '../common';
 import Products from './tabs/Products';
 import Developers from './tabs/Developers';
-import { productsTab, developersTab } from '../../data/data';
+import Company from './tabs/Company';
+import { productsTab, developersTab, companyTab } from '../../data/data';
 
 const transition = {
   css: '0.2s',
@@ -110,6 +111,13 @@ const Tabs = styled(Card)`
       width: 604px;
       height: 391px;
     `}
+
+  ${({ currentTab }) =>
+    currentTab === 'Empresa' &&
+    css`
+      width: 604px;
+      height: 332px;
+    `}
 `;
 
 const Submenu = () => {
@@ -139,6 +147,11 @@ const Submenu = () => {
                 {currentTab === 'Desarrolladores' && (
                   <CSSTransition key={'developers'} timeout={200} classNames={'tab-'}>
                     <Developers information={developersTab} />
+                  </CSSTransition>
+                )}
+                {currentTab === 'Empresa' && (
+                  <CSSTransition key={'company'} timeout={200} classNames={'tab-'}>
+                    <Company information={companyTab} />
                   </CSSTransition>
                 )}
               </TransitionGroup>
