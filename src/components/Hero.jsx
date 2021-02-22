@@ -8,7 +8,7 @@ import { LinkButton } from './common';
 const Container = styled.section`
   background-image: url(${hero});
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100%;
   padding: 10em 2em 3em 2em;
 
   @media screen and (min-width: 768px) {
