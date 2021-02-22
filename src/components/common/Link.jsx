@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const Anchor = styled.a`
+const Link = styled.a`
   text-decoration: none;
   color: var(--clr-blue-2);
   transition: color 0.2s linear;
@@ -11,7 +10,5 @@ const Anchor = styled.a`
     color: var(--clr-blue-1);
   }
 `;
-
-const Link = ({ url, name }) => <Anchor href={url}>{name}</Anchor>;
 
 export default Link;
