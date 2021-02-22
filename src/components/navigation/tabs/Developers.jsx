@@ -13,6 +13,8 @@ const Container = styled.article`
   left: 0;
   width: 604px;
   height: 391px;
+  display: flex;
+  flex-direction: column;
 
   &.tab--enter {
     opacity: 0;
@@ -68,9 +70,9 @@ const Lists = styled.section`
 
 const Footer = styled.section`
   background-color: var(--clr-blue-5);
+  padding: 2em 1.75em;
+  margin: auto 0.25em 0.25em 0.25em;
   border-radius: 0 0 10px 10px;
-  padding: 2em;
-  margin: 0 0.25em 0.25em 0.25em;
 `;
 
 const Name = styled.h1`
@@ -87,7 +89,7 @@ const LinksList = ({ name, links }) => (
     <List rowGap='0.5em'>
       {links.map((link, index) => (
         <li key={index + 1}>
-          <Link {...link} />
+          <Link href={link.list}>{link.name}</Link>
         </li>
       ))}
     </List>
