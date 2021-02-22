@@ -3,7 +3,6 @@ import React, { useEffect, useState, createContext } from 'react';
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarMounted, setIsSidebarMounted] = useState(false);
   const [isSubmenuMounted, setIsSubmenuMounted] = useState(false);
   const [submenuTargetCenterCoord, setSubmenuTargetCenterCoord] = useState(0);
@@ -22,8 +21,6 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        isSidebarOpen,
-        setIsSidebarOpen,
         isSidebarMounted,
         setIsSidebarMounted,
         isSubmenuMounted,
