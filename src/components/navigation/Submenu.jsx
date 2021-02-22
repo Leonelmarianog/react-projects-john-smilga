@@ -3,9 +3,7 @@ import styled, { css } from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import useGlobalContext from '../../hooks/useGlobalContext';
 import { Card } from '../common';
-import Products from './tabs/Products';
-import Developers from './tabs/Developers';
-import Company from './tabs/Company';
+import { Products, Developers, Company } from './tabs';
 import { productsTab, developersTab, companyTab } from '../../data/data';
 
 const transition = {
