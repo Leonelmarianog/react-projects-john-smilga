@@ -15,6 +15,8 @@ const GlobalStyles = createGlobalStyle`
     --clr-shadow: #00000025;
     --clr-transparent-1: #ffffff25;
     --clr-transparent-2: #ffffff50;
+    --height-submenu-arrow: 12px;
+    --width-submenu-arrow: 12px;
   }
 
   *, *::before, *::after {
