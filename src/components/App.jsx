@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import GlobalStyles from './GlobalStyles';
 import Header from './navigation/Header';
 import Hero from './Hero';
-import Overlay from './Overlay';
 import { AppProvider } from './context/GlobalContext';
 
 const Container = styled.div`
@@ -18,10 +17,6 @@ const App = () => (
     <AppProvider>
       <GlobalStyles />
       <Container>
-        {/* <Overlay />
-        <Navbar />
-        <Submenu />
-        <Sidebar data={sidebarData} /> */}
         <Header />
         <Hero />
       </Container>

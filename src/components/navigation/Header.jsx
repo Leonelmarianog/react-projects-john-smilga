@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import Submenu from './Submenu';
+import Overlay from '../Overlay';
 import { sidebarData } from '../../data/data';
 
 const Container = styled.header`
@@ -20,6 +21,7 @@ const Container = styled.header`
 
 const Header = () => (
   <Container>
+    <Overlay />
     <Navbar />
     <Sidebar data={sidebarData} />
     <Submenu />
