@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import hero from '../assets/hero.svg';
 import phone from '../assets/phone.svg';
 import useGlobalContext from '../hooks/useGlobalContext';
-import { LinkButton } from './common';
+import { LinkButton, Link } from './common';
 
 const Container = styled.section`
   background-image: url(${hero});
@@ -79,12 +79,10 @@ const BlueLinkButton = styled(LinkButton)`
   }
 `;
 
-const Link = styled.a`
-  text-decoration: none;
+const ContactLink = styled(Link)`
   font-size: var(--font-size-base);
   font-weight: bold;
   color: var(--clr-blue-1);
-  transition: color 0.2s linear;
   padding-left: 1em;
   margin-top: 1em;
 
@@ -123,7 +121,7 @@ const Hero = () => {
           </Paragraph>
           <LinksContainer>
             <BlueLinkButton href='/'>Empezar ahora</BlueLinkButton>
-            <Link href='/'>Contactar con el equipo de ventas</Link>
+            <ContactLink href='/'>Contactar con el equipo de ventas</ContactLink>
           </LinksContainer>
         </Column>
         <Column>
