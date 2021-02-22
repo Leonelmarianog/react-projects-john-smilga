@@ -89,7 +89,7 @@ const LinksList = ({ name, links }) => (
     <List rowGap='0.5em'>
       {links.map((link, index) => (
         <li key={index + 1}>
-          <Link href={link.list}>{link.name}</Link>
+          <Link href={link.url}>{link.name}</Link>
         </li>
       ))}
     </List>
