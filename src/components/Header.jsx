@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BagCounter from './BagCounter';
 
 const Container = styled.header`
-  background-color: var(--clr-red-1);
+  background-color: var(--clr-orange-1);
   height: var(--height-header);
   display: flex;
   justify-content: space-between;

@@ -25,7 +25,7 @@ const ChangeQuantityButton = styled.button`
   transition: color 0.2s linear;
 
   &:hover {
-    color: var(--clr-red-1);
+    color: var(--clr-orange-1);
   }
 `;
 

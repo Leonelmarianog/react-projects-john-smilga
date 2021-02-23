@@ -12,7 +12,7 @@ const Container = styled.a`
 `;
 
 const ItemQuantity = styled.div`
-  background-color: var(--clr-red-3);
+  background-color: var(--clr-red-1);
   width: 30px;
   height: 30px;
   border-radius: 50%;

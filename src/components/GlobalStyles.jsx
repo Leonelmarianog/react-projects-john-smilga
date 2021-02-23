@@ -5,11 +5,14 @@ const GlobalStyles = createGlobalStyle`
   :root {
     --font-size-base: 1rem;
     --clr-black-1: #000000;
-    --clr-black-2: #1b1b1b;
-    --clr-red-1: #ff0062;
-    --clr-red-2: #ff3e88;
-    --clr-red-3: #ff85b4;
+    --clr-black-2: #272727;
+    --clr-red-1: #ff0000;
+    --clr-orange-1: #ff8800;
+    --clr-orange-2: #fdb461;
+    --clr-orange-3: #ffd6a7;
     --clr-white-1: #ffffff;
+    --clr-transparent-1: #ffffff25;
+    --clr-transparent-2: #00000025;
     --height-header: 64px;
   }
 

@@ -6,6 +6,11 @@ const Container = styled.article`
   display: flex;
   flex-direction: column;
   padding: 2em 0.5em;
+  font-size: calc(var(--font-size-base) * 0.75);
+
+  @media screen and (min-width: 420px) {
+    font-size: inherit;
+  }
 `;
 
 const Heading = styled.h1`
