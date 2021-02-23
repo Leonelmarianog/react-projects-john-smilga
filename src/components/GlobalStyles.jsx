@@ -28,6 +28,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Noto Sans', 'sans-serif';
     color: var(--clr-white-1);
     background: var(--clr-black-2);
+    font-size: var(--font-size-base);
   }
 `;
 
