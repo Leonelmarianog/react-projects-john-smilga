@@ -5,6 +5,9 @@ import items from '../data';
 
 const Container = styled.ul`
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   & > li {
     margin-bottom: 4em;

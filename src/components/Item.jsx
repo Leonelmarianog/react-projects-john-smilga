@@ -4,7 +4,7 @@ import ItemCounter from './ItemCounter';
 
 const Container = styled.article`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, min-content);
   grid-template-rows: repeat(2, auto);
   font-size: calc(var(--font-size-base) * 0.75);
   white-space: nowrap;
@@ -15,7 +15,10 @@ const Image = styled.img`
   width: 150px;
   grid-column: 1/2;
   grid-row: 1/2;
-  margin: 0 auto;
+
+  @media screen and (min-width: 400px) {
+    width: 300px;
+  }
 `;
 
 const ItemInfo = styled.section`

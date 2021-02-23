@@ -5,7 +5,7 @@ import ItemList from './ItemList';
 const Container = styled.article`
   display: flex;
   flex-direction: column;
-  padding: 2em;
+  padding: 2em 0.5em;
 `;
 
 const Heading = styled.h1`
