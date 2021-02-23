@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Bag from './Bag';
+import BagCounter from './BagCounter';
 
 const Container = styled.header`
   background-color: var(--clr-red-1);
@@ -20,16 +20,12 @@ const Brand = styled.a`
   &:hover {
     opacity: 0.5;
   }
-
-  @media screen and (min-width: 576px) {
-    font-size: calc(var(--font-size-base) * 1.5);
-  }
 `;
 
 const Header = () => (
   <Container>
     <Brand href='/'>YourBag.com</Brand>
-    <Bag />
+    <BagCounter />
   </Container>
 );
 
