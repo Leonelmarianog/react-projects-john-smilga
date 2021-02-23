@@ -138,17 +138,17 @@ const Submenu = () => {
             <Tabs currentTab={currentTab}>
               <TransitionGroup component={null}>
                 {currentTab === 'Productos' && (
-                  <CSSTransition key={'products'} timeout={200} classNames={'tab-'}>
+                  <CSSTransition key={'products'} timeout={transition.value} classNames={'tab-'}>
                     <Products products={productsTab} />
                   </CSSTransition>
                 )}
                 {currentTab === 'Desarrolladores' && (
-                  <CSSTransition key={'developers'} timeout={200} classNames={'tab-'}>
+                  <CSSTransition key={'developers'} timeout={transition.value} classNames={'tab-'}>
                     <Developers information={developersTab} />
                   </CSSTransition>
                 )}
                 {currentTab === 'Empresa' && (
-                  <CSSTransition key={'company'} timeout={200} classNames={'tab-'}>
+                  <CSSTransition key={'company'} timeout={transition.value} classNames={'tab-'}>
                     <Company information={companyTab} />
                   </CSSTransition>
                 )}
