@@ -20,7 +20,7 @@ const Heading = styled.h1`
   margin: 0 auto 2em auto;
 `;
 
-const ClearCartButton = styled(ColourButton)`
+const ClearBagButton = styled(ColourButton)`
   border-color: var(--clr-red-1);
   margin: 0 auto;
 
@@ -38,7 +38,7 @@ const Bag = () => (
     <Heading>Your Bag</Heading>
     <ItemList />
     <TotalPriceCounter />
-    <ClearCartButton>Clear Cart</ClearCartButton>
+    <ClearBagButton>Clear Bag</ClearBagButton>
   </Container>
 );
 
