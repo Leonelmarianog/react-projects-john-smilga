@@ -8,7 +8,7 @@ const bagReducer = (state, action) => {
       return { ...state, data: payload, loading: false, error: { status: false, message: null } };
     case 'ERROR':
       return { ...state, data: null, loading: false, error: { status: true, message: payload } };
-    case 'CLEAR_CART':
+    case 'CLEAR_BAG':
       return { ...state, data: [] };
     default:
       return state;

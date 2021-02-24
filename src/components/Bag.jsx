@@ -42,7 +42,7 @@ const Bag = () => {
       <Heading>Your Bag</Heading>
       <ItemList />
       <TotalPriceCounter />
-      <ClearBagButton onClick={() => dispatch({ type: 'CLEAR_CART' })}>Clear Bag</ClearBagButton>
+      <ClearBagButton onClick={() => dispatch({ type: 'CLEAR_BAG' })}>Clear Bag</ClearBagButton>
     </Container>
   );
 };
