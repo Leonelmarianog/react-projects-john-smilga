@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import { Button } from './common';
+import { useGlobalContext } from '../hooks';
 
 const Container = styled.article`
   display: flex;
@@ -31,16 +32,24 @@ const ChangeQuantityButton = styled(Button)`
   }
 `;
 
-const ItemCounter = ({ amount }) => (
-  <Container>
-    <ChangeQuantityButton>
-      <FaPlus />
-    </ChangeQuantityButton>
-    <Quantity>{amount}</Quantity>
-    <ChangeQuantityButton>
-      <FaMinus />
-    </ChangeQuantityButton>
-  </Container>
-);
+const ItemCounter = ({ id, amount }) => {
+  const { dispatch } = useGlobalContext();
+
+  return (
+    <Container>
+      <ChangeQuantityButton
+        onClick={() => dispatch({ type: 'TOGGLE_QUANTITY', payload: { id, action: 'INCREASE' } })}
+      >
+        <FaPlus />
+      </ChangeQuantityButton>
+      <Quantity>{amount}</Quantity>
+      <ChangeQuantityButton
+        onClick={() => dispatch({ type: 'TOGGLE_QUANTITY', payload: { id, action: 'DECREASE' } })}
+      >
+        <FaMinus />
+      </ChangeQuantityButton>
+    </Container>
+  );
+};
 
 export default ItemCounter;

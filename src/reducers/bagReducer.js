@@ -13,8 +13,7 @@ const bagReducer = (state, action) => {
     case 'CLEAR_BAG':
       return { ...state, data: [], amount: 0, total: 0 };
     case 'REMOVE_ITEM':
-      const newData = state.data.filter((item) => item.id !== payload);
-      return { ...state, data: newData };
+      return { ...state, data: state.data.filter((item) => item.id !== payload) };
     case 'GET_TOTALS':
       console.log('getting totals...');
       const { amount, total } = state.data
@@ -30,6 +29,30 @@ const bagReducer = (state, action) => {
         : { amount: 0, total: 0 };
       console.log('got totals');
       return { ...state, amount, total: parseFloat(total.toFixed(2)) };
+    case 'TOGGLE_QUANTITY':
+      let newData = [...state.data];
+
+      if (payload.action === 'INCREASE') {
+        newData = newData.map((item) => {
+          if (item.id === payload.id) {
+            return { ...item, amount: item.amount + 1 };
+          }
+
+          return item;
+        });
+      }
+
+      if (payload.action === 'DECREASE') {
+        newData = newData.map((item) => {
+          if (item.id === payload.id) {
+            return { ...item, amount: item.amount - 1 };
+          }
+
+          return item;
+        });
+      }
+
+      return { ...state, data: newData };
     default:
       return state;
   }
