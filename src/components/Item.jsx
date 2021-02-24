@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ItemCounter from './ItemCounter';
+import { ColourButton } from './common';
 
 const Container = styled.article`
   background-color: var(--clr-transparent-1);
@@ -58,21 +59,8 @@ const Price = styled.h2`
   letter-spacing: 1px;
 `;
 
-const RemoveButton = styled.button`
-  background-color: transparent;
-  cursor: pointer;
-  color: var(--clr-white-1);
-  border: 1px solid var(--clr-orange-1);
-  border-radius: 5px;
-  padding: 0.5em 1.5em;
-  transition: color 0.2s linear, background-color 0.2s linear;
+const RemoveButton = styled(ColourButton)`
   font-size: calc(var(--font-size-base) * 0.85);
-  font-weight: bold;
-
-  &:hover {
-    color: var(--clr-black-1);
-    background-color: var(--clr-orange-1);
-  }
 
   @media screen and (min-width: 420px) {
     font-size: var(--font-size-base);
