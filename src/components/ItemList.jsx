@@ -14,6 +14,7 @@ const Container = styled.ul`
 
     @media screen and (min-width: 768px) {
       width: 70%;
+      max-width: 1200px;
       margin-bottom: 2em;
     }
   }
