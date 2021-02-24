@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ItemList from './ItemList';
 import TotalPriceCounter from './TotalPriceCounter';
+import { ColourButton } from './common';
 
 const Container = styled.article`
   display: flex;
@@ -19,11 +20,25 @@ const Heading = styled.h1`
   margin: 0 auto 2em auto;
 `;
 
+const ClearCartButton = styled(ColourButton)`
+  border-color: var(--clr-red-1);
+  margin: 0 auto;
+
+  &:hover {
+    background-color: var(--clr-red-1);
+  }
+
+  @media screen and (min-width: 420px) {
+    font-size: var(--font-size-base);
+  }
+`;
+
 const Bag = () => (
   <Container>
     <Heading>Your Bag</Heading>
     <ItemList />
     <TotalPriceCounter />
+    <ClearCartButton>Clear Cart</ClearCartButton>
   </Container>
 );
 
