@@ -9,6 +9,10 @@ const Container = styled.article`
   align-items: center;
   grid-column: 2/-1;
   grid-row: 1/2;
+
+  @media screen and (min-width: 768px) {
+    margin-left: auto;
+  }
 `;
 
 const Quantity = styled.span`

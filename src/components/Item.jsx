@@ -16,6 +16,10 @@ const Container = styled.article`
   @media screen and (min-width: 420px) {
     font-size: calc(var(--font-size-base) * 0.75);
   }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 `;
 
 const Image = styled.img`
@@ -27,12 +31,21 @@ const Image = styled.img`
   @media screen and (min-width: 420px) {
     width: 250px;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 150px;
+    margin-right: 2em;
+  }
 `;
 
 const ItemInfo = styled.section`
   text-align: center;
   grid-column: 1/-1;
   grid-row: 2/-1;
+
+  @media screen and (min-width: 768px) {
+    text-align: unset;
+  }
 `;
 
 const Name = styled.h1`

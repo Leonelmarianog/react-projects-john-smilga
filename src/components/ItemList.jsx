@@ -11,6 +11,11 @@ const Container = styled.ul`
 
   & > li {
     margin-bottom: 4em;
+
+    @media screen and (min-width: 768px) {
+      width: 70%;
+      margin-bottom: 2em;
+    }
   }
 
   & > li:last-child {
