@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ItemList from './ItemList';
 import TotalPriceCounter from './TotalPriceCounter';
 import { ColourButton } from './common';
+import { useGlobalContext } from '../hooks';
 
 const Container = styled.article`
   display: flex;
@@ -33,13 +34,17 @@ const ClearBagButton = styled(ColourButton)`
   }
 `;
 
-const Bag = () => (
-  <Container>
-    <Heading>Your Bag</Heading>
-    <ItemList />
-    <TotalPriceCounter />
-    <ClearBagButton>Clear Bag</ClearBagButton>
-  </Container>
-);
+const Bag = () => {
+  const { dispatch } = useGlobalContext();
+
+  return (
+    <Container>
+      <Heading>Your Bag</Heading>
+      <ItemList />
+      <TotalPriceCounter />
+      <ClearBagButton onClick={() => dispatch({ type: 'CLEAR_CART' })}>Clear Bag</ClearBagButton>
+    </Container>
+  );
+};
 
 export default Bag;

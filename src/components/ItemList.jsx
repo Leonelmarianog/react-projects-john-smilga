@@ -34,11 +34,13 @@ const ItemList = () => {
       {loading && <h1>Loading...</h1>}
       {error.status && <h1>{error.message}</h1>}
       {items &&
+        items.length > 0 &&
         items.map((item) => (
           <li key={item.id}>
             <Item {...item} />
           </li>
         ))}
+      {items && items.length === 0 && <h1>No items</h1>}
     </Container>
   );
 };
