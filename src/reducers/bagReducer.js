@@ -21,7 +21,7 @@ const bagReducer = (state, action) => {
             (acc, item) => {
               const result = { ...acc };
               result.amount += +item.amount;
-              result.total += +item.price;
+              result.total += +item.price * item.amount;
               return result;
             },
             { amount: 0, total: 0 }
@@ -43,13 +43,15 @@ const bagReducer = (state, action) => {
       }
 
       if (payload.action === 'DECREASE') {
-        newData = newData.map((item) => {
-          if (item.id === payload.id) {
-            return { ...item, amount: item.amount - 1 };
-          }
+        newData = newData
+          .map((item) => {
+            if (item.id === payload.id) {
+              return { ...item, amount: item.amount - 1 };
+            }
 
-          return item;
-        });
+            return item;
+          })
+          .filter((item) => item.amount > 0);
       }
 
       return { ...state, data: newData };
