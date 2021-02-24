@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ItemCounter from './ItemCounter';
 import { ColourButton } from './common';
+import { useGlobalContext } from '../hooks';
 
 const Container = styled.article`
   background-color: var(--clr-transparent-1);
@@ -67,16 +68,22 @@ const RemoveButton = styled(ColourButton)`
   }
 `;
 
-const Item = ({ id, title, price, img, amount }) => (
-  <Container>
-    <Image src={img} />
-    <ItemInfo>
-      <Name>{title}</Name>
-      <Price>${price}</Price>
-      <RemoveButton>Remove</RemoveButton>
-    </ItemInfo>
-    <ItemCounter amount={amount} />
-  </Container>
-);
+const Item = ({ id, title, price, img, amount }) => {
+  const { dispatch } = useGlobalContext();
+
+  return (
+    <Container>
+      <Image src={img} />
+      <ItemInfo>
+        <Name>{title}</Name>
+        <Price>${price}</Price>
+        <RemoveButton onClick={() => dispatch({ type: 'REMOVE_ITEM', payload: id })}>
+          Remove
+        </RemoveButton>
+      </ItemInfo>
+      <ItemCounter amount={amount} />
+    </Container>
+  );
+};
 
 export default Item;

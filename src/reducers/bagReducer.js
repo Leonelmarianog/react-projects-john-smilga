@@ -10,6 +10,9 @@ const bagReducer = (state, action) => {
       return { ...state, data: null, loading: false, error: { status: true, message: payload } };
     case 'CLEAR_BAG':
       return { ...state, data: [] };
+    case 'REMOVE_ITEM':
+      const newData = state.data.filter((item) => item.id !== payload);
+      return { ...state, data: newData };
     default:
       return state;
   }
