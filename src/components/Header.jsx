@@ -20,6 +20,10 @@ const Brand = styled.a`
   &:hover {
     opacity: 0.5;
   }
+
+  @media screen and (min-width: 768px) {
+    font-size: calc(var(--font-size-base) * 1.5);
+  }
 `;
 
 const Header = () => (
