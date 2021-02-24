@@ -25,15 +25,18 @@ const Container = styled.ul`
 `;
 
 const ItemList = () => {
-  const { items } = useGlobalContext();
+  const { data: items, loading, error } = useGlobalContext();
 
   return (
     <Container>
-      {items.map((item) => (
-        <li key={item.id}>
-          <Item {...item} />
-        </li>
-      ))}
+      {loading && <h1>Loading...</h1>}
+      {error.status && <h1>{error.message}</h1>}
+      {items &&
+        items.map((item) => (
+          <li key={item.id}>
+            <Item {...item} />
+          </li>
+        ))}
     </Container>
   );
 };
