@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaShoppingBag } from 'react-icons/fa';
+import { useGlobalContext } from '../hooks';
 
 const Container = styled.a`
   position: relative;
@@ -30,11 +31,17 @@ const BagIcon = styled(FaShoppingBag)`
   font-size: calc(var(--font-size-base) * 2);
 `;
 
-const BagCounter = () => (
-  <Container href='/'>
-    <ItemQuantity>1</ItemQuantity>
-    <BagIcon />
-  </Container>
-);
+const BagCounter = () => {
+  const {
+    state: { amount },
+  } = useGlobalContext();
+
+  return (
+    <Container href='/'>
+      <ItemQuantity>{amount}</ItemQuantity>
+      <BagIcon />
+    </Container>
+  );
+};
 
 export default BagCounter;

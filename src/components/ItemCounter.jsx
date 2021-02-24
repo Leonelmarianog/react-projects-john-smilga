@@ -31,12 +31,12 @@ const ChangeQuantityButton = styled(Button)`
   }
 `;
 
-const ItemCounter = () => (
+const ItemCounter = ({ amount }) => (
   <Container>
     <ChangeQuantityButton>
       <FaPlus />
     </ChangeQuantityButton>
-    <Quantity>1</Quantity>
+    <Quantity>{amount}</Quantity>
     <ChangeQuantityButton>
       <FaMinus />
     </ChangeQuantityButton>

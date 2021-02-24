@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useGlobalContext } from '../hooks';
 
 const Container = styled.article`
   width: 80%;
@@ -28,14 +29,20 @@ const Total = styled.p`
   letter-spacing: 1px;
 `;
 
-const TotalPriceCounter = () => (
-  <Container>
-    <Overline />
-    <Counter>
-      <p>Total</p>
-      <Total>$459.99</Total>
-    </Counter>
-  </Container>
-);
+const TotalPriceCounter = () => {
+  const {
+    state: { total },
+  } = useGlobalContext();
+
+  return (
+    <Container>
+      <Overline />
+      <Counter>
+        <p>Total</p>
+        <Total>${total}</Total>
+      </Counter>
+    </Container>
+  );
+};
 
 export default TotalPriceCounter;

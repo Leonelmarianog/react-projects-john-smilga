@@ -75,7 +75,7 @@ const Item = ({ id, title, price, img, amount }) => (
       <Price>${price}</Price>
       <RemoveButton>Remove</RemoveButton>
     </ItemInfo>
-    <ItemCounter />
+    <ItemCounter amount={amount} />
   </Container>
 );
 
