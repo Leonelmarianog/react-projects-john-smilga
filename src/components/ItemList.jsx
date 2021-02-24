@@ -25,7 +25,9 @@ const Container = styled.ul`
 `;
 
 const ItemList = () => {
-  const { data: items, loading, error } = useGlobalContext();
+  const {
+    state: { loading, error, data: items },
+  } = useGlobalContext();
 
   return (
     <Container>
