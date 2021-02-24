@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Item from './Item';
-import items from '../data';
+import useGlobalContext from '../hooks/useGlobalContext';
 
 const Container = styled.ul`
   list-style: none;
@@ -24,14 +24,18 @@ const Container = styled.ul`
   }
 `;
 
-const ItemList = () => (
-  <Container>
-    {items.map((item) => (
-      <li key={item.id}>
-        <Item {...item} />
-      </li>
-    ))}
-  </Container>
-);
+const ItemList = () => {
+  const { items } = useGlobalContext();
+
+  return (
+    <Container>
+      {items.map((item) => (
+        <li key={item.id}>
+          <Item {...item} />
+        </li>
+      ))}
+    </Container>
+  );
+};
 
 export default ItemList;
