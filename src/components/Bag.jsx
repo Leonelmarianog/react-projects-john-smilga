@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ItemList from './ItemList';
+import TotalPriceCounter from './TotalPriceCounter';
 
 const Container = styled.article`
   display: flex;
@@ -22,6 +23,7 @@ const Bag = () => (
   <Container>
     <Heading>Your Bag</Heading>
     <ItemList />
+    <TotalPriceCounter />
   </Container>
 );
 
