@@ -1,4 +1,4 @@
 import fetchReducer from './fetchReducer';
-import cartReducer from './cartReducer';
+import bagReducer from './bagReducer';
 
-export { fetchReducer, cartReducer };
+export { fetchReducer, bagReducer };
