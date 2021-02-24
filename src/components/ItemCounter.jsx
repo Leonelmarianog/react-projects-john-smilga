@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import { Button } from './common';
 
 const Container = styled.article`
   display: flex;
@@ -20,10 +21,7 @@ const Quantity = styled.span`
   margin: 0.25em;
 `;
 
-const ChangeQuantityButton = styled.button`
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+const ChangeQuantityButton = styled(Button)`
   font-size: calc(var(--font-size-base) * 2);
   color: var(--clr-white-1);
   transition: color 0.2s linear;
