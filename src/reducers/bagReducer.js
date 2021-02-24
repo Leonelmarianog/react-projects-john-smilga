@@ -3,16 +3,33 @@ const bagReducer = (state, action) => {
 
   switch (type) {
     case 'LOAD':
-      return { ...state, data: null, loading: true, error: { status: false, message: null } };
+      console.log('loading...');
+      return { ...state, loading: true, error: { status: false, message: null }, data: null };
     case 'SUCCESS':
-      return { ...state, data: payload, loading: false, error: { status: false, message: null } };
+      console.log('success!');
+      return { ...state, loading: false, error: { status: false, message: null }, data: payload };
     case 'ERROR':
-      return { ...state, data: null, loading: false, error: { status: true, message: payload } };
+      return { ...state, loading: false, error: { status: true, message: payload }, data: null };
     case 'CLEAR_BAG':
-      return { ...state, data: [] };
+      return { ...state, data: [], amount: 0, total: 0 };
     case 'REMOVE_ITEM':
       const newData = state.data.filter((item) => item.id !== payload);
       return { ...state, data: newData };
+    case 'GET_TOTALS':
+      console.log('getting totals...');
+      const { amount, total } = state.data
+        ? state.data.reduce(
+            (acc, item) => {
+              const result = { ...acc };
+              result.amount += +item.amount;
+              result.total += +item.price;
+              return result;
+            },
+            { amount: 0, total: 0 }
+          )
+        : { amount: 0, total: 0 };
+      console.log('got totals');
+      return { ...state, amount, total: parseFloat(total.toFixed(2)) };
     default:
       return state;
   }

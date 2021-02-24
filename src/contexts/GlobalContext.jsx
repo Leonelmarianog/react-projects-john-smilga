@@ -37,6 +37,13 @@ const AppProvider = ({ children }) => {
     getData(getResource, URL);
   }, []);
 
+  useEffect(() => {
+    if (state.data) {
+      console.log('data', state.data);
+      dispatch({ type: 'GET_TOTALS' });
+    }
+  }, [state.data]);
+
   return <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider>;
 };
 
