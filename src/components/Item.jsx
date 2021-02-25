@@ -73,7 +73,7 @@ const Item = ({ id, title, price, img, amount }) => {
 
   return (
     <Container>
-      <Image src={img} alt='item photo' />
+      <Image src={img} alt={title} />
       <ItemInfo>
         <Name>{title}</Name>
         <Price>${price}</Price>

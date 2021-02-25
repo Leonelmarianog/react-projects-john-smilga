@@ -26,8 +26,8 @@ describe('Item', () => {
     expect(
       screen.getByRole('heading', { level: 2, name: `$${mockItemData.price}` })
     ).toBeInTheDocument();
-    expect(screen.getByRole('img', { name: 'item photo' })).toBeInTheDocument();
-    expect(screen.getByRole('img', { name: 'item photo' }).src).toContain('.png');
+    expect(screen.getByRole('img', { name: mockItemData.title })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: mockItemData.title }).src).toContain('.png');
     expect(screen.getByText('1')).toBeInTheDocument();
   });
 
