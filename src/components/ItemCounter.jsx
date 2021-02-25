@@ -38,12 +38,14 @@ const ItemCounter = ({ id, amount }) => {
   return (
     <Container>
       <ChangeQuantityButton
+        aria-label='increase item amount'
         onClick={() => dispatch({ type: 'TOGGLE_QUANTITY', payload: { id, action: 'INCREASE' } })}
       >
         <FaPlus />
       </ChangeQuantityButton>
       <Quantity>{amount}</Quantity>
       <ChangeQuantityButton
+        aria-label='decrease item amount'
         onClick={() => dispatch({ type: 'TOGGLE_QUANTITY', payload: { id, action: 'DECREASE' } })}
       >
         <FaMinus />
