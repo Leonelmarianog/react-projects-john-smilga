@@ -35,7 +35,7 @@ const TotalPriceCounter = () => {
   } = useGlobalContext();
 
   return (
-    <Container>
+    <Container id='price-total'>
       <Overline />
       <Counter>
         <p>Total</p>
