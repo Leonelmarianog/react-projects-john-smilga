@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { css } from 'styled-components';
 
-const List = styled.ul`
+const List = css`
   list-style: none;
   margin: 0;
   padding: 0;

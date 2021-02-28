@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { css } from 'styled-components';
 
-const Button = styled.button`
+const Button = css`
   border: none;
   background-color: transparent;
   cursor: pointer;
