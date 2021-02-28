@@ -78,9 +78,9 @@ const Navbar = () => (
   <Container aria-label='navigation'>
     <Header>
       <Brand to='/'>Cocktails</Brand>
-      <HamburguerButton aria-label='hamburger button'>
+      <HamburgerButton aria-label='hamburger button'>
         <FaBars />
-      </HamburguerButton>
+      </HamburgerButton>
     </Header>
 
     <NavMenu aria-label='navigation menu'>
