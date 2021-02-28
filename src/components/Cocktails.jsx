@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { List } from './common';
+import { List } from '../styles';
 import Cocktail from './Cocktail';
 
 const Container = styled.ul`

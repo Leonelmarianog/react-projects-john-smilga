@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
-import { Button, List, BaseLink } from '../common';
+import { BaseLink } from '../common';
+import { Button, List } from '../../styles';
 
 const Container = styled.nav`
   height: 100%;
