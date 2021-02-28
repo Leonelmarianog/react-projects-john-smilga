@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { GlobalStyles } from '../styles';
 import { MainLayout } from './layouts';
-import { About } from '../pages';
+import { Home, About } from '../pages';
 
 const App = () => (
   <React.Fragment>
@@ -11,7 +11,7 @@ const App = () => (
       <MainLayout>
         <Switch>
           <Route exact path='/'>
-            <h1>Hello World</h1>
+            <Home />
           </Route>
           <Route path='/about'>
             <About />
