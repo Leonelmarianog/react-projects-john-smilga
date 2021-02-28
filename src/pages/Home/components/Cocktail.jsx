@@ -8,10 +8,12 @@ const Container = styled(BaseLink)`
 
   width: 200px;
   color: var(--clr-black-1);
-  transition: transform 0.2s cubic-bezier(0, 0.55, 0.45, 1);
+  transition: transform 0.2s cubic-bezier(0, 0.55, 0.45, 1),
+    box-shadow 0.2s cubic-bezier(0, 0.55, 0.45, 1);
 
   &:hover {
     transform: scale(1.2);
+    box-shadow: 0 0 1em 0.25em #00000050;
   }
 
   @media screen and (min-width: 420px) {
