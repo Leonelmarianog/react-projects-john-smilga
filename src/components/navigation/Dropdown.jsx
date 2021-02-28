@@ -33,7 +33,7 @@ const Link = styled(BaseLink)`
 `;
 
 const Dropdown = () => (
-  <Container>
+  <Container aria-label='hamburger menu'>
     <Links>
       <li>
         <Link to='/'>Home</Link>

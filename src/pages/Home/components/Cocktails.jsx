@@ -37,7 +37,7 @@ const Container = styled.ul`
 `;
 
 const Cocktails = () => (
-  <Container>
+  <Container aria-label='cocktails'>
     <li>
       <Cocktail />
     </li>

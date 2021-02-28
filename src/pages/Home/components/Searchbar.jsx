@@ -45,7 +45,7 @@ const Input = styled.input`
 `;
 
 const Searchbar = () => (
-  <Container>
+  <Container aria-label='search bar'>
     <Label htmlFor='search-term'>Search your favorite cocktail</Label>
     <Input type='text' id='search-term' />
   </Container>

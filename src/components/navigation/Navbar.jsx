@@ -37,7 +37,7 @@ const Brand = styled(BaseLink)`
   }
 `;
 
-const HamburguerButton = styled.button`
+const HamburgerButton = styled.button`
   ${Button}
 
   font-size: calc(var(--font-size-base) * 1.25);
@@ -52,7 +52,7 @@ const HamburguerButton = styled.button`
   }
 `;
 
-const Menu = styled.ul`
+const NavMenu = styled.ul`
   ${List}
 
   display: none;
@@ -75,22 +75,22 @@ const Link = styled(BaseLink)`
 `;
 
 const Navbar = () => (
-  <Container>
+  <Container aria-label='navigation'>
     <Header>
       <Brand to='/'>Cocktails</Brand>
-      <HamburguerButton>
+      <HamburguerButton aria-label='hamburger button'>
         <FaBars />
       </HamburguerButton>
     </Header>
 
-    <Menu>
+    <NavMenu aria-label='navigation menu'>
       <li>
         <Link to='/'>Home</Link>
       </li>
       <li>
         <Link to='/about'>About</Link>
       </li>
-    </Menu>
+    </NavMenu>
   </Container>
 );
 

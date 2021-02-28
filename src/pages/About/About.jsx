@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
+const Container = styled.main`
   margin-top: 2em;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ const Text = styled.p`
 `;
 
 const About = () => (
-  <Container>
+  <Container aria-label='about page'>
     <Heading>About Us</Heading>
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur magni enim laboriosam
