@@ -36,7 +36,9 @@ const Brand = styled(BaseLink)`
   }
 `;
 
-const HamburguerButton = styled(Button)`
+const HamburguerButton = styled.button`
+  ${Button}
+
   font-size: calc(var(--font-size-base) * 1.25);
   display: flex;
   align-items: center;
@@ -49,7 +51,9 @@ const HamburguerButton = styled(Button)`
   }
 `;
 
-const Menu = styled(List)`
+const Menu = styled.ul`
+  ${List}
+
   display: none;
   align-items: center;
 

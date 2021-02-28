@@ -11,6 +11,10 @@ const Container = styled.nav`
   box-shadow: 0 1em 0.25em 0 var(--clr-transparent-1);
 `;
 
+const Links = styled.ul`
+  ${List};
+`;
+
 const Link = styled(BaseLink)`
   color: var(--clr-black-1);
   padding: 1em 0 1em 1em;
@@ -29,14 +33,14 @@ const Link = styled(BaseLink)`
 
 const Dropdown = () => (
   <Container>
-    <List>
+    <Links>
       <li>
         <Link to='/'>Home</Link>
       </li>
       <li>
         <Link to='/about'>About</Link>
       </li>
-    </List>
+    </Links>
   </Container>
 );
 
