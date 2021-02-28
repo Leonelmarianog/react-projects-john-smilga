@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Searchbar from '../components/Searchbar';
-import Cocktails from '../components/Cocktails';
+import { Searchbar, Cocktails } from './components';
 
 const Container = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BaseLink } from './common';
-import { Card } from '../styles';
+import { BaseLink } from '../../../components/common';
+import { Card } from '../../../styles';
 
 const Container = styled(BaseLink)`
   ${Card}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { GlobalStyles } from '../styles';
-import { MainLayout } from './layouts';
+import { MainLayout } from '../layouts';
 import { Home, About } from '../pages';
 
 const App = () => (

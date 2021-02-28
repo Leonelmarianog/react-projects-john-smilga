@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Card } from '../styles';
+import { Card } from '../../../styles';
 
 const Container = styled.form`
   ${Card}

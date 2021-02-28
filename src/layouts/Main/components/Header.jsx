@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Navbar, Dropdown } from './navigation';
+import { Navbar, Dropdown } from '../../../components/navigation';
 
 const Container = styled.header`
   height: 64px;
