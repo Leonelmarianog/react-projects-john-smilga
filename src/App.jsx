@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { GlobalStyles } from '../styles';
-import { MainLayout } from '../layouts';
-import { Home, About } from '../pages';
+import { GlobalStyles } from './styles';
+import { MainLayout } from './layouts';
+import { Home, Cocktail, About } from './pages';
 
 const App = () => (
   <React.Fragment>
@@ -12,6 +12,9 @@ const App = () => (
         <Switch>
           <Route exact path='/'>
             <Home />
+          </Route>
+          <Route path='/cocktail/:id'>
+            <Cocktail />
           </Route>
           <Route path='/about'>
             <About />

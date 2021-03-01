@@ -48,7 +48,7 @@ const Name = styled.p`
 `;
 
 const Cocktail = () => (
-  <Container to='/'>
+  <Container to='/cocktail/1'>
     <Image
       src='https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg'
       alt='mojito'
