@@ -12,7 +12,7 @@ const Container = styled(BaseLink)`
     box-shadow 0.2s cubic-bezier(0, 0.55, 0.45, 1);
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.05);
     box-shadow: 0 0 1em 0.25em #00000050;
   }
 
@@ -48,10 +48,10 @@ const Name = styled.p`
 `;
 
 const Cocktail = () => (
-  <Container to='/cocktail/1'>
+  <Container to="/cocktail/1">
     <Image
-      src='https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg'
-      alt='mojito'
+      src="https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg"
+      alt="mojito"
     />
     <Name>Mojito</Name>
   </Container>
