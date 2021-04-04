@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { BiDrink } from 'react-icons/bi';
 import { GiDrinkMe } from 'react-icons/gi';
 import { BsPencilSquare } from 'react-icons/bs';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { cocktailsAPI } from '../../api/api';
+import { fromApiToEntity } from '../../mappers/mappers';
 
 const Container = styled.main`
-  border: 1px solid red;
   padding: 4em 0em;
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-size: calc(var(--font-size-base) * 0.5);
 
   & > section {
@@ -102,57 +105,99 @@ const List = styled.ul`
   }
 `;
 
-const Cocktail = () => (
-  <Container aria-label='cocktail info page'>
-    <Image
-      src='https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg'
-      alt='mojito'
-    />
-    <Section>
-      <Heading>
-        General Info <BiDrink />
-      </Heading>
-      <List bullets={false}>
-        <Text as='li'>
-          <Label>Name: </Label>Mojito
-        </Text>
-        <Text as='li'>
-          <Label>Type: </Label>Cocktail
-        </Text>
-        <Text as='li'>
-          <Label>Alcoholic?: </Label>Yes
-        </Text>
-        <Text as='li'>
-          <Label>Glass: </Label>Highball Glass
-        </Text>
-      </List>
-    </Section>
+const Cocktail = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const { id } = useParams();
 
-    <Section>
-      <Heading>
-        Ingredients <BsPencilSquare />
-      </Heading>
-      <List bullets={true}>
-        <Text as='li'>Light Rum</Text>
-        <Text as='li'>Lime</Text>
-        <Text as='li'>Sugar</Text>
-        <Text as='li'>Mint</Text>
-        <Text as='li'>Soda Water</Text>
-      </List>
-    </Section>
+  useEffect(() => {
+    const getData = async (id) => {
+      try {
+        setLoading(true);
+        setData(null);
+        setError(null);
 
-    <Section>
-      <Heading>
-        Preparation <GiDrinkMe />
-      </Heading>
-      <List as='ol' bullets={true}>
-        <Text as='li'>Muddle mint leaves with sugar and lime juice.</Text>
-        <Text as='li'>Add a splash of soda water and fill the glass with cracked ice.</Text>
-        <Text as='li'>Pour the rum and top with soda water.</Text>
-        <Text as='li'>Garnish and serve with straw.</Text>
-      </List>
-    </Section>
-  </Container>
-);
+        const { drinks: cocktailData } = await cocktailsAPI.getById(id);
+
+        if (!cocktailData) {
+          throw new Error('No results');
+        }
+
+        const cocktail = fromApiToEntity(cocktailData[0]);
+
+        setData(cocktail);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+        setData(null);
+      }
+    };
+
+    getData(id);
+  }, [id]);
+
+  return (
+    <Container aria-label="cocktail info page">
+      {data && (
+        <React.Fragment>
+          <Image src={data.image} alt={data.name} />
+          <Section>
+            <Heading>
+              General Info <BiDrink />
+            </Heading>
+            <List bullets={false}>
+              <Text as="li">
+                <Label>Name: </Label>
+                {data.name}
+              </Text>
+              <Text as="li">
+                <Label>Type: </Label>
+                {data.category}
+              </Text>
+              <Text as="li">
+                <Label>Alcoholic?: </Label>
+                {data.alcoholic}
+              </Text>
+              <Text as="li">
+                <Label>Glass: </Label>
+                {data.glass}
+              </Text>
+            </List>
+          </Section>
+
+          <Section>
+            <Heading>
+              Ingredients <BsPencilSquare />
+            </Heading>
+            <List bullets={true}>
+              {data.ingredients.map((ingredient, index) => (
+                <Text key={index + 1} as="li">
+                  {ingredient}
+                </Text>
+              ))}
+            </List>
+          </Section>
+
+          <Section>
+            <Heading>
+              Preparation <GiDrinkMe />
+            </Heading>
+            <List as="ol" bullets={true}>
+              {data.instructions.map((instruction, index) => (
+                <Text key={index + 1} as="li">
+                  {instruction}
+                </Text>
+              ))}
+            </List>
+          </Section>
+        </React.Fragment>
+      )}
+      {loading && <h1>Loading...</h1>}
+      {error && <h1>error</h1>}
+    </Container>
+  );
+};
 
 export default Cocktail;

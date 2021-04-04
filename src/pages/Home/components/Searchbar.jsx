@@ -44,10 +44,15 @@ const Input = styled.input`
   }
 `;
 
-const Searchbar = () => (
-  <Container aria-label='search bar'>
-    <Label htmlFor='search-term'>Search your favorite cocktail</Label>
-    <Input type='text' id='search-term' />
+const Searchbar = ({ value, setValueCallback }) => (
+  <Container aria-label="search bar">
+    <Label htmlFor="search-term">Search your favorite cocktail</Label>
+    <Input
+      type="text"
+      id="search-term"
+      value={value}
+      onChange={(event) => setValueCallback(event.target.value)}
+    />
   </Container>
 );
 

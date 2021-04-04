@@ -7,15 +7,26 @@ class Cocktail {
    * @param {String} glass
    * @param {String[]} ingredients
    * @param {String[]} instructions
+   * @param {String} image
    */
-  constructor(id, name, category, alcoholic, glass, ingredients, instructions) {
-    id = this.id;
-    name = this.name;
-    category = this.category;
-    alcoholic = this.alcoholic;
-    glass = this.glass;
-    ingredients = this.ingredients;
-    instructions = this.instructions;
+  constructor({
+    id,
+    name,
+    category,
+    alcoholic,
+    glass,
+    ingredients,
+    instructions,
+    image,
+  }) {
+    this.id = id;
+    this.name = name;
+    this.category = category;
+    this.alcoholic = alcoholic;
+    this.glass = glass;
+    this.ingredients = ingredients;
+    this.instructions = instructions;
+    this.image = image;
   }
 }
 

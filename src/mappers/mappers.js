@@ -35,9 +35,10 @@ import Cocktail from '../entities/Cocktail';
  * @param {String=} data.strIngredient14
  * @param {String=} data.strIngredient15
  * @param {String} data.instructions
+ * @param {String} data.strDrinkThumb
  * @returns {cocktail}
  */
-const fromApiToEntity = ({
+export const fromApiToEntity = ({
   idDrink,
   strDrink,
   strCategory,
@@ -59,6 +60,7 @@ const fromApiToEntity = ({
   strIngredient14,
   strIngredient15,
   strInstructions,
+  strDrinkThumb,
 }) => {
   const ingredients = [
     strIngredient1,
@@ -77,7 +79,11 @@ const fromApiToEntity = ({
     strIngredient14,
     strIngredient15,
   ].filter((ingredient) => ingredient !== null);
-  const instructions = strInstructions.split('.').filter((instruction) => instruction.length !== 0);
+
+  const instructions = strInstructions
+    .split('.')
+    .filter((instruction) => instruction.length !== 0);
+
   const formatedData = {
     id: +idDrink,
     name: strDrink,
@@ -86,9 +92,8 @@ const fromApiToEntity = ({
     glass: strGlass,
     ingredients,
     instructions,
+    image: strDrinkThumb,
   };
 
-  return new Cocktail({ ...formatedData });
+  return new Cocktail(formatedData);
 };
-
-export default fromApiToEntity;

@@ -36,44 +36,13 @@ const Container = styled.ul`
   }
 `;
 
-const Cocktails = () => (
-  <Container aria-label='cocktails'>
-    <li>
-      <Cocktail />
-    </li>
-    <li>
-      <Cocktail />
-    </li>
-    <li>
-      <Cocktail />
-    </li>
-    <li>
-      <Cocktail />
-    </li>
-    <li>
-      <Cocktail />
-    </li>
-    <li>
-      <Cocktail />
-    </li>
-    <li>
-      <Cocktail />
-    </li>
-    <li>
-      <Cocktail />
-    </li>
-    <li>
-      <Cocktail />
-    </li>
-    <li>
-      <Cocktail />
-    </li>
-    <li>
-      <Cocktail />
-    </li>
-    <li>
-      <Cocktail />
-    </li>
+const Cocktails = ({ cocktails }) => (
+  <Container aria-label="cocktails">
+    {cocktails.map((cocktail) => (
+      <li key={cocktail.id}>
+        <Cocktail {...cocktail} />
+      </li>
+    ))}
   </Container>
 );
 

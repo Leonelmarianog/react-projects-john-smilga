@@ -1,11 +1,11 @@
-const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1';
 
 /**
  * @param {String} searchterm
  * @returns {Promise<Object>} API data
  */
-const getResource = async (searchterm) => {
-  const response = await fetch(`${BASE_URL}${searchterm}`);
+const getResource = async (url) => {
+  const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error('Something happened, try again in a few minutes');
@@ -16,4 +16,7 @@ const getResource = async (searchterm) => {
   return data;
 };
 
-export default getResource;
+export const cocktailsAPI = {
+  getByName: (name) => getResource(`${BASE_URL}/search.php?s=${name}`),
+  getById: (id) => getResource(`${BASE_URL}/lookup.php?i=${id}`),
+};
