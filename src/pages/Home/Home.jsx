@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { cocktailsAPI } from '../../api/api';
-import { fromApiToEntity } from '../../mappers/mappers';
+import { useFetchOnChange } from '../../hooks/useFetchOnChange';
 import { Searchbar, Cocktails } from './components';
 
 const Container = styled.main`
@@ -13,41 +12,7 @@ const Container = styled.main`
 
 const Home = () => {
   const [value, setValue] = useState('');
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const timerId = setTimeout(async () => {
-      if (value) {
-        setLoading(true);
-        setData(null);
-        setError(null);
-
-        try {
-          const { drinks: cocktailsData } = await cocktailsAPI.getByName(value);
-
-          if (!cocktailsData) {
-            throw new Error('No results');
-          }
-
-          const cocktails = cocktailsData.map((drinkData) =>
-            fromApiToEntity(drinkData)
-          );
-
-          setData(cocktails);
-        } catch (error) {
-          setError(error.message);
-        }
-        setLoading(false);
-      } else {
-        setData(null);
-        setError(null);
-      }
-    }, 500);
-
-    return () => clearTimeout(timerId);
-  }, [value]);
+  const { data, loading, error } = useFetchOnChange(value, 500);
 
   return (
     <Container aria-label="home page">

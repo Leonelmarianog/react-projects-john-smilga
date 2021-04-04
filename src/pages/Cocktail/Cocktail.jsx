@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { BiDrink } from 'react-icons/bi';
 import { GiDrinkMe } from 'react-icons/gi';
 import { BsPencilSquare } from 'react-icons/bs';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
-import { cocktailsAPI } from '../../api/api';
-import { fromApiToEntity } from '../../mappers/mappers';
+import { useFetch } from '../../hooks/useFetch';
 
 const Container = styled.main`
   padding: 4em 0em;
@@ -106,37 +105,8 @@ const List = styled.ul`
 `;
 
 const Cocktail = () => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const { id } = useParams();
-
-  useEffect(() => {
-    const getData = async (id) => {
-      try {
-        setLoading(true);
-        setData(null);
-        setError(null);
-
-        const { drinks: cocktailData } = await cocktailsAPI.getById(id);
-
-        if (!cocktailData) {
-          throw new Error('No results');
-        }
-
-        const cocktail = fromApiToEntity(cocktailData[0]);
-
-        setData(cocktail);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-        setData(null);
-      }
-    };
-
-    getData(id);
-  }, [id]);
+  const { data, loading, error } = useFetch(id);
 
   return (
     <Container aria-label="cocktail info page">
@@ -195,7 +165,7 @@ const Cocktail = () => {
         </React.Fragment>
       )}
       {loading && <h1>Loading...</h1>}
-      {error && <h1>error</h1>}
+      {error && <h1>{error}</h1>}
     </Container>
   );
 };

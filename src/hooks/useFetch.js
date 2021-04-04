@@ -1,13 +1,36 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { cocktailsAPI } from '../api/api';
+import { fromApiToEntity } from '../mappers/mappers';
 
-const useFetch = (searchTerm, fetcher, timeout) => {
+export const useFetch = (searchTerm) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    setError(false);
-    setData(null);
-  });
+    const getData = async (searchTerm) => {
+      setLoading(true);
+      setData(null);
+      setError(null);
+
+      try {
+        const { drinks: cocktailData } = await cocktailsAPI.getById(searchTerm);
+
+        if (!cocktailData) {
+          throw new Error('No results');
+        }
+
+        const cocktail = fromApiToEntity(cocktailData[0]);
+
+        setData(cocktail);
+      } catch (error) {
+        setError(error.message);
+      }
+      setLoading(false);
+    };
+
+    getData(searchTerm);
+  }, [searchTerm]);
+
+  return { data, loading, error };
 };
