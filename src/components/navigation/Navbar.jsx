@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import { BaseLink } from '../common';
 import { Button, List } from '../../styles';
-import { AppContext } from '../../contexts/GlobalContext';
+import { useGlobalContext } from '../../hooks';
 
 const Container = styled.nav`
   position: absolute;
@@ -82,7 +82,7 @@ const Link = styled(BaseLink)`
 `;
 
 const Navbar = () => {
-  const { isDropdownOpen, setIsDropdownOpen } = useContext(AppContext);
+  const { isDropdownOpen, setIsDropdownOpen } = useGlobalContext();
 
   return (
     <Container aria-label="navigation">

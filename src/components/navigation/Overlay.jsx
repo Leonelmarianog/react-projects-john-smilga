@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { AppContext } from '../../contexts/GlobalContext';
+import { useGlobalContext } from '../../hooks';
 
 const Container = styled.div`
   display: block;
@@ -21,7 +21,7 @@ const Container = styled.div`
 `;
 
 const Overlay = () => {
-  const { isDropdownOpen, setIsDropdownOpen } = useContext(AppContext);
+  const { isDropdownOpen, setIsDropdownOpen } = useGlobalContext();
 
   return (
     <Container
