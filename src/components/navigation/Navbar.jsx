@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import { BaseLink } from '../common';
 import { Button, List } from '../../styles';
+import { AppContext } from '../../contexts/GlobalContext';
 
 const Container = styled.nav`
+  position: absolute;
+  background-color: var(--clr-white-1);
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
   height: 100%;
 
   @media screen and (min-width: 768px) {
@@ -74,24 +81,31 @@ const Link = styled(BaseLink)`
   }
 `;
 
-const Navbar = () => (
-  <Container aria-label='navigation'>
-    <Header>
-      <Brand to='/'>Cocktails</Brand>
-      <HamburgerButton aria-label='hamburger button'>
-        <FaBars />
-      </HamburgerButton>
-    </Header>
+const Navbar = () => {
+  const { isDropdownOpen, setIsDropdownOpen } = useContext(AppContext);
 
-    <NavMenu aria-label='navigation menu'>
-      <li>
-        <Link to='/'>Home</Link>
-      </li>
-      <li>
-        <Link to='/about'>About</Link>
-      </li>
-    </NavMenu>
-  </Container>
-);
+  return (
+    <Container aria-label="navigation">
+      <Header>
+        <Brand to="/">Cocktails</Brand>
+        <HamburgerButton
+          aria-label="hamburger button"
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        >
+          <FaBars />
+        </HamburgerButton>
+      </Header>
+
+      <NavMenu aria-label="navigation menu">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+      </NavMenu>
+    </Container>
+  );
+};
 
 export default Navbar;

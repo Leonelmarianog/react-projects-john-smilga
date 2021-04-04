@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { Navbar, Dropdown } from '../../../components/navigation';
+import { Navbar, Dropdown, Overlay } from '../../../components/navigation';
+import { AppContext } from '../../../contexts/GlobalContext';
 
 const Container = styled.header`
   height: 64px;
@@ -9,11 +10,16 @@ const Container = styled.header`
   position: relative;
 `;
 
-const Header = () => (
-  <Container>
-    <Navbar />
-    {/* <Dropdown /> */}
-  </Container>
-);
+const Header = () => {
+  const { isDropdownOpen } = useContext(AppContext);
+
+  return (
+    <Container>
+      <Overlay />
+      <Navbar />
+      {isDropdownOpen && <Dropdown />}
+    </Container>
+  );
+};
 
 export default Header;
