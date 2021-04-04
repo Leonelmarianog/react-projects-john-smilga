@@ -1,18 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 import { cocktailsAPI } from '../api/api';
 import { fromApiToEntity } from '../mappers/mappers';
+import { fetchReducer } from '../reducers';
+
+const initialState = {
+  data: null,
+  loading: false,
+  error: null,
+};
 
 export const useFetchOnChange = (searchTerm, timeout) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   useEffect(() => {
     const timerId = setTimeout(async () => {
       if (searchTerm) {
-        setLoading(true);
-        setData(null);
-        setError(null);
+        dispatch({ type: 'LOAD' });
 
         try {
           const { drinks: cocktailsData } = await cocktailsAPI.getByName(
@@ -27,20 +30,17 @@ export const useFetchOnChange = (searchTerm, timeout) => {
             fromApiToEntity(cocktailData)
           );
 
-          setData(cocktails);
+          dispatch({ type: 'SUCCESS', payload: cocktails });
         } catch (error) {
-          setError(error.message);
+          dispatch({ type: 'ERROR', payload: error.message });
         }
-        setLoading(false);
       } else {
-        setData(null);
-        setError(null);
-        setLoading(false);
+        dispatch({ type: 'CLEAN' });
       }
     }, timeout);
 
     return () => clearTimeout(timerId);
   }, [searchTerm]);
 
-  return { data, loading, error };
+  return state;
 };

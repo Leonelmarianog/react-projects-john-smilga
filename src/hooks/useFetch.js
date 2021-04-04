@@ -1,17 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 import { cocktailsAPI } from '../api/api';
 import { fromApiToEntity } from '../mappers/mappers';
+import { fetchReducer } from '../reducers';
+
+const initialState = {
+  data: null,
+  loading: false,
+  error: null,
+};
 
 export const useFetch = (searchTerm) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   useEffect(() => {
     const getData = async (searchTerm) => {
-      setLoading(true);
-      setData(null);
-      setError(null);
+      dispatch({ type: 'LOAD' });
 
       try {
         const { drinks: cocktailData } = await cocktailsAPI.getById(searchTerm);
@@ -22,15 +25,14 @@ export const useFetch = (searchTerm) => {
 
         const cocktail = fromApiToEntity(cocktailData[0]);
 
-        setData(cocktail);
+        dispatch({ type: 'SUCCESS', payload: cocktail });
       } catch (error) {
-        setError(error.message);
+        dispatch({ type: 'ERROR', payload: error.message });
       }
-      setLoading(false);
     };
 
     getData(searchTerm);
   }, [searchTerm]);
 
-  return { data, loading, error };
+  return state;
 };
