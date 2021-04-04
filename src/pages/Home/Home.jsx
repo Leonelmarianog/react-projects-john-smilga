@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useFetchOnChange } from '../../hooks/useFetchOnChange';
+import { useFetchOnChange } from '../../hooks';
 import { Searchbar, Cocktails } from './components';
 
 const Container = styled.main`

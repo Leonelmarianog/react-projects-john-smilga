@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 import { BiDrink } from 'react-icons/bi';
 import { GiDrinkMe } from 'react-icons/gi';
 import { BsPencilSquare } from 'react-icons/bs';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
-import { useFetch } from '../../hooks/useFetch';
+import { useParams } from 'react-router-dom';
+import { useFetch } from '../../hooks';
 
 const Container = styled.main`
   padding: 4em 0em;
