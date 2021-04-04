@@ -18,32 +18,35 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getData = async (value) => {
-      setData(null);
-      setLoading(true);
-      setError(null);
-
-      try {
-        const { drinks: cocktailsData } = await cocktailsAPI.getByName(value);
-
-        if (!cocktailsData) {
-          throw new Error('No results');
-        }
-
-        const cocktails = cocktailsData.map((drinkData) =>
-          fromApiToEntity(drinkData)
-        );
-
-        setData(cocktails);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
+    const timerId = setTimeout(async () => {
+      if (value) {
+        setLoading(true);
         setData(null);
-      }
-    };
+        setError(null);
 
-    getData(value);
+        try {
+          const { drinks: cocktailsData } = await cocktailsAPI.getByName(value);
+
+          if (!cocktailsData) {
+            throw new Error('No results');
+          }
+
+          const cocktails = cocktailsData.map((drinkData) =>
+            fromApiToEntity(drinkData)
+          );
+
+          setData(cocktails);
+        } catch (error) {
+          setError(error.message);
+        }
+        setLoading(false);
+      } else {
+        setData(null);
+        setError(null);
+      }
+    }, 500);
+
+    return () => clearTimeout(timerId);
   }, [value]);
 
   return (
