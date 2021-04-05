@@ -1,11 +1,5 @@
-# React Projects
+# birthday-reminder
 
-Various projects from [John Smilga](https://github.com/john-smilga) [React Projects Course](https://www.udemy.com/course/react-tutorial-and-projects-course/).
+<img src="https://i.imgur.com/dSV3VsK.png" title="source: imgur.com" width="500"/>
 
-# Tools Used
-
-- **React** - A library to build user interfaces.
-- **Styled Components** - A library that allows React developers to write CSS in JS.
-- **React Router** - Routing library to build single page applications with React.
-- **React Transition Group** - A library that allows React developers to manage component's transitions.
-- **React Testing Library** - A library to test React components.
+Project N#1 from [John Smilga](https://github.com/john-smilga) [React Projects Course](https://www.youtube.com/watch?v=ly3m6mv5qvg&t=1184s&ab_channel=CodingAddict).
