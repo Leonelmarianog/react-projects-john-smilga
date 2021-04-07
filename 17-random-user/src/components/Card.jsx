@@ -1,14 +1,17 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
   FaUser,
   FaEnvelopeOpen,
-  FaCalendarTimes,
+  FaBirthdayCake,
   FaMap,
   FaPhone,
   FaLock,
 } from 'react-icons/fa';
 import { Background } from './Background';
 import { button } from '../styles';
+import { fromApiToEntity } from '../mappers/userMapper';
+import { randomUsersApi } from '../api/api';
 
 const Container = styled.article`
   position: relative;
@@ -35,11 +38,11 @@ const Image = styled.img`
   margin-bottom: 2em;
 `;
 
-const Text = styled.p`
+const Title = styled.p`
   margin: 0 0 1em 0;
 `;
 
-const Name = styled.h1`
+const Property = styled.h1`
   font-size: calc(var(--font-size-base) * 1.5);
   text-transform: capitalize;
   margin: 0;
@@ -96,35 +99,88 @@ const rows = [
   },
 ];
 
-export const Card = () => (
-  <Container>
-    <Background position={'absolute'} rows={rows} />
-    <Image
-      src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg"
-      alt=""
-    />
-    <Text>My Name is</Text>
-    <Name>Ella Stevens</Name>
-    <IconContainer>
-      <Icon>
-        <FaUser />
-      </Icon>
-      <Icon>
-        <FaEnvelopeOpen />
-      </Icon>
-      <Icon>
-        <FaCalendarTimes />
-      </Icon>
-      <Icon>
-        <FaMap />
-      </Icon>
-      <Icon>
-        <FaPhone />
-      </Icon>
-      <Icon>
-        <FaLock />
-      </Icon>
-    </IconContainer>
-    <RandomUserButton>Random User</RandomUserButton>
-  </Container>
-);
+export const Card = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [user, setUser] = useState(null);
+  const [title, setTitle] = useState('Hi!, My name is');
+  const [property, setProperty] = useState('name');
+
+  const getUser = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const data = await randomUsersApi.getUser();
+
+      if (!data || !data.results) {
+        throw new Error('No results');
+      }
+
+      const userData = data.results[0];
+      const user = fromApiToEntity(userData);
+      setUser(user);
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
+  };
+
+  const handleClick = (event) => {
+    const { title, label } = event.currentTarget.dataset;
+    setProperty(label);
+    setTitle(title);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  return (
+    <Container>
+      <Background position={'absolute'} rows={rows} />
+      <Image src={user ? user.image : ''} alt={user && user.name} />
+      <Title>{title}</Title>
+      <Property>
+        {user ? user[property] : 'Loading...'}
+        {error && error.message}
+      </Property>
+      <IconContainer>
+        <Icon
+          data-title="Hi!, my name is"
+          data-label="name"
+          onClick={handleClick}
+        >
+          <FaUser />
+        </Icon>
+        <Icon data-title="My email is" data-label="email" onClick={handleClick}>
+          <FaEnvelopeOpen />
+        </Icon>
+        <Icon data-title="My age is" data-label="age" onClick={handleClick}>
+          <FaBirthdayCake />
+        </Icon>
+        <Icon data-title="I live in" data-label="country" onClick={handleClick}>
+          <FaMap />
+        </Icon>
+        <Icon
+          data-title="My phone number is"
+          data-label="phone"
+          onClick={handleClick}
+        >
+          <FaPhone />
+        </Icon>
+        <Icon
+          data-title="My password is"
+          data-label="password"
+          onClick={handleClick}
+        >
+          <FaLock />
+        </Icon>
+      </IconContainer>
+      <RandomUserButton onClick={getUser}>
+        {loading ? 'Loading...' : 'Random User'}
+      </RandomUserButton>
+    </Container>
+  );
+};
