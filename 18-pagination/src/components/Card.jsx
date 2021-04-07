@@ -40,13 +40,10 @@ const Button = styled.button`
   }
 `;
 
-export const Card = ({ renderAs }) => (
+export const Card = ({ renderAs, image, name }) => (
   <Container as={renderAs ? renderAs : ''}>
-    <Image
-      src='https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg'
-      alt=''
-    />
-    <Name>Lucia Perez</Name>
+    <Image src={image} alt={name} />
+    <Name>{name}</Name>
     <Button>View Profile</Button>
   </Container>
 );

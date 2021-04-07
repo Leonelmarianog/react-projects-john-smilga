@@ -28,19 +28,40 @@ const Button = styled.button`
   }
 `;
 
-export const Pagination = () => (
-  <Container>
-    <BorderButton>Prev</BorderButton>
-    <Button>1</Button>
-    <Button>2</Button>
-    <Button>3</Button>
-    <Button>4</Button>
-    <Button>5</Button>
-    <Button>6</Button>
-    <Button>7</Button>
-    <Button>8</Button>
-    <Button>9</Button>
-    <Button>10</Button>
-    <BorderButton>Next</BorderButton>
-  </Container>
-);
+export const Pagination = ({ pages, setPageCallback }) => {
+  const handleNext = () => {
+    setPageCallback((lastPage) => {
+      const nextPage = lastPage + 1;
+
+      if (nextPage > pages.length - 1) {
+        return 0;
+      }
+
+      return nextPage;
+    });
+  };
+
+  const handlePrev = () => {
+    setPageCallback((lastPage) => {
+      const prevPage = lastPage - 1;
+
+      if (prevPage < 0) {
+        return pages.length - 1;
+      }
+
+      return prevPage;
+    });
+  };
+
+  return (
+    <Container>
+      <BorderButton onClick={handlePrev}>Prev</BorderButton>
+      {pages.map((_, index) => (
+        <Button key={index + 1} onClick={() => setPageCallback(index)}>
+          {index + 1}
+        </Button>
+      ))}
+      <BorderButton onClick={handleNext}>Next</BorderButton>
+    </Container>
+  );
+};

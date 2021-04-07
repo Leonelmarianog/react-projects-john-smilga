@@ -12,19 +12,10 @@ const Container = styled.ul`
   padding: 2em 1em;
 `;
 
-export const CardList = () => (
+export const CardList = ({ page }) => (
   <Container>
-    <Card renderAs='li' />
-    <Card renderAs='li' />
-    <Card renderAs='li' />
-    <Card renderAs='li' />
-    <Card renderAs='li' />
-    <Card renderAs='li' />
-    <Card renderAs='li' />
-    <Card renderAs='li' />
-    <Card renderAs='li' />
-    <Card renderAs='li' />
-    <Card renderAs='li' />
-    <Card renderAs='li' />
+    {page.map((profile, index) => (
+      <Card key={index + 1} renderAs='li' {...profile} />
+    ))}
   </Container>
 );
