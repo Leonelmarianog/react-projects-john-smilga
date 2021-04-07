@@ -54,9 +54,11 @@ export const App = () => {
       <Container>
         {loading && <h1>Loading...</h1>}
         {error && <h1>{error.message}</h1>}
-        {pages && <CardList page={pages[page]} />}
         {pages && (
-          <Pagination pages={pages} page={page} setPageCallback={setPage} />
+          <Fragment>
+            <CardList page={pages[page]} />
+            <Pagination pages={pages} page={page} setPageCallback={setPage} />
+          </Fragment>
         )}
       </Container>
     </Fragment>
