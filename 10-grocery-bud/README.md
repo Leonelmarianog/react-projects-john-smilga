@@ -1,5 +1,5 @@
-# grocery-bud
+# Grocery Bud
 
-<img src="https://i.imgur.com/hR9I6CU.png" title="source: imgur.com" width="400"/>
+<img src="./docs/10-grocery-bud.png" width="400"/>
 
-Project N#10 from [John Smilga](https://github.com/john-smilga) [React Projects Course](https://www.youtube.com/watch?v=ly3m6mv5qvg&t=1184s&ab_channel=CodingAddict).
+Project #10 from [John Smilga](https://github.com/john-smilga) [React Projects Course](https://www.udemy.com/course/react-tutorial-and-projects-course/).

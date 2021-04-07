@@ -1,5 +1,5 @@
-# stripe-menus
+# Stripe Menu Clone
 
-<img src="https://i.imgur.com/MQYiu9z.png" title="source: imgur.com" width="600"/>
+<img src="./docs/13-stripe-menu-clone.png" width="600"/>
 
-Project N#13 from [John Smilga](https://github.com/john-smilga) [React Projects Course](https://www.youtube.com/watch?v=ly3m6mv5qvg&t=1184s&ab_channel=CodingAddict).
+Project #13 from [John Smilga](https://github.com/john-smilga) [React Projects Course](https://www.udemy.com/course/react-tutorial-and-projects-course/).
