@@ -4,6 +4,7 @@ import { button } from '../styles';
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 1em 0;
 `;
 
@@ -16,19 +17,20 @@ const BorderButton = styled.button`
 const Button = styled.button`
   ${button};
 
-  background-color: var(--clr-yellow-3);
+  background-color: ${({ isActive }) =>
+    isActive ? `var(--clr-yellow-3)` : `var(--clr-yellow-2)`};
   padding: 0.5em 0.75em;
   border-radius: 5px;
-  margin: 0 0.5em;
+  margin: 0.5em;
   font-weight: bold;
   transition: background-color 0.2s linear;
 
   &:hover {
-    background-color: var(--clr-yellow-2);
+    background-color: var(--clr-yellow-3);
   }
 `;
 
-export const Pagination = ({ pages, setPageCallback }) => {
+export const Pagination = ({ pages, page, setPageCallback }) => {
   const handleNext = () => {
     setPageCallback((lastPage) => {
       const nextPage = lastPage + 1;
@@ -57,7 +59,11 @@ export const Pagination = ({ pages, setPageCallback }) => {
     <Container>
       <BorderButton onClick={handlePrev}>Prev</BorderButton>
       {pages.map((_, index) => (
-        <Button key={index + 1} onClick={() => setPageCallback(index)}>
+        <Button
+          key={index + 1}
+          isActive={index === page}
+          onClick={() => setPageCallback(index)}
+        >
           {index + 1}
         </Button>
       ))}

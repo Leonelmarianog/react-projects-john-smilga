@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
   :root {
     --font-size-base: 1rem;
     --clr-yellow-1: #fffcd3;
-    --clr-yellow-2: #fff562;
+    --clr-yellow-2: #fff894;
     --clr-yellow-3: #f5e93f;
     --clr-black: #000;
     --clr-white: #fff;
