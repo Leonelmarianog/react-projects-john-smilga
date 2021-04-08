@@ -14,25 +14,10 @@ const Container = styled.ul`
   max-width: 1500px;
 `;
 
-export const PhotoList = () => (
+export const PhotoList = ({ photos }) => (
   <Container>
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
-    <Photo />
+    {photos.map((photo, index) => (
+      <Photo key={index + 1} {...photo} />
+    ))}
   </Container>
 );

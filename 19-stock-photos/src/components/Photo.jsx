@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const Container = styled.article`
   position: relative;
   overflow: hidden;
+  height: 17.5rem;
 
   &:hover {
     & > div {
@@ -13,9 +14,9 @@ const Container = styled.article`
 
 const Image = styled.img`
   display: block;
-  height: auto;
-  max-width: 100%;
-  min-width: 200px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const Panel = styled.div`
@@ -56,17 +57,24 @@ const Wrapper = styled.div`
   margin: auto;
 `;
 
-export const Photo = () => (
+export const Photo = ({
+  url,
+  altDescription,
+  likes,
+  owner,
+  ownerPic,
+  ownerPortfolio,
+}) => (
   <Container>
-    <Image src='https://images.unsplash.com/photo-1593642532454-e138e28a63f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMjE1NjF8MXwxfGFsbHwxfHx8fHx8Mnx8MTYxNzkwMzM5NQ&ixlib=rb-1.2.1&q=80&w=1080' />
+    <Image src={url} alt={altDescription} />
     <Panel>
       <Wrapper>
-        <PhotoOwner>Leonel Gauna</PhotoOwner>
-        <PhotoLikes>3 Likes</PhotoLikes>
+        <PhotoOwner>{owner}</PhotoOwner>
+        <PhotoLikes>{likes} likes</PhotoLikes>
       </Wrapper>
       <Wrapper>
-        <a href='/'>
-          <OwnerPhoto src='https://images.unsplash.com/profile-1556011314127-d55a7ede3346?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=128&w=128' />
+        <a href={ownerPortfolio}>
+          <OwnerPhoto src={ownerPic} alt={`${owner} profile picture`} />
         </a>
       </Wrapper>
     </Panel>

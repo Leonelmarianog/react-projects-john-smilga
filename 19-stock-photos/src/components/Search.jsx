@@ -15,8 +15,13 @@ const Input = styled.input`
   border-radius: 50px;
 `;
 
-export const Search = () => (
+export const Search = ({ searchTerm, setSearchTermCallback }) => (
   <Container>
-    <Input type='text' placeholder='Type something...' />
+    <Input
+      type='text'
+      placeholder='Type something...'
+      value={searchTerm}
+      onChange={(event) => setSearchTermCallback(event.target.value)}
+    />
   </Container>
 );
