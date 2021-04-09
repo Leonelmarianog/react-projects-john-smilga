@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { FaSearch } from 'react-icons/fa';
+import { button } from '../styles';
 
 const Container = styled.form`
   width: 100%;
@@ -13,6 +15,19 @@ const Input = styled.input`
   width: 90%;
   max-width: 300px;
   border-radius: 50px;
+`;
+
+const SearchButton = styled.button`
+  ${button};
+
+  color: var(--clr-grey-2);
+  margin-left: -45px;
+  padding: 0.75em;
+  transition: color 0.2s linear;
+
+  &:hover {
+    color: var(--clr-black);
+  }
 `;
 
 export const Search = ({
@@ -35,6 +50,9 @@ export const Search = ({
         value={searchTerm}
         onChange={(event) => setSearchTermCallback(event.target.value)}
       />
+      <SearchButton type='submit' aria-label='search'>
+        <FaSearch />
+      </SearchButton>
     </Container>
   );
 };
