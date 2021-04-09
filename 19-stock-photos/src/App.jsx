@@ -2,10 +2,7 @@ import { Fragment, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { GlobalStyles } from './styles';
 import { Search, PhotoList } from './components';
-import { getResource } from './api/api.js';
-import { fromPlainToPhoto } from './mappers/photoMapper';
-
-const URL = `https://api.unsplash.com/photos/?client_id=${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}&page=`;
+import { getPhotosByPage } from './services/unsplash';
 
 const Container = styled.main`
   display: flex;
@@ -22,37 +19,27 @@ export const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [data, setData] = useState(null);
   const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
 
-  const getPhotos = async (url) => {
+  const getPhotosFromApi = async (page) => {
     try {
       setLoading(true);
       setError(null);
-      setData(null);
 
-      const photosData = await getResource(url);
-
-      if (!photosData) {
-        throw new Error('No Results');
-      }
-
-      const newPhotos = photosData.map((photoData) =>
-        fromPlainToPhoto(photoData)
-      );
+      const newPhotos = await getPhotosByPage(page);
 
       setPhotos((lastPhotos) => [...lastPhotos, ...newPhotos]);
       setLoading(false);
     } catch (error) {
       setError(error.message);
       setLoading(false);
-      setData(null);
+      setPhotos([]);
     }
   };
 
   useEffect(() => {
-    getPhotos(`${URL}${page}`);
+    getPhotosFromApi(page);
   }, [page]);
 
   useEffect(() => {
