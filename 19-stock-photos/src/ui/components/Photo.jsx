@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-const Container = styled.article`
+const Container = styled.figure`
+  margin: 0;
   position: relative;
   overflow: hidden;
   height: 17.5rem;
@@ -19,31 +20,31 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const Panel = styled.div`
+const PhotoInfo = styled.div`
   position: absolute;
-  top: 60%;
+  top: 70%;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: var(--clr-shadow-2);
   display: flex;
   transform: translateY(100%);
-  transition: transform 0.2s linear;
+  transition: transform 0.25s linear;
 `;
 
-const PhotoOwner = styled.h1`
+const Owner = styled.h1`
   font-size: calc(var(--font-size-1) * 1);
   color: var(--clr-white);
   margin: 0 0 0.5em 0;
   white-space: nowrap;
 `;
 
-const PhotoLikes = styled.p`
+const Likes = styled.p`
   margin: 0;
   color: var(--clr-white);
 `;
 
-const OwnerPhoto = styled.img`
+const OwnerPic = styled.img`
   height: auto;
   width: 3em;
   border-radius: 50%;
@@ -67,16 +68,16 @@ export const Photo = ({
 }) => (
   <Container>
     <Image src={url} alt={altDescription} />
-    <Panel>
+    <PhotoInfo>
       <Wrapper>
-        <PhotoOwner>{owner}</PhotoOwner>
-        <PhotoLikes>{likes} likes</PhotoLikes>
+        <Owner>{owner}</Owner>
+        <Likes>{likes} likes</Likes>
       </Wrapper>
       <Wrapper>
         <a href={ownerPortfolio}>
-          <OwnerPhoto src={ownerPic} alt={`${owner} profile picture`} />
+          <OwnerPic src={ownerPic} alt={`${owner} profile picture`} />
         </a>
       </Wrapper>
-    </Panel>
+    </PhotoInfo>
   </Container>
 );
