@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { GlobalStyles } from './styles';
 import { Search, PhotoList } from './components';
-import { getPhotosByPage } from './services/unsplash';
+import { getPhotosByPage } from '../services/unsplash';
 
 const Container = styled.main`
   display: flex;
