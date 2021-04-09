@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { GlobalStyles } from './styles';
 import { Search, PhotoList } from './components';
-import { getPhotosByPage } from '../services/unsplash';
+import { getPhotosByPage, getPhotosByPageAndQuery } from '../services/unsplash';
 
 const Container = styled.main`
   display: flex;
@@ -17,30 +17,39 @@ const Notification = styled.h1`
 
 export const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
 
-  const getPhotosFromApi = async (page) => {
-    try {
-      setLoading(true);
-      setError(null);
-
-      const newPhotos = await getPhotosByPage(page);
-
-      setPhotos((lastPhotos) => [...lastPhotos, ...newPhotos]);
-      setLoading(false);
-    } catch (error) {
-      setError(error.message);
-      setLoading(false);
-      setPhotos([]);
-    }
-  };
-
   useEffect(() => {
-    getPhotosFromApi(page);
-  }, [page]);
+    if (loading) {
+      const getPhotos = async (page, searchTerm) => {
+        try {
+          setError(null);
+
+          if (searchTerm && page === 1) {
+            const newPhotos = await getPhotosByPageAndQuery(page, searchTerm);
+            setPhotos(newPhotos);
+          } else if (searchTerm) {
+            const newPhotos = await getPhotosByPageAndQuery(page, searchTerm);
+            setPhotos((lastPhotos) => [...lastPhotos, ...newPhotos]);
+          } else {
+            const newPhotos = await getPhotosByPage(page);
+            setPhotos((lastPhotos) => [...lastPhotos, ...newPhotos]);
+          }
+
+          setLoading(false);
+        } catch (error) {
+          setError(error.message);
+          setLoading(false);
+          setPhotos([]);
+        }
+      };
+
+      getPhotos(page, searchTerm);
+    }
+  }, [loading, page, searchTerm]);
 
   useEffect(() => {
     if (!loading) {
@@ -53,6 +62,7 @@ export const App = () => {
 
         if (!loading && reachedLimit) {
           setPage((lastPage) => lastPage + 1);
+          setLoading(true);
         }
       };
 
@@ -66,7 +76,12 @@ export const App = () => {
     <Fragment>
       <GlobalStyles />
       <Container>
-        <Search searchTerm={searchTerm} setSearchTermCallback={setSearchTerm} />
+        <Search
+          searchTerm={searchTerm}
+          setSearchTermCallback={setSearchTerm}
+          setPageCallback={setPage}
+          setLoadingCallback={setLoading}
+        />
         {photos && <PhotoList photos={photos} />}
         {loading && <Notification>Loading...</Notification>}
         {error && <Notification>{error.message}</Notification>}
