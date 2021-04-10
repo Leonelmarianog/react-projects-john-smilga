@@ -4,6 +4,7 @@ export const fromPlainToPhoto = ({
   id,
   alt_description,
   urls: { regular },
+  blur_hash,
   likes,
   user: {
     name,
@@ -14,6 +15,7 @@ export const fromPlainToPhoto = ({
   const photoData = {
     id,
     url: regular,
+    blurHash: blur_hash,
     altDescription: alt_description,
     likes,
     owner: name,

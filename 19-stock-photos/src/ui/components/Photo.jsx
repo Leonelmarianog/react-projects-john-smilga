@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import { Blurhash } from 'react-blurhash';
 
 const Container = styled.figure`
   margin: 0;
@@ -60,24 +62,43 @@ const Wrapper = styled.div`
 
 export const Photo = ({
   url,
+  blurHash,
   altDescription,
   likes,
   owner,
   ownerPic,
   ownerPortfolio,
-}) => (
-  <Container>
-    <Image src={url} alt={altDescription} />
-    <PhotoInfo>
-      <Wrapper>
-        <Owner>{owner}</Owner>
-        <Likes>{likes} likes</Likes>
-      </Wrapper>
-      <Wrapper>
-        <a href={ownerPortfolio}>
-          <OwnerPic src={ownerPic} alt={`${owner} profile picture`} />
-        </a>
-      </Wrapper>
-    </PhotoInfo>
-  </Container>
-);
+}) => {
+  const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(true);
+
+  const handleLoad = () => {
+    setIsPlaceholderVisible(false);
+  };
+
+  return (
+    <Container>
+      {isPlaceholderVisible && (
+        <Blurhash
+          hash={blurHash}
+          width={'100%'}
+          height={'100%'}
+          resolutionX={32}
+          resolutionY={32}
+          punch={1}
+        />
+      )}
+      <Image src={url} alt={altDescription} onLoad={handleLoad} />
+      <PhotoInfo>
+        <Wrapper>
+          <Owner>{owner}</Owner>
+          <Likes>{likes} likes</Likes>
+        </Wrapper>
+        <Wrapper>
+          <a href={ownerPortfolio}>
+            <OwnerPic src={ownerPic} alt={`${owner} profile picture`} />
+          </a>
+        </Wrapper>
+      </PhotoInfo>
+    </Container>
+  );
+};

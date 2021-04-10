@@ -2,6 +2,7 @@ export class Photo {
   constructor({
     id,
     url,
+    blurHash,
     altDescription,
     likes,
     owner,
@@ -10,6 +11,7 @@ export class Photo {
   }) {
     this.id = id;
     this.url = url;
+    this.blurHash = blurHash;
     this.altDescription = altDescription;
     this.likes = likes;
     this.owner = owner;
