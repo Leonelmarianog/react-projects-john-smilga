@@ -1,7 +1,8 @@
-import { useState, Fragment } from 'react';
+import { Fragment } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyles, themes } from './styles';
 import { Header, ArticleList } from './components';
+import { useDarkMode } from './hooks';
 import { articles } from './data/articles';
 
 const ContainerWrapper = styled.div`
@@ -19,26 +20,23 @@ const Container = styled.div`
 `;
 
 export const App = () => {
-  const [theme, setTheme] = useState('light');
+  const [theme, themeToggler, isThemeLoaded] = useDarkMode();
 
-  const themeToggler = () => {
-    console.log(theme);
-    theme === 'light' ? setTheme('dark') : setTheme('light');
-  };
+  const currentTheme = theme === 'light' ? themes.lightTheme : themes.darkTheme;
 
   return (
-    <ThemeProvider
-      theme={theme === 'light' ? themes.lightTheme : themes.darkTheme}
-    >
-      <Fragment>
-        <GlobalStyles />
-        <ContainerWrapper>
-          <Container>
-            <Header themeTogglerCallback={themeToggler} />
-            <ArticleList articles={articles} />
-          </Container>
-        </ContainerWrapper>
-      </Fragment>
-    </ThemeProvider>
+    isThemeLoaded && (
+      <ThemeProvider theme={currentTheme}>
+        <Fragment>
+          <GlobalStyles />
+          <ContainerWrapper>
+            <Container>
+              <Header themeTogglerCallback={themeToggler} />
+              <ArticleList articles={articles} />
+            </Container>
+          </ContainerWrapper>
+        </Fragment>
+      </ThemeProvider>
+    )
   );
 };
