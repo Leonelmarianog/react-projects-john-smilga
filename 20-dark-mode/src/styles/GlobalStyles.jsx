@@ -4,9 +4,6 @@ import { normalize } from 'styled-normalize';
 export const GlobalStyles = createGlobalStyle`
   :root {
     --font-size-base: 1rem;
-    --clr-font: #282c35;
-    --clr-primary: #ffaec9;
-    --clr-bcg: #fff;
   }
 
   ${normalize};
